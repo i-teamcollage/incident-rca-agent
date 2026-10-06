@@ -1,0 +1,9 @@
+{
+  "id": "ALR-6639",
+  "fired_at": "2026-05-03T18:50:00Z",
+  "pipeline": "fct_shipments",
+  "check": "freshness",
+  "severity": "medium",
+  "message": "fct_shipments has not loaded new data since 2026-05-03 14:40 UTC (freshness SLA 4 h)",
+  "window_start": "2026-05-03T12:50:00Z"
+}

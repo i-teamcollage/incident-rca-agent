@@ -1,0 +1,211 @@
+L-0001 2026-05-03T12:53:40Z WARN src_partner_sftp deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0002 2026-05-03T12:55:05Z WARN ing_payments slow query on raw.payments: 18.4 s (threshold 10 s)
+L-0003 2026-05-03T12:57:28Z INFO src_shop_db connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0004 2026-05-03T13:05:01Z INFO src_shop_db run #7590 started
+L-0005 2026-05-03T13:05:01Z INFO src_partner_sftp run #6734 started
+L-0006 2026-05-03T13:05:02Z INFO src_payments_api run #9539 started
+L-0007 2026-05-03T13:05:36Z INFO src_payments_api fetched 13469 records from api.payments.example in 26 pages
+L-0008 2026-05-03T13:05:42Z INFO src_partner_sftp run #6734 finished in 42 s, 6793 rows written to landing.shipments
+L-0009 2026-05-03T13:05:49Z INFO stg_shipments heartbeat ok, 9 active workers
+L-0010 2026-05-03T13:06:12Z INFO src_payments_api run #9539 finished in 72 s, 13469 rows written to landing.payments
+L-0011 2026-05-03T13:06:34Z INFO src_shop_db run #7590 finished in 94 s, 33012 rows written to landing.shop_orders
+L-0012 2026-05-03T13:07:33Z WARN ing_crm_contacts deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0013 2026-05-03T13:15:01Z INFO ing_payments run #6186 started
+L-0014 2026-05-03T13:15:01Z INFO ing_shipments run #4291 started
+L-0015 2026-05-03T13:15:03Z INFO ing_orders run #3674 started
+L-0016 2026-05-03T13:15:03Z INFO ing_crm_contacts run #2273 started
+L-0017 2026-05-03T13:15:23Z INFO ing_crm_contacts loaded 4654 rows from landing.crm_contacts into raw.crm_contacts
+L-0018 2026-05-03T13:15:43Z INFO ing_orders loaded 33517 rows from landing.shop_orders into raw.orders
+L-0019 2026-05-03T13:15:46Z INFO ing_crm_contacts run #2273 finished in 46 s, 4618 rows written to raw.crm_contacts
+L-0020 2026-05-03T13:15:53Z INFO ing_shipments run #4291 finished in 53 s, 6327 rows written to raw.shipments
+L-0021 2026-05-03T13:16:06Z INFO ing_payments run #6186 finished in 66 s, 13349 rows written to raw.payments
+L-0022 2026-05-03T13:16:27Z INFO ing_orders run #3674 finished in 87 s, 33466 rows written to raw.orders
+L-0023 2026-05-03T13:25:01Z INFO stg_shipments run #4466 started
+L-0024 2026-05-03T13:25:02Z INFO stg_orders run #1802 started
+L-0025 2026-05-03T13:25:03Z INFO stg_payments run #4498 started
+L-0026 2026-05-03T13:25:27Z INFO stg_payments 12 data tests passed on staging.payments
+L-0027 2026-05-03T13:25:36Z INFO stg_orders 8 data tests passed on staging.orders
+L-0028 2026-05-03T13:25:49Z INFO stg_shipments run #4466 finished in 49 s, 6167 rows written to staging.shipments
+L-0029 2026-05-03T13:25:54Z INFO stg_payments run #4498 finished in 54 s, 12741 rows written to staging.payments
+L-0030 2026-05-03T13:26:12Z INFO stg_orders run #1802 finished in 72 s, 33828 rows written to staging.orders
+L-0031 2026-05-03T13:28:27Z INFO src_shop_db schema cache refreshed (249 tables)
+L-0032 2026-05-03T13:31:02Z WARN fct_orders statistics for analytics.fct_orders are stale; running analyze
+L-0033 2026-05-03T13:34:30Z WARN stg_shipments statistics for staging.shipments are stale; running analyze
+L-0034 2026-05-03T13:35:02Z INFO fct_orders run #8038 started
+L-0035 2026-05-03T13:37:15Z INFO fct_orders run #8038 finished in 135 s, 30843 rows written to analytics.fct_orders
+L-0036 2026-05-03T13:38:36Z WARN stg_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0037 2026-05-03T13:40:01Z INFO fct_shipments run #6210 started
+L-0038 2026-05-03T13:40:38Z INFO fct_shipments 13 data tests passed on analytics.fct_shipments
+L-0039 2026-05-03T13:41:16Z INFO fct_shipments run #6210 finished in 76 s, 6451 rows written to analytics.fct_shipments
+L-0040 2026-05-03T13:41:58Z INFO ing_crm_contacts garbage collection took 17.0 s
+L-0041 2026-05-03T13:53:28Z WARN ing_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0042 2026-05-03T14:03:20Z INFO stg_payments connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0043 2026-05-03T14:05:01Z INFO src_partner_sftp run #6735 started
+L-0044 2026-05-03T14:05:01Z WARN src_partner_sftp SSH key etl-sftp-2025 for sftp.logistics-partner.example expires at 2026-05-03 14:21 UTC; renew it in the secret store
+L-0045 2026-05-03T14:05:02Z INFO src_shop_db run #7591 started
+L-0046 2026-05-03T14:05:03Z INFO src_payments_api run #9540 started
+L-0047 2026-05-03T14:05:39Z INFO src_partner_sftp run #6735 finished in 39 s, 6679 rows written to landing.shipments
+L-0048 2026-05-03T14:06:13Z INFO src_payments_api run #9540 finished in 73 s, 13596 rows written to landing.payments
+L-0049 2026-05-03T14:06:40Z INFO src_shop_db run #7591 finished in 100 s, 33937 rows written to landing.shop_orders
+L-0050 2026-05-03T14:15:02Z INFO ing_orders run #3675 started
+L-0051 2026-05-03T14:15:02Z INFO ing_payments run #6187 started
+L-0052 2026-05-03T14:15:02Z INFO ing_shipments run #4292 started
+L-0053 2026-05-03T14:15:03Z INFO ing_crm_contacts run #2274 started
+L-0054 2026-05-03T14:15:23Z INFO ing_crm_contacts loaded 4144 rows from landing.crm_contacts into raw.crm_contacts
+L-0055 2026-05-03T14:15:46Z INFO ing_crm_contacts run #2274 finished in 46 s, 4122 rows written to raw.crm_contacts
+L-0056 2026-05-03T14:15:51Z INFO ing_shipments run #4292 finished in 51 s, 6521 rows written to raw.shipments
+L-0057 2026-05-03T14:15:59Z INFO ing_payments run #6187 finished in 59 s, 12431 rows written to raw.payments
+L-0058 2026-05-03T14:16:26Z INFO ing_orders run #3675 finished in 86 s, 32603 rows written to raw.orders
+L-0059 2026-05-03T14:19:23Z INFO fct_orders heartbeat ok, 9 active workers
+L-0060 2026-05-03T14:23:51Z WARN stg_orders slow query on staging.orders: 14.4 s (threshold 10 s)
+L-0061 2026-05-03T14:24:15Z INFO fct_orders garbage collection took 19.8 s
+L-0062 2026-05-03T14:25:01Z INFO stg_payments run #4499 started
+L-0063 2026-05-03T14:25:02Z INFO stg_orders run #1803 started
+L-0064 2026-05-03T14:25:03Z INFO stg_shipments run #4467 started
+L-0065 2026-05-03T14:25:24Z INFO stg_shipments 10 data tests passed on staging.shipments
+L-0066 2026-05-03T14:25:36Z INFO stg_orders 6 data tests passed on staging.orders
+L-0067 2026-05-03T14:25:49Z INFO stg_shipments run #4467 finished in 49 s, 6313 rows written to staging.shipments
+L-0068 2026-05-03T14:25:53Z INFO stg_payments run #4499 finished in 53 s, 13201 rows written to staging.payments
+L-0069 2026-05-03T14:26:12Z INFO stg_orders run #1803 finished in 72 s, 31046 rows written to staging.orders
+L-0070 2026-05-03T14:32:15Z WARN stg_payments slow query on staging.payments: 17.3 s (threshold 10 s)
+L-0071 2026-05-03T14:33:54Z INFO ing_crm_contacts schema cache refreshed (204 tables)
+L-0072 2026-05-03T14:35:01Z INFO fct_orders run #8039 started
+L-0073 2026-05-03T14:35:41Z INFO src_shop_db garbage collection took 19.8 s
+L-0074 2026-05-03T14:36:13Z INFO fct_orders 6 data tests passed on analytics.fct_orders
+L-0075 2026-05-03T14:37:11Z INFO fct_orders connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0076 2026-05-03T14:37:26Z INFO fct_orders run #8039 finished in 146 s, 31571 rows written to analytics.fct_orders
+L-0077 2026-05-03T14:40:01Z INFO fct_shipments run #6211 started
+L-0078 2026-05-03T14:40:35Z INFO fct_shipments 4 data tests passed on analytics.fct_shipments
+L-0079 2026-05-03T14:41:11Z INFO fct_shipments run #6211 finished in 71 s, 6233 rows written to analytics.fct_shipments
+L-0080 2026-05-03T14:43:26Z WARN ing_payments slow query on raw.payments: 13.7 s (threshold 10 s)
+L-0081 2026-05-03T15:00:06Z WARN fct_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0082 2026-05-03T15:05:01Z INFO src_shop_db run #7592 started
+L-0083 2026-05-03T15:05:01Z ERROR src_partner_sftp SSH authentication to sftp.logistics-partner.example failed: Permission denied (publickey); key etl-sftp-2025 expired
+L-0084 2026-05-03T15:05:02Z INFO src_partner_sftp run #6736 started
+L-0085 2026-05-03T15:05:03Z INFO src_payments_api run #9541 started
+L-0086 2026-05-03T15:05:03Z ERROR src_partner_sftp run #6736 failed after 3 s: authentication failed, no data read
+L-0087 2026-05-03T15:05:33Z INFO src_payments_api fetched 12360 records from api.payments.example in 24 pages
+L-0088 2026-05-03T15:06:06Z INFO src_payments_api run #9541 finished in 66 s, 12360 rows written to landing.payments
+L-0089 2026-05-03T15:06:39Z INFO src_shop_db run #7592 finished in 99 s, 32363 rows written to landing.shop_orders
+L-0090 2026-05-03T15:14:29Z INFO fct_orders heartbeat ok, 8 active workers
+L-0091 2026-05-03T15:15:01Z INFO ing_orders run #3676 started
+L-0092 2026-05-03T15:15:01Z WARN ing_shipments upstream src_partner_sftp has no new data since 14:05; skipping run #4293
+L-0093 2026-05-03T15:15:02Z INFO ing_payments run #6188 started
+L-0094 2026-05-03T15:15:02Z INFO ing_crm_contacts run #2275 started
+L-0095 2026-05-03T15:15:30Z INFO ing_payments loaded 12312 rows from landing.payments into raw.payments
+L-0096 2026-05-03T15:15:47Z INFO ing_crm_contacts run #2275 finished in 47 s, 4357 rows written to raw.crm_contacts
+L-0097 2026-05-03T15:16:00Z INFO ing_payments run #6188 finished in 60 s, 12307 rows written to raw.payments
+L-0098 2026-05-03T15:16:19Z INFO ing_orders run #3676 finished in 79 s, 32860 rows written to raw.orders
+L-0099 2026-05-03T15:17:56Z INFO ing_payments 61 late-arriving rows older than 48 h merged into raw.payments
+L-0100 2026-05-03T15:20:20Z WARN src_payments_api statistics for landing.payments are stale; running analyze
+L-0101 2026-05-03T15:21:40Z WARN ing_shipments deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0102 2026-05-03T15:21:59Z INFO src_payments_api heartbeat ok, 4 active workers
+L-0103 2026-05-03T15:22:55Z INFO ing_crm_contacts schema cache refreshed (238 tables)
+L-0104 2026-05-03T15:25:01Z WARN stg_shipments upstream ing_shipments has no new data since 14:15; skipping run #4468
+L-0105 2026-05-03T15:25:02Z INFO stg_payments run #4500 started
+L-0106 2026-05-03T15:25:03Z INFO stg_orders run #1804 started
+L-0107 2026-05-03T15:25:56Z INFO stg_payments run #4500 finished in 56 s, 12442 rows written to staging.payments
+L-0108 2026-05-03T15:26:09Z INFO stg_orders run #1804 finished in 69 s, 32150 rows written to staging.orders
+L-0109 2026-05-03T15:26:50Z WARN stg_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0110 2026-05-03T15:33:18Z WARN ing_shipments statistics for raw.shipments are stale; running analyze
+L-0111 2026-05-03T15:35:03Z INFO fct_orders run #8040 started
+L-0112 2026-05-03T15:37:17Z INFO fct_orders run #8040 finished in 137 s, 32141 rows written to analytics.fct_orders
+L-0113 2026-05-03T15:40:01Z WARN fct_shipments upstream stg_shipments has no new data since 14:25; skipping run #6212
+L-0114 2026-05-03T15:44:46Z WARN src_partner_sftp deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0115 2026-05-03T15:54:58Z WARN src_partner_sftp slow query on landing.shipments: 12.2 s (threshold 10 s)
+L-0116 2026-05-03T15:59:03Z WARN ing_crm_contacts statistics for raw.crm_contacts are stale; running analyze
+L-0117 2026-05-03T16:00:42Z WARN src_shop_db statistics for landing.shop_orders are stale; running analyze
+L-0118 2026-05-03T16:04:18Z WARN stg_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0119 2026-05-03T16:05:01Z ERROR src_partner_sftp SSH authentication to sftp.logistics-partner.example failed: Permission denied (publickey); key etl-sftp-2025 expired
+L-0120 2026-05-03T16:05:02Z INFO src_partner_sftp run #6737 started
+L-0121 2026-05-03T16:05:03Z INFO src_shop_db run #7593 started
+L-0122 2026-05-03T16:05:03Z INFO src_payments_api run #9542 started
+L-0123 2026-05-03T16:05:03Z ERROR src_partner_sftp run #6737 failed after 3 s: authentication failed, no data read
+L-0124 2026-05-03T16:06:06Z INFO src_payments_api run #9542 finished in 66 s, 13612 rows written to landing.payments
+L-0125 2026-05-03T16:06:41Z INFO src_shop_db run #7593 finished in 101 s, 33397 rows written to landing.shop_orders
+L-0126 2026-05-03T16:12:28Z WARN ing_payments slow query on raw.payments: 11.7 s (threshold 10 s)
+L-0127 2026-05-03T16:12:43Z WARN fct_orders statistics for analytics.fct_orders are stale; running analyze
+L-0128 2026-05-03T16:15:01Z INFO ing_crm_contacts run #2276 started
+L-0129 2026-05-03T16:15:01Z WARN ing_shipments upstream src_partner_sftp has no new data since 14:05; skipping run #4294
+L-0130 2026-05-03T16:15:02Z INFO ing_payments run #6189 started
+L-0131 2026-05-03T16:15:03Z INFO ing_orders run #3677 started
+L-0132 2026-05-03T16:15:42Z INFO ing_orders loaded 32799 rows from landing.shop_orders into raw.orders
+L-0133 2026-05-03T16:15:44Z INFO ing_crm_contacts run #2276 finished in 44 s, 4362 rows written to raw.crm_contacts
+L-0134 2026-05-03T16:15:59Z INFO ing_payments run #6189 finished in 59 s, 13347 rows written to raw.payments
+L-0135 2026-05-03T16:16:00Z WARN src_partner_sftp slow query on landing.shipments: 19.5 s (threshold 10 s)
+L-0136 2026-05-03T16:16:24Z INFO ing_orders run #3677 finished in 84 s, 32359 rows written to raw.orders
+L-0137 2026-05-03T16:19:26Z INFO fct_orders schema cache refreshed (212 tables)
+L-0138 2026-05-03T16:19:31Z INFO stg_payments schema cache refreshed (188 tables)
+L-0139 2026-05-03T16:21:24Z INFO stg_orders heartbeat ok, 11 active workers
+L-0140 2026-05-03T16:23:36Z INFO stg_payments 74 late-arriving rows older than 48 h merged into staging.payments
+L-0141 2026-05-03T16:25:01Z WARN stg_shipments upstream ing_shipments has no new data since 14:15; skipping run #4469
+L-0142 2026-05-03T16:25:02Z INFO stg_payments run #4501 started
+L-0143 2026-05-03T16:25:03Z INFO stg_orders run #1805 started
+L-0144 2026-05-03T16:25:38Z INFO stg_orders 5 data tests passed on staging.orders
+L-0145 2026-05-03T16:25:53Z INFO stg_payments run #4501 finished in 53 s, 12615 rows written to staging.payments
+L-0146 2026-05-03T16:25:59Z INFO ing_orders connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0147 2026-05-03T16:26:17Z INFO stg_orders run #1805 finished in 77 s, 30878 rows written to staging.orders
+L-0148 2026-05-03T16:35:02Z INFO fct_orders run #8041 started
+L-0149 2026-05-03T16:35:54Z WARN src_shop_db statistics for landing.shop_orders are stale; running analyze
+L-0150 2026-05-03T16:37:24Z INFO fct_orders run #8041 finished in 144 s, 30434 rows written to analytics.fct_orders
+L-0151 2026-05-03T16:40:01Z WARN fct_shipments upstream stg_shipments has no new data since 14:25; skipping run #6213
+L-0152 2026-05-03T16:42:47Z INFO fct_orders garbage collection took 19.9 s
+L-0153 2026-05-03T16:47:22Z WARN ing_shipments slow query on raw.shipments: 11.7 s (threshold 10 s)
+L-0154 2026-05-03T17:00:17Z INFO fct_orders 386 late-arriving rows older than 48 h merged into analytics.fct_orders
+L-0155 2026-05-03T17:05:01Z INFO src_shop_db run #7594 started
+L-0156 2026-05-03T17:05:01Z ERROR src_partner_sftp SSH authentication to sftp.logistics-partner.example failed: Permission denied (publickey); key etl-sftp-2025 expired
+L-0157 2026-05-03T17:05:02Z INFO src_partner_sftp run #6738 started
+L-0158 2026-05-03T17:05:03Z INFO src_payments_api run #9543 started
+L-0159 2026-05-03T17:05:04Z ERROR src_partner_sftp run #6738 failed after 4 s: authentication failed, no data read
+L-0160 2026-05-03T17:05:49Z INFO src_shop_db extracted 34877 rows from shopdb-replica.internal
+L-0161 2026-05-03T17:06:16Z INFO src_payments_api run #9543 finished in 76 s, 13552 rows written to landing.payments
+L-0162 2026-05-03T17:06:38Z INFO src_shop_db run #7594 finished in 98 s, 34877 rows written to landing.shop_orders
+L-0163 2026-05-03T17:15:01Z INFO ing_payments run #6190 started
+L-0164 2026-05-03T17:15:01Z WARN ing_shipments upstream src_partner_sftp has no new data since 14:05; skipping run #4295
+L-0165 2026-05-03T17:15:03Z INFO ing_orders run #3678 started
+L-0166 2026-05-03T17:15:03Z INFO ing_crm_contacts run #2277 started
+L-0167 2026-05-03T17:15:31Z INFO ing_payments loaded 14188 rows from landing.payments into raw.payments
+L-0168 2026-05-03T17:15:50Z INFO ing_crm_contacts run #2277 finished in 50 s, 4638 rows written to raw.crm_contacts
+L-0169 2026-05-03T17:16:03Z INFO ing_payments run #6190 finished in 63 s, 14021 rows written to raw.payments
+L-0170 2026-05-03T17:16:20Z INFO ing_orders run #3678 finished in 80 s, 34597 rows written to raw.orders
+L-0171 2026-05-03T17:16:49Z INFO src_partner_sftp garbage collection took 17.4 s
+L-0172 2026-05-03T17:19:59Z WARN ing_payments deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0173 2026-05-03T17:21:24Z INFO ing_payments garbage collection took 11.1 s
+L-0174 2026-05-03T17:25:01Z INFO stg_payments run #4502 started
+L-0175 2026-05-03T17:25:01Z WARN stg_shipments upstream ing_shipments has no new data since 14:15; skipping run #4470
+L-0176 2026-05-03T17:25:02Z INFO stg_orders run #1806 started
+L-0177 2026-05-03T17:25:55Z INFO stg_payments run #4502 finished in 55 s, 13892 rows written to staging.payments
+L-0178 2026-05-03T17:26:14Z INFO stg_orders run #1806 finished in 74 s, 35596 rows written to staging.orders
+L-0179 2026-05-03T17:35:01Z INFO fct_orders run #8042 started
+L-0180 2026-05-03T17:37:28Z INFO fct_orders run #8042 finished in 148 s, 33511 rows written to analytics.fct_orders
+L-0181 2026-05-03T17:40:01Z WARN fct_shipments upstream stg_shipments has no new data since 14:25; skipping run #6214
+L-0182 2026-05-03T17:53:53Z WARN stg_orders slow query on staging.orders: 13.9 s (threshold 10 s)
+L-0183 2026-05-03T18:01:59Z INFO src_payments_api heartbeat ok, 4 active workers
+L-0184 2026-05-03T18:03:58Z INFO src_shop_db schema cache refreshed (238 tables)
+L-0185 2026-05-03T18:05:01Z INFO src_shop_db run #7595 started
+L-0186 2026-05-03T18:05:01Z ERROR src_partner_sftp SSH authentication to sftp.logistics-partner.example failed: Permission denied (publickey); key etl-sftp-2025 expired
+L-0187 2026-05-03T18:05:03Z INFO src_payments_api run #9544 started
+L-0188 2026-05-03T18:05:03Z INFO src_partner_sftp run #6739 started
+L-0189 2026-05-03T18:05:04Z ERROR src_partner_sftp run #6739 failed after 4 s: authentication failed, no data read
+L-0190 2026-05-03T18:06:11Z INFO src_payments_api run #9544 finished in 71 s, 15948 rows written to landing.payments
+L-0191 2026-05-03T18:06:41Z INFO src_shop_db run #7595 finished in 101 s, 36860 rows written to landing.shop_orders
+L-0192 2026-05-03T18:12:29Z WARN ing_orders slow query on raw.orders: 19.4 s (threshold 10 s)
+L-0193 2026-05-03T18:15:01Z INFO ing_orders run #3679 started
+L-0194 2026-05-03T18:15:01Z INFO ing_payments run #6191 started
+L-0195 2026-05-03T18:15:01Z WARN ing_shipments upstream src_partner_sftp has no new data since 14:05; skipping run #4296
+L-0196 2026-05-03T18:15:02Z INFO ing_crm_contacts run #2278 started
+L-0197 2026-05-03T18:15:06Z WARN ing_orders statistics for raw.orders are stale; running analyze
+L-0198 2026-05-03T18:15:51Z INFO ing_crm_contacts run #2278 finished in 51 s, 5090 rows written to raw.crm_contacts
+L-0199 2026-05-03T18:16:04Z INFO ing_payments run #6191 finished in 64 s, 15997 rows written to raw.payments
+L-0200 2026-05-03T18:16:24Z INFO ing_orders run #3679 finished in 84 s, 40279 rows written to raw.orders
+L-0201 2026-05-03T18:16:24Z INFO ing_orders schema cache refreshed (234 tables)
+L-0202 2026-05-03T18:18:38Z INFO fct_shipments garbage collection took 12.9 s
+L-0203 2026-05-03T18:25:01Z WARN stg_shipments upstream ing_shipments has no new data since 14:15; skipping run #4471
+L-0204 2026-05-03T18:25:02Z INFO stg_orders run #1807 started
+L-0205 2026-05-03T18:25:02Z INFO stg_payments run #4503 started
+L-0206 2026-05-03T18:25:39Z INFO stg_orders 16 data tests passed on staging.orders
+L-0207 2026-05-03T18:25:57Z INFO stg_payments run #4503 finished in 57 s, 15546 rows written to staging.payments
+L-0208 2026-05-03T18:26:18Z INFO stg_orders run #1807 finished in 78 s, 37915 rows written to staging.orders
+L-0209 2026-05-03T18:35:02Z INFO fct_orders run #8043 started
+L-0210 2026-05-03T18:37:30Z INFO fct_orders run #8043 finished in 150 s, 35467 rows written to analytics.fct_orders
+L-0211 2026-05-03T18:40:01Z WARN fct_shipments upstream stg_shipments has no new data since 14:25; skipping run #6215

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "CHG-5734",
+    "time": "2026-08-09T05:06:00Z",
+    "kind": "config",
+    "target": "src_payments_api",
+    "author": "data-platform",
+    "summary": "config v13: alert_channel changed from #data-alerts to #data-oncall"
+  },
+  {
+    "id": "CHG-5735",
+    "time": "2026-08-09T13:29:00Z",
+    "kind": "config",
+    "target": "stg_shipments",
+    "author": "analytics-eng",
+    "summary": "config v30: alert_channel changed from #data-alerts to #data-oncall"
+  },
+  {
+    "id": "CHG-5736",
+    "time": "2026-08-12T04:31:00Z",
+    "kind": "config",
+    "target": "ing_ad_spend",
+    "author": "marketing-data",
+    "summary": "config v17: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-5737",
+    "time": "2026-08-12T12:36:00Z",
+    "kind": "deploy",
+    "target": "ing_shipments",
+    "author": "data-platform",
+    "summary": "deploy ing_shipments v2.7.8: updates the tests for raw.shipments"
+  },
+  {
+    "id": "CHG-5738",
+    "time": "2026-08-12T19:05:00Z",
+    "kind": "deploy",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "deploy exp_bi_dashboards v4.7.8: adds a not-null test on loyalty_tier"
+  },
+  {
+    "id": "CHG-5739",
+    "time": "2026-08-13T08:29:00Z",
+    "kind": "infra",
+    "target": "worker-pool",
+    "author": "sre",
+    "summary": "worker pool scaled from 6 to 8 nodes"
+  },
+  {
+    "id": "CHG-5740",
+    "time": "2026-08-13T22:10:00Z",
+    "kind": "deploy",
+    "target": "src_payments_api",
+    "author": "data-platform",
+    "summary": "deploy src_payments_api v1.7.0: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-5741",
+    "time": "2026-08-14T01:23:00Z",
+    "kind": "deploy",
+    "target": "stg_shipments",
+    "author": "analytics-eng",
+    "summary": "deploy stg_shipments v4.2.5: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-5742",
+    "time": "2026-08-15T07:51:00Z",
+    "kind": "notice",
+    "target": "src_ads_api",
+    "author": "data-platform",
+    "summary": "notice from the api.ads.example provider: hourly quota cut from 6000 to 3600 requests"
+  }
+]

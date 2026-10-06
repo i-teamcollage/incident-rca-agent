@@ -1,0 +1,9 @@
+{
+  "id": "ALR-7317",
+  "fired_at": "2026-01-19T13:50:00Z",
+  "pipeline": "mart_marketing_roi",
+  "check": "row_count",
+  "severity": "high",
+  "message": "mart_marketing_roi wrote 60 rows in its 13:45 run, against about 651 at this hour",
+  "window_start": "2026-01-19T07:50:00Z"
+}

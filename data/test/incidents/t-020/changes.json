@@ -1,0 +1,66 @@
+[
+  {
+    "id": "CHG-6792",
+    "time": "2026-08-03T05:38:00Z",
+    "kind": "deploy",
+    "target": "fct_shipments",
+    "author": "analytics-eng",
+    "summary": "deploy fct_shipments v1.2.8: renames an internal macro"
+  },
+  {
+    "id": "CHG-6793",
+    "time": "2026-08-05T00:04:00Z",
+    "kind": "config",
+    "target": "dim_customers",
+    "author": "analytics-eng",
+    "summary": "config v23: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-6794",
+    "time": "2026-08-06T04:10:00Z",
+    "kind": "deploy",
+    "target": "src_payments_api",
+    "author": "data-platform",
+    "summary": "deploy src_payments_api v3.9.7: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-6795",
+    "time": "2026-08-06T14:33:00Z",
+    "kind": "config",
+    "target": "stg_customers",
+    "author": "analytics-eng",
+    "summary": "config v22: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-6796",
+    "time": "2026-08-06T14:41:00Z",
+    "kind": "deploy",
+    "target": "ing_events",
+    "author": "data-platform",
+    "summary": "deploy ing_events v2.11.2: removes the unused column refund_reason"
+  },
+  {
+    "id": "CHG-6797",
+    "time": "2026-08-07T04:20:00Z",
+    "kind": "deploy",
+    "target": "stg_shipments",
+    "author": "analytics-eng",
+    "summary": "deploy stg_shipments v2.2.9: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-6798",
+    "time": "2026-08-07T05:53:00Z",
+    "kind": "config",
+    "target": "src_payments_api",
+    "author": "data-platform",
+    "summary": "config v14: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-6799",
+    "time": "2026-08-08T12:04:00Z",
+    "kind": "config",
+    "target": "ing_payments",
+    "author": "data-platform",
+    "summary": "config v24: partition_column renamed from order_date to order_dt"
+  }
+]

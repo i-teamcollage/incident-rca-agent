@@ -1,0 +1,9 @@
+{
+  "id": "ALR-3093",
+  "fired_at": "2026-06-12T08:17:00Z",
+  "pipeline": "ing_ad_spend",
+  "check": "failed_runs",
+  "severity": "medium",
+  "message": "3 consecutive runs of ing_ad_spend failed, the last at 08:15 UTC",
+  "window_start": "2026-06-12T02:17:00Z"
+}

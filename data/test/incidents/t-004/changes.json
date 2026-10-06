@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-3086",
+    "time": "2026-06-16T23:19:00Z",
+    "kind": "config",
+    "target": "src_events_stream",
+    "author": "data-platform",
+    "summary": "config v27: alert_channel changed from #data-alerts to #data-oncall"
+  },
+  {
+    "id": "CHG-3087",
+    "time": "2026-06-18T03:44:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Refunds by reason' published"
+  },
+  {
+    "id": "CHG-3088",
+    "time": "2026-06-18T10:30:00Z",
+    "kind": "config",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "config v18: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-3089",
+    "time": "2026-06-18T18:05:00Z",
+    "kind": "deploy",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "deploy exp_bi_dashboards v4.2.6: speeds up the merge step"
+  },
+  {
+    "id": "CHG-3090",
+    "time": "2026-06-19T08:38:00Z",
+    "kind": "infra",
+    "target": "scheduler",
+    "author": "sre",
+    "summary": "scheduler upgraded to the next patch release"
+  },
+  {
+    "id": "CHG-3091",
+    "time": "2026-06-20T04:35:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Refunds by reason' published"
+  },
+  {
+    "id": "CHG-3092",
+    "time": "2026-06-21T20:57:00Z",
+    "kind": "infra",
+    "target": "warehouse.internal",
+    "author": "sre",
+    "summary": "minor version upgrade during the maintenance window"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "CHG-7363",
+    "time": "2026-07-09T15:10:00Z",
+    "kind": "config",
+    "target": "src_shop_db",
+    "author": "data-platform",
+    "summary": "config v7: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-7364",
+    "time": "2026-07-09T23:47:00Z",
+    "kind": "config",
+    "target": "exp_crm_segments",
+    "author": "marketing-data",
+    "summary": "config v5: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-7365",
+    "time": "2026-07-10T00:22:00Z",
+    "kind": "deploy",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "deploy mart_delivery_sla v3.6.3: removes the unused column refund_reason"
+  },
+  {
+    "id": "CHG-7366",
+    "time": "2026-07-11T22:00:00Z",
+    "kind": "infra",
+    "target": "worker-pool",
+    "author": "sre",
+    "summary": "worker pool scaled from 6 to 8 nodes"
+  },
+  {
+    "id": "CHG-7367",
+    "time": "2026-07-12T04:15:00Z",
+    "kind": "infra",
+    "target": "secret-store",
+    "author": "sre",
+    "summary": "audit logging enabled on the secret store"
+  },
+  {
+    "id": "CHG-7368",
+    "time": "2026-07-13T11:18:00Z",
+    "kind": "config",
+    "target": "src_ads_api",
+    "author": "marketing-data",
+    "summary": "config v13: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-7369",
+    "time": "2026-07-15T10:27:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Refunds by reason' published"
+  },
+  {
+    "id": "CHG-7370",
+    "time": "2026-07-15T12:25:00Z",
+    "kind": "config",
+    "target": "ing_ad_spend",
+    "author": "marketing-data",
+    "summary": "config v25: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-7371",
+    "time": "2026-07-15T18:19:00Z",
+    "kind": "infra",
+    "target": "dns",
+    "author": "sre",
+    "summary": "DNS record for sftp.logistics-partner.example, used by src_partner_sftp, moved to the new internal zone"
+  }
+]

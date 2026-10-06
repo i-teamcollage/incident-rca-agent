@@ -1,0 +1,9 @@
+{
+  "id": "ALR-9570",
+  "fired_at": "2026-07-20T19:17:00Z",
+  "pipeline": "ing_shipments",
+  "check": "failed_runs",
+  "severity": "medium",
+  "message": "2 consecutive runs of ing_shipments failed, the last at 19:15 UTC",
+  "window_start": "2026-07-20T13:17:00Z"
+}

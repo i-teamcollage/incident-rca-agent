@@ -1,0 +1,9 @@
+{
+  "id": "ALR-2768",
+  "fired_at": "2026-05-20T13:57:00Z",
+  "pipeline": "exp_finance_ledger",
+  "check": "failed_runs",
+  "severity": "high",
+  "message": "3 consecutive runs of exp_finance_ledger failed, the last at 13:55 UTC",
+  "window_start": "2026-05-20T07:57:00Z"
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "CHG-3231",
+    "time": "2026-04-19T13:26:00Z",
+    "kind": "deploy",
+    "target": "src_ads_api",
+    "author": "marketing-data",
+    "summary": "deploy src_ads_api v3.4.6: speeds up the merge step"
+  },
+  {
+    "id": "CHG-3232",
+    "time": "2026-04-21T08:26:00Z",
+    "kind": "config",
+    "target": "stg_orders",
+    "author": "analytics-eng",
+    "summary": "config v13: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-3233",
+    "time": "2026-04-21T19:11:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Refunds by reason' published"
+  },
+  {
+    "id": "CHG-3234",
+    "time": "2026-04-22T02:31:00Z",
+    "kind": "config",
+    "target": "fct_orders",
+    "author": "analytics-eng",
+    "summary": "config v28: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-3235",
+    "time": "2026-04-22T09:31:00Z",
+    "kind": "deploy",
+    "target": "dim_customers",
+    "author": "analytics-eng",
+    "summary": "deploy dim_customers v4.10.8: adds a not-null test on coupon_code"
+  },
+  {
+    "id": "CHG-3236",
+    "time": "2026-04-22T13:29:00Z",
+    "kind": "config",
+    "target": "ing_payments",
+    "author": "data-platform",
+    "summary": "config v22: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-3237",
+    "time": "2026-04-22T16:49:00Z",
+    "kind": "config",
+    "target": "fct_orders",
+    "author": "analytics-eng",
+    "summary": "config v8: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-3238",
+    "time": "2026-04-22T19:26:00Z",
+    "kind": "deploy",
+    "target": "stg_orders",
+    "author": "analytics-eng",
+    "summary": "deploy stg_orders v3.3.4: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-3239",
+    "time": "2026-04-23T04:00:00Z",
+    "kind": "backfill",
+    "target": "ing_shipments",
+    "author": "data-platform",
+    "summary": "backfill of ing_shipments for 2026-03 started; it writes temporary files to /mnt/work/ing_shipments"
+  },
+  {
+    "id": "CHG-3240",
+    "time": "2026-04-24T13:25:00Z",
+    "kind": "deploy",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "deploy mart_delivery_sla v2.10.8: adds a not-null test on first_order_at"
+  }
+]

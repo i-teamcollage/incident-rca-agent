@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-4674",
+    "time": "2026-04-30T03:01:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-4675",
+    "time": "2026-04-30T04:40:00Z",
+    "kind": "deploy",
+    "target": "mart_customer_ltv",
+    "author": "analytics-eng",
+    "summary": "deploy mart_customer_ltv v1.4.4: speeds up the merge step"
+  },
+  {
+    "id": "CHG-4676",
+    "time": "2026-04-30T14:55:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-4677",
+    "time": "2026-04-30T21:47:00Z",
+    "kind": "infra",
+    "target": "scheduler",
+    "author": "sre",
+    "summary": "scheduler upgraded to the next patch release"
+  },
+  {
+    "id": "CHG-4678",
+    "time": "2026-05-01T20:17:00Z",
+    "kind": "config",
+    "target": "src_events_stream",
+    "author": "data-platform",
+    "summary": "config v22: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-4679",
+    "time": "2026-05-02T04:03:00Z",
+    "kind": "config",
+    "target": "stg_payments",
+    "author": "analytics-eng",
+    "summary": "config v18: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-4680",
+    "time": "2026-05-03T04:56:00Z",
+    "kind": "config",
+    "target": "stg_sessions",
+    "author": "marketing-data",
+    "summary": "config v15: threads changed from 4 to 6"
+  }
+]

@@ -1,0 +1,372 @@
+[
+  {
+    "id": "RB-01",
+    "title": "Triage a pipeline alert",
+    "sections": [
+      {
+        "id": "RB-01.1",
+        "title": "Read the alert",
+        "text": "Note the alerting pipeline, the check that fired (freshness, row count, failed runs, data test or duration) and the time. The alert tells you where the problem shows, not where it starts."
+      },
+      {
+        "id": "RB-01.2",
+        "title": "Walk the lineage upstream",
+        "text": "List the upstream pipelines of the alerting pipeline. Pipelines that skip runs or wait for data are symptoms. Look for the upstream-most pipeline whose runs failed, slowed down or wrote unusual row counts."
+      },
+      {
+        "id": "RB-01.3",
+        "title": "Find the first failure",
+        "text": "Search that pipeline's logs at WARN and above around its first bad run, and compare its metrics with the same hour on previous days. The first warning or error usually names the cause."
+      },
+      {
+        "id": "RB-01.4",
+        "title": "Check recent changes",
+        "text": "List deploys, config and infrastructure changes of the last days. A change shortly before the first failure, on the failing pipeline, is a strong suspect. A change on a pipeline that only shows symptoms usually is not."
+      }
+    ]
+  },
+  {
+    "id": "RB-02",
+    "title": "Freshness and row-count alerts",
+    "sections": [
+      {
+        "id": "RB-02.1",
+        "title": "Stale or empty data",
+        "text": "A freshness alert means no new data arrived in time. A row-count alert means a run wrote far fewer or far more rows than usual for that hour. Both are usually symptoms of a problem further upstream."
+      },
+      {
+        "id": "RB-02.2",
+        "title": "Failed or skipped upstream runs",
+        "text": "When an upstream pipeline fails, downstream pipelines skip their runs or fail their dependency checks. Fix the upstream failure first; downstream pipelines catch up on their next run."
+      },
+      {
+        "id": "RB-02.3",
+        "title": "Successful runs without data",
+        "text": "When every upstream run succeeded but wrote zero or few rows, the data is late or missing at the source. See RB-07 for late upstream data."
+      }
+    ]
+  },
+  {
+    "id": "RB-03",
+    "title": "Upstream schema change",
+    "sections": [
+      {
+        "id": "RB-03.1",
+        "title": "Symptoms",
+        "text": "An ingestion pipeline fails its data contract: a required field is missing, renamed or has a new type. Runs fail quickly with 0 rows written and the batch is quarantined, while rows read stay normal."
+      },
+      {
+        "id": "RB-03.2",
+        "title": "Confirm",
+        "text": "Compare the field names in the contract error with the source's release notes or change notices. A renamed field shows as one field missing and one unexpected field in the same batch."
+      },
+      {
+        "id": "RB-03.3",
+        "title": "Fix",
+        "text": "Update the data contract and the mapping for the renamed field, release the quarantined batches, then rerun the ingestion pipeline and its downstream pipelines (RB-13)."
+      },
+      {
+        "id": "RB-03.4",
+        "title": "Prevent",
+        "text": "Subscribe to the source's change notices and run the contract test against the source's sandbox before each release."
+      }
+    ]
+  },
+  {
+    "id": "RB-04",
+    "title": "API rate limits (HTTP 429)",
+    "sections": [
+      {
+        "id": "RB-04.1",
+        "title": "Symptoms",
+        "text": "A source or export pipeline logs HTTP 429 Too Many Requests with a Retry-After header, retries, then gives up. Run time grows because of the back-off, and fewer records arrive."
+      },
+      {
+        "id": "RB-04.2",
+        "title": "Confirm",
+        "text": "Check the hourly quota in the error message, and look for other jobs that use the same API key at the same time, such as backfills."
+      },
+      {
+        "id": "RB-04.3",
+        "title": "Fix",
+        "text": "Pause or reschedule the job that shares the quota, wait for the quota window to reset, then rerun the pipeline. Do not raise the retry count: it uses up the quota faster."
+      },
+      {
+        "id": "RB-04.4",
+        "title": "Prevent",
+        "text": "Give backfills their own API key or run them at night, and alert when quota use passes 80%."
+      }
+    ]
+  },
+  {
+    "id": "RB-05",
+    "title": "Disk full on workers",
+    "sections": [
+      {
+        "id": "RB-05.1",
+        "title": "Symptoms",
+        "text": "Writes fail with OSError: [Errno 28] No space left on device. Disk use on the pipeline's work volume climbs over several runs before the failure."
+      },
+      {
+        "id": "RB-05.2",
+        "title": "Confirm",
+        "text": "Check disk use of the pipeline's volume under /mnt/work and list the largest files. Temporary files left behind by backfills are the usual cause."
+      },
+      {
+        "id": "RB-05.3",
+        "title": "Fix",
+        "text": "Delete temporary files that no running job needs, or extend the volume, then rerun the failed runs."
+      },
+      {
+        "id": "RB-05.4",
+        "title": "Prevent",
+        "text": "Clean temporary files at the end of every run and alert at 85% disk use."
+      }
+    ]
+  },
+  {
+    "id": "RB-06",
+    "title": "Expired credentials and certificates",
+    "sections": [
+      {
+        "id": "RB-06.1",
+        "title": "Symptoms",
+        "text": "Runs fail within seconds with 401 Unauthorized, a refused login, an expired password, an expired SSH key or an expired client certificate. No data is read."
+      },
+      {
+        "id": "RB-06.2",
+        "title": "Confirm",
+        "text": "Find the expiry date in the error or in the secret store. Expiry warnings are often logged hours before the failure."
+      },
+      {
+        "id": "RB-06.3",
+        "title": "Fix",
+        "text": "Rotate the credential in the secret store, restart the pipeline so it reads the new secret, and rerun the failed runs."
+      },
+      {
+        "id": "RB-06.4",
+        "title": "Prevent",
+        "text": "Track every expiry date, rotate 14 days ahead, and alert on expiry warnings."
+      }
+    ]
+  },
+  {
+    "id": "RB-07",
+    "title": "Late upstream data",
+    "sections": [
+      {
+        "id": "RB-07.1",
+        "title": "Symptoms",
+        "text": "Runs succeed but write zero or very few rows: an expected file is not there, a replica lags, a stream consumer falls behind, or a report is not ready. Downstream pipelines run on stale data without errors."
+      },
+      {
+        "id": "RB-07.2",
+        "title": "Confirm",
+        "text": "Read the source pipeline's warnings about missing files, lag or watermarks, and compare rows written with the same hour on previous days."
+      },
+      {
+        "id": "RB-07.3",
+        "title": "Fix",
+        "text": "Contact the data provider, wait for the data, then rerun the source pipeline and backfill the missing hours downstream (RB-13)."
+      },
+      {
+        "id": "RB-07.4",
+        "title": "Prevent",
+        "text": "Add a freshness check on the source itself, so the alert fires where the delay starts."
+      }
+    ]
+  },
+  {
+    "id": "RB-08",
+    "title": "Out of memory (exit 137)",
+    "sections": [
+      {
+        "id": "RB-08.1",
+        "title": "Symptoms",
+        "text": "The container is OOMKilled and the task fails with exit code 137, often after running longer than usual. Memory climbs towards the limit in the runs before."
+      },
+      {
+        "id": "RB-08.2",
+        "title": "Confirm",
+        "text": "Compare rows read with the same hour on previous days: a surge in input volume, from a backfill or a sale, is the usual trigger."
+      },
+      {
+        "id": "RB-08.3",
+        "title": "Fix",
+        "text": "Raise the memory limit of the job or process the input in smaller batches, then rerun the failed runs."
+      },
+      {
+        "id": "RB-08.4",
+        "title": "Prevent",
+        "text": "Alert when memory passes 85% of the limit, and size limits for the peak volume."
+      }
+    ]
+  },
+  {
+    "id": "RB-09",
+    "title": "Bad config deploys and rollbacks",
+    "sections": [
+      {
+        "id": "RB-09.1",
+        "title": "Symptoms",
+        "text": "A pipeline fails at start-up, seconds after loading a new config version, with a config error that names the key and the value."
+      },
+      {
+        "id": "RB-09.2",
+        "title": "Confirm",
+        "text": "Match the config version in the log with the change log: the failures start with the first run after the deploy."
+      },
+      {
+        "id": "RB-09.3",
+        "title": "Fix",
+        "text": "Roll back to the previous config version, rerun the failed runs, then fix the config in review."
+      },
+      {
+        "id": "RB-09.4",
+        "title": "Prevent",
+        "text": "Validate configs in CI against the warehouse schema before they are deployed."
+      }
+    ]
+  },
+  {
+    "id": "RB-10",
+    "title": "Duplicate keys",
+    "sections": [
+      {
+        "id": "RB-10.1",
+        "title": "Symptoms",
+        "text": "A unique test or a merge fails because a key appears more than once. The table where the test fails is often not where the duplicates came from."
+      },
+      {
+        "id": "RB-10.2",
+        "title": "Confirm",
+        "text": "Walk upstream to the first table where rows written jumped: a consumer that restarted from an old offset, landing files loaded twice, or a merge that matched twice."
+      },
+      {
+        "id": "RB-10.3",
+        "title": "Fix",
+        "text": "Remove the duplicates in the affected partitions of the pipeline where they entered, then rerun downstream."
+      },
+      {
+        "id": "RB-10.4",
+        "title": "Prevent",
+        "text": "Make loads idempotent with a key-based merge, and test for duplicates at ingestion."
+      }
+    ]
+  },
+  {
+    "id": "RB-11",
+    "title": "Daylight-saving time transitions",
+    "sections": [
+      {
+        "id": "RB-11.1",
+        "title": "Symptoms",
+        "text": "On the night clocks change (the last Sunday of March and of October in Europe), jobs that work in local time fail with NonExistentTimeError or AmbiguousTimeError, or write a missing or doubled hour."
+      },
+      {
+        "id": "RB-11.2",
+        "title": "Confirm",
+        "text": "Check the date: an error about local hour 02 on a clock-change day points to time-zone handling, not to the data."
+      },
+      {
+        "id": "RB-11.3",
+        "title": "Fix",
+        "text": "Rebuild the affected day in UTC, then rerun downstream. Remove duplicates from a repeated hour first."
+      },
+      {
+        "id": "RB-11.4",
+        "title": "Prevent",
+        "text": "Store and partition by UTC, and convert to local time only for display."
+      }
+    ]
+  },
+  {
+    "id": "RB-12",
+    "title": "DNS and name resolution failures",
+    "sections": [
+      {
+        "id": "RB-12.1",
+        "title": "Symptoms",
+        "text": "Connections fail before they start: Temporary failure in name resolution, NXDOMAIN, or DNS lookups that time out, for one host or a whole worker pool."
+      },
+      {
+        "id": "RB-12.2",
+        "title": "Confirm",
+        "text": "Resolve the host from the worker and from another network, and check recent DNS and network changes for that host and the resolver."
+      },
+      {
+        "id": "RB-12.3",
+        "title": "Fix",
+        "text": "Restore the DNS record or point the workers back to a working resolver, then rerun the failed runs."
+      },
+      {
+        "id": "RB-12.4",
+        "title": "Prevent",
+        "text": "Monitor name resolution of every external host the platform depends on."
+      }
+    ]
+  },
+  {
+    "id": "RB-13",
+    "title": "Rerun and backfill",
+    "sections": [
+      {
+        "id": "RB-13.1",
+        "title": "Rerun in lineage order",
+        "text": "After the cause is fixed, rerun the root-cause pipeline first, then each downstream pipeline in lineage order. Most pipelines catch up on their next hourly run."
+      },
+      {
+        "id": "RB-13.2",
+        "title": "Backfill missing hours",
+        "text": "For hours that were skipped or empty, start a backfill for that time range only, and check row counts against the same hour on previous days."
+      },
+      {
+        "id": "RB-13.3",
+        "title": "Close the loop",
+        "text": "Confirm that the alerting pipeline is fresh again before you close the incident."
+      }
+    ]
+  },
+  {
+    "id": "RB-14",
+    "title": "Data tests",
+    "sections": [
+      {
+        "id": "RB-14.1",
+        "title": "Unique and not-null tests",
+        "text": "A failed unique test means duplicate keys; a failed not-null test means missing values. Find where they entered before you fix the table where the test failed."
+      },
+      {
+        "id": "RB-14.2",
+        "title": "Completeness tests",
+        "text": "A completeness test counts hourly partitions per day. 23 or 25 partitions on a clock-change day point to daylight-saving handling (RB-11)."
+      },
+      {
+        "id": "RB-14.3",
+        "title": "Row-count tests",
+        "text": "A row-count test compares a run with the same hour on previous days. A drop means late or failed upstream data; a jump often means duplicates."
+      }
+    ]
+  },
+  {
+    "id": "RB-15",
+    "title": "Communicating an incident",
+    "sections": [
+      {
+        "id": "RB-15.1",
+        "title": "First update",
+        "text": "Post in the on-call channel within 15 minutes: what is affected, since when, and who is looking."
+      },
+      {
+        "id": "RB-15.2",
+        "title": "Root cause update",
+        "text": "When the cause is known, post it with its evidence, the affected pipelines and the next steps."
+      },
+      {
+        "id": "RB-15.3",
+        "title": "Post-mortem",
+        "text": "Write a post-mortem within five working days for every incident that affected a mart or an export."
+      }
+    ]
+  }
+]

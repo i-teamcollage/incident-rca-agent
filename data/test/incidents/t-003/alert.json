@@ -1,0 +1,9 @@
+{
+  "id": "ALR-1346",
+  "fired_at": "2026-03-29T03:50:00Z",
+  "pipeline": "mart_marketing_roi",
+  "check": "freshness",
+  "severity": "high",
+  "message": "mart_marketing_roi has not loaded new data since 2026-03-29 00:45 UTC (freshness SLA 3 h)",
+  "window_start": "2026-03-28T21:50:00Z"
+}

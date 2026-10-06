@@ -1,0 +1,50 @@
+[
+  {
+    "id": "CHG-3104",
+    "time": "2026-08-25T09:20:00Z",
+    "kind": "deploy",
+    "target": "mart_customer_ltv",
+    "author": "analytics-eng",
+    "summary": "deploy mart_customer_ltv v2.0.3: updates the tests for marts.customer_ltv"
+  },
+  {
+    "id": "CHG-3105",
+    "time": "2026-08-26T20:43:00Z",
+    "kind": "deploy",
+    "target": "src_payments_api",
+    "author": "data-platform",
+    "summary": "deploy src_payments_api v3.12.5: adds a not-null test on carrier_code"
+  },
+  {
+    "id": "CHG-3106",
+    "time": "2026-08-28T09:48:00Z",
+    "kind": "deploy",
+    "target": "src_events_stream",
+    "author": "data-platform",
+    "summary": "deploy src_events_stream v1.5.4: adds column vat_rate"
+  },
+  {
+    "id": "CHG-3107",
+    "time": "2026-08-28T11:32:00Z",
+    "kind": "infra",
+    "target": "scheduler",
+    "author": "sre",
+    "summary": "scheduler upgraded to the next patch release"
+  },
+  {
+    "id": "CHG-3108",
+    "time": "2026-08-28T22:37:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Campaign spend pacing' published"
+  },
+  {
+    "id": "CHG-3109",
+    "time": "2026-08-29T05:05:00Z",
+    "kind": "config",
+    "target": "stg_payments",
+    "author": "analytics-eng",
+    "summary": "config v9: threads changed from 4 to 6"
+  }
+]

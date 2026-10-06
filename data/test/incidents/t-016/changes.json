@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-3419",
+    "time": "2026-04-18T06:22:00Z",
+    "kind": "config",
+    "target": "mart_daily_revenue",
+    "author": "finance-data",
+    "summary": "config v14: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-3420",
+    "time": "2026-04-18T09:30:00Z",
+    "kind": "config",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "config v28: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-3421",
+    "time": "2026-04-20T05:51:00Z",
+    "kind": "infra",
+    "target": "warehouse.internal",
+    "author": "sre",
+    "summary": "minor version upgrade during the maintenance window"
+  },
+  {
+    "id": "CHG-3422",
+    "time": "2026-04-23T12:53:00Z",
+    "kind": "deploy",
+    "target": "fct_shipments",
+    "author": "analytics-eng",
+    "summary": "deploy fct_shipments v4.1.8: updates the tests for analytics.fct_shipments"
+  },
+  {
+    "id": "CHG-3423",
+    "time": "2026-04-23T19:22:00Z",
+    "kind": "deploy",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "deploy exp_bi_dashboards v1.11.2: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-3424",
+    "time": "2026-04-23T19:25:00Z",
+    "kind": "deploy",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "deploy exp_bi_dashboards v3.12.7: adds a not-null test on first_order_at"
+  },
+  {
+    "id": "CHG-3425",
+    "time": "2026-04-24T04:43:00Z",
+    "kind": "deploy",
+    "target": "ing_shipments",
+    "author": "data-platform",
+    "summary": "deploy ing_shipments v1.7.6: adds column basket_size"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "id": "ALR-1415",
+  "fired_at": "2026-05-27T21:37:00Z",
+  "pipeline": "fct_orders",
+  "check": "failed_runs",
+  "severity": "medium",
+  "message": "3 consecutive runs of fct_orders failed, the last at 21:35 UTC",
+  "window_start": "2026-05-27T15:37:00Z"
+}

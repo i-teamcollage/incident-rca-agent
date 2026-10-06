@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-5489",
+    "time": "2025-10-19T16:30:00Z",
+    "kind": "deploy",
+    "target": "ing_orders",
+    "author": "data-platform",
+    "summary": "deploy ing_orders v4.1.6: updates the tests for raw.orders"
+  },
+  {
+    "id": "CHG-5490",
+    "time": "2025-10-21T18:59:00Z",
+    "kind": "config",
+    "target": "src_crm_api",
+    "author": "data-platform",
+    "summary": "config v16: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-5491",
+    "time": "2025-10-23T07:48:00Z",
+    "kind": "deploy",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "deploy mart_delivery_sla v4.8.0: speeds up the merge step"
+  },
+  {
+    "id": "CHG-5492",
+    "time": "2025-10-24T04:28:00Z",
+    "kind": "config",
+    "target": "stg_shipments",
+    "author": "analytics-eng",
+    "summary": "config v12: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-5493",
+    "time": "2025-10-25T02:01:00Z",
+    "kind": "deploy",
+    "target": "mart_customer_ltv",
+    "author": "analytics-eng",
+    "summary": "deploy mart_customer_ltv v1.3.6: removes the unused column vat_rate"
+  },
+  {
+    "id": "CHG-5494",
+    "time": "2025-10-25T11:43:00Z",
+    "kind": "config",
+    "target": "ing_orders",
+    "author": "data-platform",
+    "summary": "config v29: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-5495",
+    "time": "2025-10-25T15:20:00Z",
+    "kind": "deploy",
+    "target": "src_shop_db",
+    "author": "data-platform",
+    "summary": "deploy src_shop_db v3.5.8: renames an internal macro"
+  }
+]

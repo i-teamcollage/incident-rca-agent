@@ -1,0 +1,9 @@
+{
+  "id": "ALR-3682",
+  "fired_at": "2026-08-02T19:50:00Z",
+  "pipeline": "exp_crm_segments",
+  "check": "freshness",
+  "severity": "high",
+  "message": "exp_crm_segments has not loaded new data since 2026-08-02 16:55 UTC (freshness SLA 2 h)",
+  "window_start": "2026-08-02T13:50:00Z"
+}

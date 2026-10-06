@@ -1,0 +1,42 @@
+[
+  {
+    "id": "CHG-7900",
+    "time": "2026-07-05T06:22:00Z",
+    "kind": "config",
+    "target": "ing_crm_contacts",
+    "author": "data-platform",
+    "summary": "config v19: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-7901",
+    "time": "2026-07-06T14:38:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-7902",
+    "time": "2026-07-07T23:02:00Z",
+    "kind": "deploy",
+    "target": "stg_shipments",
+    "author": "analytics-eng",
+    "summary": "deploy stg_shipments v4.8.0: documents staging.shipments"
+  },
+  {
+    "id": "CHG-7903",
+    "time": "2026-07-08T06:59:00Z",
+    "kind": "deploy",
+    "target": "src_payments_api",
+    "author": "data-platform",
+    "summary": "deploy src_payments_api v3.4.2: updates the tests for landing.payments"
+  },
+  {
+    "id": "CHG-7904",
+    "time": "2026-07-11T02:53:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Refunds by reason' published"
+  }
+]

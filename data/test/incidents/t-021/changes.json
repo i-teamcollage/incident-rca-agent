@@ -1,0 +1,66 @@
+[
+  {
+    "id": "CHG-4414",
+    "time": "2026-02-11T01:03:00Z",
+    "kind": "deploy",
+    "target": "ing_orders",
+    "author": "data-platform",
+    "summary": "deploy ing_orders v1.6.5: documents raw.orders"
+  },
+  {
+    "id": "CHG-4415",
+    "time": "2026-02-11T14:33:00Z",
+    "kind": "config",
+    "target": "src_partner_sftp",
+    "author": "data-platform",
+    "summary": "config v9: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-4416",
+    "time": "2026-02-14T07:08:00Z",
+    "kind": "deploy",
+    "target": "src_shop_db",
+    "author": "data-platform",
+    "summary": "deploy src_shop_db v1.11.0: removes the unused column first_order_at"
+  },
+  {
+    "id": "CHG-4417",
+    "time": "2026-02-14T18:10:00Z",
+    "kind": "deploy",
+    "target": "ing_orders",
+    "author": "data-platform",
+    "summary": "deploy ing_orders v4.6.3: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-4418",
+    "time": "2026-02-16T06:23:00Z",
+    "kind": "config",
+    "target": "fct_shipments",
+    "author": "analytics-eng",
+    "summary": "config v15: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-4419",
+    "time": "2026-02-16T20:14:00Z",
+    "kind": "deploy",
+    "target": "stg_shipments",
+    "author": "analytics-eng",
+    "summary": "deploy stg_shipments v4.11.5: adds a not-null test on basket_size"
+  },
+  {
+    "id": "CHG-4420",
+    "time": "2026-02-16T23:51:00Z",
+    "kind": "deploy",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "deploy exp_bi_dashboards v2.0.3: speeds up the merge step"
+  },
+  {
+    "id": "CHG-4421",
+    "time": "2026-02-17T16:10:00Z",
+    "kind": "infra",
+    "target": "dns",
+    "author": "sre",
+    "summary": "resolvers of the worker pool that runs src_payments_api switched to 10.20.0.53"
+  }
+]

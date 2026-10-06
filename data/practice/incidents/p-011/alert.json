@@ -1,0 +1,9 @@
+{
+  "id": "ALR-1712",
+  "fired_at": "2026-03-23T17:57:00Z",
+  "pipeline": "exp_finance_ledger",
+  "check": "failed_runs",
+  "severity": "high",
+  "message": "2 consecutive runs of exp_finance_ledger failed, the last at 17:55 UTC",
+  "window_start": "2026-03-23T11:57:00Z"
+}

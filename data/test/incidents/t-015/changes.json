@@ -1,0 +1,50 @@
+[
+  {
+    "id": "CHG-3998",
+    "time": "2026-07-22T15:46:00Z",
+    "kind": "deploy",
+    "target": "stg_orders",
+    "author": "analytics-eng",
+    "summary": "deploy stg_orders v3.6.8: documents staging.orders"
+  },
+  {
+    "id": "CHG-3999",
+    "time": "2026-07-23T01:41:00Z",
+    "kind": "infra",
+    "target": "scheduler",
+    "author": "sre",
+    "summary": "scheduler upgraded to the next patch release"
+  },
+  {
+    "id": "CHG-4000",
+    "time": "2026-07-23T14:22:00Z",
+    "kind": "deploy",
+    "target": "stg_sessions",
+    "author": "marketing-data",
+    "summary": "deploy stg_sessions v3.7.8: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-4001",
+    "time": "2026-07-24T23:57:00Z",
+    "kind": "infra",
+    "target": "worker-pool",
+    "author": "sre",
+    "summary": "worker pool scaled from 6 to 8 nodes"
+  },
+  {
+    "id": "CHG-4002",
+    "time": "2026-07-25T15:42:00Z",
+    "kind": "deploy",
+    "target": "ing_orders",
+    "author": "data-platform",
+    "summary": "deploy ing_orders v1.6.4: adds column carrier_code"
+  },
+  {
+    "id": "CHG-4003",
+    "time": "2026-07-28T05:44:00Z",
+    "kind": "config",
+    "target": "fct_orders",
+    "author": "analytics-eng",
+    "summary": "config v5: memory limit lowered from 16 to 8 GiB"
+  }
+]

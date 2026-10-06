@@ -1,0 +1,9 @@
+{
+  "id": "ALR-3791",
+  "fired_at": "2026-07-11T20:28:00Z",
+  "pipeline": "stg_orders",
+  "check": "data_test",
+  "severity": "medium",
+  "message": "data test unique order_id failed on stg_orders: 42433 duplicate keys in staging.orders",
+  "window_start": "2026-07-11T14:28:00Z"
+}

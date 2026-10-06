@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-5322",
+    "time": "2026-05-13T22:23:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-5323",
+    "time": "2026-05-16T00:48:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Campaign spend pacing' published"
+  },
+  {
+    "id": "CHG-5324",
+    "time": "2026-05-16T16:34:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-5325",
+    "time": "2026-05-17T04:34:00Z",
+    "kind": "infra",
+    "target": "warehouse.internal",
+    "author": "sre",
+    "summary": "minor version upgrade during the maintenance window"
+  },
+  {
+    "id": "CHG-5326",
+    "time": "2026-05-17T05:29:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-5327",
+    "time": "2026-05-17T13:24:00Z",
+    "kind": "config",
+    "target": "stg_orders",
+    "author": "analytics-eng",
+    "summary": "config v9: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-5328",
+    "time": "2026-05-19T07:00:00Z",
+    "kind": "backfill",
+    "target": "exp_finance_ledger",
+    "author": "finance-data",
+    "summary": "backfill of exp_finance_ledger for 2026-04 started; it writes temporary files to /mnt/work/exp_finance_ledger"
+  }
+]

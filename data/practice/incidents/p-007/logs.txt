@@ -1,0 +1,246 @@
+L-0001 2026-04-10T04:55:06Z INFO ing_payments heartbeat ok, 9 active workers
+L-0002 2026-04-10T05:05:01Z INFO src_shop_db run #8849 started
+L-0003 2026-04-10T05:05:02Z INFO src_ads_api run #6377 started
+L-0004 2026-04-10T05:05:02Z INFO src_events_stream run #4467 started
+L-0005 2026-04-10T05:05:03Z INFO src_payments_api run #2584 started
+L-0006 2026-04-10T05:05:41Z INFO src_ads_api run #6377 finished in 41 s, 1238 rows written to landing.ad_spend
+L-0007 2026-04-10T05:05:56Z INFO src_events_stream consumed 200010 messages from topic web-events
+L-0008 2026-04-10T05:05:58Z INFO src_payments_api run #2584 finished in 58 s, 5782 rows written to landing.payments
+L-0009 2026-04-10T05:06:20Z INFO src_shop_db run #8849 finished in 80 s, 15184 rows written to landing.shop_orders
+L-0010 2026-04-10T05:06:52Z INFO src_events_stream run #4467 finished in 112 s, 200010 rows written to landing.events
+L-0011 2026-04-10T05:15:01Z INFO ing_orders run #2473 started
+L-0012 2026-04-10T05:15:01Z INFO ing_payments run #4166 started
+L-0013 2026-04-10T05:15:01Z INFO ing_ad_spend run #8570 started
+L-0014 2026-04-10T05:15:01Z INFO ing_events run #8635 started
+L-0015 2026-04-10T05:15:33Z INFO ing_orders loaded 15633 rows from landing.shop_orders into raw.orders
+L-0016 2026-04-10T05:15:34Z INFO ing_ad_spend run #8570 finished in 34 s, 1244 rows written to raw.ad_spend
+L-0017 2026-04-10T05:15:51Z INFO ing_payments run #4166 finished in 51 s, 6115 rows written to raw.payments
+L-0018 2026-04-10T05:16:03Z INFO ing_events loaded 195650 rows from landing.events into raw.events
+L-0019 2026-04-10T05:16:06Z INFO ing_orders run #2473 finished in 66 s, 15477 rows written to raw.orders
+L-0020 2026-04-10T05:17:07Z INFO ing_events run #8635 finished in 127 s, 192273 rows written to raw.events
+L-0021 2026-04-10T05:23:19Z INFO stg_orders schema cache refreshed (208 tables)
+L-0022 2026-04-10T05:24:59Z INFO ing_orders schema cache refreshed (186 tables)
+L-0023 2026-04-10T05:25:01Z INFO stg_orders run #5842 started
+L-0024 2026-04-10T05:25:02Z INFO stg_ad_spend run #2229 started
+L-0025 2026-04-10T05:25:03Z INFO stg_payments run #8384 started
+L-0026 2026-04-10T05:25:03Z INFO stg_sessions run #2783 started
+L-0027 2026-04-10T05:25:16Z INFO stg_ad_spend 10 data tests passed on staging.ad_spend
+L-0028 2026-04-10T05:25:24Z INFO stg_payments 10 data tests passed on staging.payments
+L-0029 2026-04-10T05:25:32Z INFO stg_ad_spend run #2229 finished in 32 s, 1163 rows written to staging.ad_spend
+L-0030 2026-04-10T05:25:48Z INFO stg_payments run #8384 finished in 48 s, 5654 rows written to staging.payments
+L-0031 2026-04-10T05:26:04Z INFO stg_orders run #5842 finished in 64 s, 14302 rows written to staging.orders
+L-0032 2026-04-10T05:26:05Z INFO stg_sessions 16 data tests passed on staging.sessions
+L-0033 2026-04-10T05:27:11Z INFO stg_sessions run #2783 finished in 131 s, 26859 rows written to staging.sessions
+L-0034 2026-04-10T05:31:50Z WARN fct_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0035 2026-04-10T05:35:01Z INFO fct_orders run #7540 started
+L-0036 2026-04-10T05:35:02Z INFO fct_sessions run #4251 started
+L-0037 2026-04-10T05:35:03Z INFO fct_marketing_spend run #6069 started
+L-0038 2026-04-10T05:35:34Z INFO fct_marketing_spend run #6069 finished in 34 s, 1131 rows written to analytics.fct_marketing_spend
+L-0039 2026-04-10T05:37:03Z INFO fct_orders run #7540 finished in 123 s, 14269 rows written to analytics.fct_orders
+L-0040 2026-04-10T05:37:26Z INFO fct_sessions run #4251 finished in 146 s, 25089 rows written to analytics.fct_sessions
+L-0041 2026-04-10T05:45:03Z INFO mart_marketing_roi run #4355 started
+L-0042 2026-04-10T05:45:43Z INFO mart_marketing_roi run #4355 finished in 43 s, 301 rows written to marts.marketing_roi
+L-0043 2026-04-10T05:47:09Z INFO fct_sessions heartbeat ok, 10 active workers
+L-0044 2026-04-10T05:53:28Z INFO fct_orders connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0045 2026-04-10T05:59:59Z INFO src_events_stream heartbeat ok, 12 active workers
+L-0046 2026-04-10T06:04:08Z INFO stg_orders garbage collection took 11.2 s
+L-0047 2026-04-10T06:05:01Z INFO src_shop_db run #8850 started
+L-0048 2026-04-10T06:05:01Z INFO src_events_stream run #4468 started
+L-0049 2026-04-10T06:05:03Z INFO src_payments_api run #2585 started
+L-0050 2026-04-10T06:05:03Z INFO src_ads_api run #6378 started
+L-0051 2026-04-10T06:05:45Z INFO src_ads_api run #6378 finished in 45 s, 1553 rows written to landing.ad_spend
+L-0052 2026-04-10T06:06:09Z INFO src_payments_api run #2585 finished in 69 s, 7846 rows written to landing.payments
+L-0053 2026-04-10T06:06:23Z INFO src_shop_db run #8850 finished in 83 s, 18616 rows written to landing.shop_orders
+L-0054 2026-04-10T06:06:54Z INFO src_events_stream run #4468 finished in 114 s, 248147 rows written to landing.events
+L-0055 2026-04-10T06:10:03Z INFO fct_sessions garbage collection took 18.6 s
+L-0056 2026-04-10T06:12:19Z WARN stg_ad_spend statistics for staging.ad_spend are stale; running analyze
+L-0057 2026-04-10T06:14:30Z WARN stg_sessions statistics for staging.sessions are stale; running analyze
+L-0058 2026-04-10T06:15:01Z INFO ing_payments run #4167 started
+L-0059 2026-04-10T06:15:02Z INFO ing_ad_spend run #8571 started
+L-0060 2026-04-10T06:15:03Z INFO ing_orders run #2474 started
+L-0061 2026-04-10T06:15:03Z INFO ing_events run #8636 started
+L-0062 2026-04-10T06:15:19Z INFO ing_ad_spend loaded 1581 rows from landing.ad_spend into raw.ad_spend
+L-0063 2026-04-10T06:15:39Z INFO ing_ad_spend run #8571 finished in 39 s, 1579 rows written to raw.ad_spend
+L-0064 2026-04-10T06:15:51Z INFO ing_payments run #4167 finished in 51 s, 7609 rows written to raw.payments
+L-0065 2026-04-10T06:16:10Z INFO ing_orders run #2474 finished in 70 s, 20190 rows written to raw.orders
+L-0066 2026-04-10T06:17:18Z INFO ing_events run #8636 finished in 138 s, 264420 rows written to raw.events
+L-0067 2026-04-10T06:20:54Z WARN stg_payments slow query on staging.payments: 15.1 s (threshold 10 s)
+L-0068 2026-04-10T06:21:43Z INFO src_payments_api 341 late-arriving rows older than 48 h merged into landing.payments
+L-0069 2026-04-10T06:25:01Z INFO stg_payments run #8385 started
+L-0070 2026-04-10T06:25:01Z INFO stg_ad_spend run #2230 started
+L-0071 2026-04-10T06:25:02Z INFO stg_sessions run #2784 started
+L-0072 2026-04-10T06:25:03Z INFO stg_orders run #5843 started
+L-0073 2026-04-10T06:25:26Z INFO stg_payments 13 data tests passed on staging.payments
+L-0074 2026-04-10T06:25:31Z INFO stg_ad_spend run #2230 finished in 31 s, 1636 rows written to staging.ad_spend
+L-0075 2026-04-10T06:25:32Z INFO stg_orders 13 data tests passed on staging.orders
+L-0076 2026-04-10T06:25:52Z INFO stg_payments run #8385 finished in 52 s, 7445 rows written to staging.payments
+L-0077 2026-04-10T06:26:04Z INFO stg_orders run #5843 finished in 64 s, 19476 rows written to staging.orders
+L-0078 2026-04-10T06:27:18Z INFO stg_sessions run #2784 finished in 138 s, 33814 rows written to staging.sessions
+L-0079 2026-04-10T06:35:01Z INFO fct_orders run #7541 started
+L-0080 2026-04-10T06:35:01Z INFO fct_sessions run #4252 started
+L-0081 2026-04-10T06:35:03Z INFO fct_marketing_spend run #6070 started
+L-0082 2026-04-10T06:35:35Z INFO fct_marketing_spend run #6070 finished in 35 s, 1550 rows written to analytics.fct_marketing_spend
+L-0083 2026-04-10T06:36:03Z INFO fct_orders 4 data tests passed on analytics.fct_orders
+L-0084 2026-04-10T06:37:07Z INFO fct_orders run #7541 finished in 127 s, 18255 rows written to analytics.fct_orders
+L-0085 2026-04-10T06:37:38Z INFO fct_sessions run #4252 finished in 158 s, 34128 rows written to analytics.fct_sessions
+L-0086 2026-04-10T06:38:50Z WARN stg_ad_spend slow query on staging.ad_spend: 11.0 s (threshold 10 s)
+L-0087 2026-04-10T06:45:02Z INFO mart_marketing_roi run #4356 started
+L-0088 2026-04-10T06:45:44Z INFO mart_marketing_roi run #4356 finished in 44 s, 410 rows written to marts.marketing_roi
+L-0089 2026-04-10T06:47:21Z INFO stg_ad_spend garbage collection took 13.5 s
+L-0090 2026-04-10T07:05:02Z INFO src_shop_db run #8851 started
+L-0091 2026-04-10T07:05:02Z INFO src_payments_api run #2586 started
+L-0092 2026-04-10T07:05:02Z INFO src_ads_api run #6379 started
+L-0093 2026-04-10T07:05:03Z INFO src_events_stream run #4469 started
+L-0094 2026-04-10T07:05:45Z INFO src_ads_api run #6379 finished in 45 s, 1966 rows written to landing.ad_spend
+L-0095 2026-04-10T07:06:09Z INFO src_payments_api run #2586 finished in 69 s, 9979 rows written to landing.payments
+L-0096 2026-04-10T07:06:31Z INFO src_shop_db run #8851 finished in 91 s, 23553 rows written to landing.shop_orders
+L-0097 2026-04-10T07:06:37Z INFO stg_sessions heartbeat ok, 7 active workers
+L-0098 2026-04-10T07:06:57Z INFO src_events_stream run #4469 finished in 117 s, 307939 rows written to landing.events
+L-0099 2026-04-10T07:15:01Z INFO ing_orders run #2475 started
+L-0100 2026-04-10T07:15:01Z INFO ing_ad_spend run #8572 started
+L-0101 2026-04-10T07:15:01Z INFO ing_events run #8637 started
+L-0102 2026-04-10T07:15:02Z INFO ing_events read 327906 records from landing.events
+L-0103 2026-04-10T07:15:03Z INFO ing_payments run #4168 started
+L-0104 2026-04-10T07:15:35Z ERROR ing_events data contract violation on landing.events: required field 'session_id' is missing in 327906 of 327906 records
+L-0105 2026-04-10T07:15:36Z INFO ing_ad_spend run #8572 finished in 36 s, 2039 rows written to raw.ad_spend
+L-0106 2026-04-10T07:15:36Z WARN ing_events unexpected field 'sid' in landing.events is not in contract v4
+L-0107 2026-04-10T07:15:38Z ERROR ing_events run #8637 failed after 38 s: batch b-2026041007 quarantined, 0 rows written
+L-0108 2026-04-10T07:15:40Z INFO ing_orders loaded 25480 rows from landing.shop_orders into raw.orders
+L-0109 2026-04-10T07:15:54Z INFO ing_payments run #4168 finished in 54 s, 9506 rows written to raw.payments
+L-0110 2026-04-10T07:16:21Z INFO ing_orders run #2475 finished in 81 s, 25076 rows written to raw.orders
+L-0111 2026-04-10T07:17:45Z INFO src_ads_api schema cache refreshed (199 tables)
+L-0112 2026-04-10T07:25:01Z INFO stg_payments run #8386 started
+L-0113 2026-04-10T07:25:01Z WARN stg_sessions upstream ing_events has no new data since 06:15; skipping run #2785
+L-0114 2026-04-10T07:25:02Z INFO stg_orders run #5844 started
+L-0115 2026-04-10T07:25:02Z INFO stg_ad_spend run #2231 started
+L-0116 2026-04-10T07:25:33Z INFO stg_ad_spend run #2231 finished in 33 s, 1830 rows written to staging.ad_spend
+L-0117 2026-04-10T07:25:54Z INFO stg_payments run #8386 finished in 54 s, 9522 rows written to staging.payments
+L-0118 2026-04-10T07:26:09Z INFO stg_orders run #5844 finished in 69 s, 24595 rows written to staging.orders
+L-0119 2026-04-10T07:35:01Z INFO fct_orders run #7542 started
+L-0120 2026-04-10T07:35:01Z INFO fct_marketing_spend run #6071 started
+L-0121 2026-04-10T07:35:01Z WARN fct_sessions upstream stg_sessions has no new data since 06:25; skipping run #4253
+L-0122 2026-04-10T07:35:40Z INFO fct_marketing_spend run #6071 finished in 40 s, 1833 rows written to analytics.fct_marketing_spend
+L-0123 2026-04-10T07:37:18Z INFO fct_orders run #7542 finished in 138 s, 22953 rows written to analytics.fct_orders
+L-0124 2026-04-10T07:45:01Z WARN mart_marketing_roi upstream fct_sessions has no new data since 06:35; skipping run #4357
+L-0125 2026-04-10T07:54:37Z INFO fct_sessions garbage collection took 12.8 s
+L-0126 2026-04-10T08:05:01Z INFO src_payments_api run #2587 started
+L-0127 2026-04-10T08:05:02Z INFO src_shop_db run #8852 started
+L-0128 2026-04-10T08:05:02Z INFO src_events_stream run #4470 started
+L-0129 2026-04-10T08:05:03Z INFO src_ads_api run #6380 started
+L-0130 2026-04-10T08:05:32Z INFO src_payments_api fetched 11246 records from api.payments.example in 22 pages
+L-0131 2026-04-10T08:05:49Z INFO src_ads_api run #6380 finished in 49 s, 2291 rows written to landing.ad_spend
+L-0132 2026-04-10T08:06:05Z INFO src_payments_api run #2587 finished in 65 s, 11246 rows written to landing.payments
+L-0133 2026-04-10T08:06:28Z INFO src_shop_db run #8852 finished in 88 s, 27613 rows written to landing.shop_orders
+L-0134 2026-04-10T08:06:59Z INFO src_events_stream run #4470 finished in 119 s, 364886 rows written to landing.events
+L-0135 2026-04-10T08:09:05Z INFO ing_orders garbage collection took 13.1 s
+L-0136 2026-04-10T08:15:01Z INFO ing_ad_spend run #8573 started
+L-0137 2026-04-10T08:15:02Z INFO ing_orders run #2476 started
+L-0138 2026-04-10T08:15:02Z INFO ing_events read 384660 records from landing.events
+L-0139 2026-04-10T08:15:03Z INFO ing_payments run #4169 started
+L-0140 2026-04-10T08:15:03Z INFO ing_events run #8638 started
+L-0141 2026-04-10T08:15:31Z INFO ing_payments loaded 11125 rows from landing.payments into raw.payments
+L-0142 2026-04-10T08:15:41Z INFO ing_ad_spend run #8573 finished in 41 s, 2370 rows written to raw.ad_spend
+L-0143 2026-04-10T08:15:47Z ERROR ing_events data contract violation on landing.events: required field 'session_id' is missing in 384660 of 384660 records
+L-0144 2026-04-10T08:15:48Z WARN ing_events unexpected field 'sid' in landing.events is not in contract v4
+L-0145 2026-04-10T08:15:50Z ERROR ing_events run #8638 failed after 50 s: batch b-2026041008 quarantined, 0 rows written
+L-0146 2026-04-10T08:16:03Z INFO ing_payments run #4169 finished in 63 s, 11039 rows written to raw.payments
+L-0147 2026-04-10T08:16:15Z INFO ing_orders run #2476 finished in 75 s, 27623 rows written to raw.orders
+L-0148 2026-04-10T08:19:50Z INFO src_events_stream garbage collection took 17.2 s
+L-0149 2026-04-10T08:25:01Z WARN stg_sessions upstream ing_events has no new data since 06:15; skipping run #2786
+L-0150 2026-04-10T08:25:02Z INFO stg_ad_spend run #2232 started
+L-0151 2026-04-10T08:25:03Z INFO stg_orders run #5845 started
+L-0152 2026-04-10T08:25:03Z INFO stg_payments run #8387 started
+L-0153 2026-04-10T08:25:17Z INFO stg_ad_spend 12 data tests passed on staging.ad_spend
+L-0154 2026-04-10T08:25:25Z INFO stg_payments 6 data tests passed on staging.payments
+L-0155 2026-04-10T08:25:35Z INFO stg_ad_spend run #2232 finished in 35 s, 2258 rows written to staging.ad_spend
+L-0156 2026-04-10T08:25:50Z INFO stg_payments run #8387 finished in 50 s, 11242 rows written to staging.payments
+L-0157 2026-04-10T08:26:06Z INFO stg_orders run #5845 finished in 66 s, 28433 rows written to staging.orders
+L-0158 2026-04-10T08:30:21Z WARN mart_marketing_roi slow query on marts.marketing_roi: 11.2 s (threshold 10 s)
+L-0159 2026-04-10T08:32:35Z WARN ing_payments statistics for raw.payments are stale; running analyze
+L-0160 2026-04-10T08:35:01Z WARN fct_sessions upstream stg_sessions has no new data since 06:25; skipping run #4254
+L-0161 2026-04-10T08:35:02Z INFO fct_marketing_spend run #6072 started
+L-0162 2026-04-10T08:35:03Z INFO fct_orders run #7543 started
+L-0163 2026-04-10T08:35:42Z INFO fct_marketing_spend run #6072 finished in 42 s, 2024 rows written to analytics.fct_marketing_spend
+L-0164 2026-04-10T08:36:06Z INFO fct_orders 15 data tests passed on analytics.fct_orders
+L-0165 2026-04-10T08:37:13Z INFO fct_orders run #7543 finished in 133 s, 27800 rows written to analytics.fct_orders
+L-0166 2026-04-10T08:45:01Z WARN mart_marketing_roi upstream fct_sessions has no new data since 06:35; skipping run #4358
+L-0167 2026-04-10T08:46:30Z WARN fct_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0168 2026-04-10T08:49:22Z INFO ing_ad_spend schema cache refreshed (257 tables)
+L-0169 2026-04-10T09:05:01Z INFO src_shop_db run #8853 started
+L-0170 2026-04-10T09:05:02Z INFO src_events_stream run #4471 started
+L-0171 2026-04-10T09:05:03Z INFO src_payments_api run #2588 started
+L-0172 2026-04-10T09:05:03Z INFO src_ads_api run #6381 started
+L-0173 2026-04-10T09:05:48Z INFO src_ads_api run #6381 finished in 48 s, 2543 rows written to landing.ad_spend
+L-0174 2026-04-10T09:06:07Z INFO src_payments_api run #2588 finished in 67 s, 11709 rows written to landing.payments
+L-0175 2026-04-10T09:06:29Z INFO src_shop_db run #8853 finished in 89 s, 30712 rows written to landing.shop_orders
+L-0176 2026-04-10T09:07:07Z INFO src_events_stream run #4471 finished in 127 s, 393802 rows written to landing.events
+L-0177 2026-04-10T09:10:38Z INFO fct_sessions 66 late-arriving rows older than 48 h merged into analytics.fct_sessions
+L-0178 2026-04-10T09:14:27Z WARN ing_ad_spend deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0179 2026-04-10T09:15:02Z INFO ing_orders run #2477 started
+L-0180 2026-04-10T09:15:02Z INFO ing_ad_spend run #8574 started
+L-0181 2026-04-10T09:15:02Z INFO ing_events read 413168 records from landing.events
+L-0182 2026-04-10T09:15:03Z INFO ing_payments run #4170 started
+L-0183 2026-04-10T09:15:03Z INFO ing_events run #8639 started
+L-0184 2026-04-10T09:15:18Z INFO ing_ad_spend loaded 2488 rows from landing.ad_spend into raw.ad_spend
+L-0185 2026-04-10T09:15:28Z INFO ing_payments loaded 12613 rows from landing.payments into raw.payments
+L-0186 2026-04-10T09:15:37Z INFO ing_ad_spend run #8574 finished in 37 s, 2461 rows written to raw.ad_spend
+L-0187 2026-04-10T09:15:57Z INFO ing_payments run #4170 finished in 57 s, 12553 rows written to raw.payments
+L-0188 2026-04-10T09:16:01Z ERROR ing_events data contract violation on landing.events: required field 'session_id' is missing in 413168 of 413168 records
+L-0189 2026-04-10T09:16:02Z WARN ing_events unexpected field 'sid' in landing.events is not in contract v4
+L-0190 2026-04-10T09:16:04Z ERROR ing_events run #8639 failed after 64 s: batch b-2026041009 quarantined, 0 rows written
+L-0191 2026-04-10T09:16:22Z INFO ing_orders run #2477 finished in 82 s, 28548 rows written to raw.orders
+L-0192 2026-04-10T09:25:01Z INFO stg_orders run #5846 started
+L-0193 2026-04-10T09:25:01Z WARN stg_sessions upstream ing_events has no new data since 06:15; skipping run #2787
+L-0194 2026-04-10T09:25:02Z INFO stg_payments run #8388 started
+L-0195 2026-04-10T09:25:03Z INFO stg_ad_spend run #2233 started
+L-0196 2026-04-10T09:25:13Z WARN ing_payments deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0197 2026-04-10T09:25:34Z INFO stg_ad_spend run #2233 finished in 34 s, 2412 rows written to staging.ad_spend
+L-0198 2026-04-10T09:25:52Z INFO stg_payments run #8388 finished in 52 s, 11310 rows written to staging.payments
+L-0199 2026-04-10T09:26:11Z INFO stg_orders run #5846 finished in 71 s, 28519 rows written to staging.orders
+L-0200 2026-04-10T09:26:18Z INFO stg_sessions 761 late-arriving rows older than 48 h merged into staging.sessions
+L-0201 2026-04-10T09:35:01Z INFO fct_orders run #7544 started
+L-0202 2026-04-10T09:35:01Z INFO fct_marketing_spend run #6073 started
+L-0203 2026-04-10T09:35:01Z WARN fct_sessions upstream stg_sessions has no new data since 06:25; skipping run #4255
+L-0204 2026-04-10T09:35:43Z INFO fct_marketing_spend run #6073 finished in 43 s, 2230 rows written to analytics.fct_marketing_spend
+L-0205 2026-04-10T09:37:30Z INFO fct_orders run #7544 finished in 150 s, 28340 rows written to analytics.fct_orders
+L-0206 2026-04-10T09:38:13Z WARN fct_sessions deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0207 2026-04-10T09:45:01Z WARN mart_marketing_roi upstream fct_sessions has no new data since 06:35; skipping run #4359
+L-0208 2026-04-10T10:02:39Z INFO ing_ad_spend connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0209 2026-04-10T10:05:01Z INFO src_shop_db run #8854 started
+L-0210 2026-04-10T10:05:01Z INFO src_payments_api run #2589 started
+L-0211 2026-04-10T10:05:02Z INFO src_ads_api run #6382 started
+L-0212 2026-04-10T10:05:03Z INFO src_events_stream run #4472 started
+L-0213 2026-04-10T10:05:24Z INFO src_ads_api fetched 2505 records from api.ads.example in 5 pages
+L-0214 2026-04-10T10:05:49Z INFO src_ads_api run #6382 finished in 49 s, 2505 rows written to landing.ad_spend
+L-0215 2026-04-10T10:05:49Z WARN src_events_stream deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0216 2026-04-10T10:06:07Z INFO src_payments_api run #2589 finished in 67 s, 12353 rows written to landing.payments
+L-0217 2026-04-10T10:06:42Z INFO src_shop_db run #8854 finished in 102 s, 31986 rows written to landing.shop_orders
+L-0218 2026-04-10T10:06:48Z INFO ing_ad_spend 819 late-arriving rows older than 48 h merged into raw.ad_spend
+L-0219 2026-04-10T10:07:04Z INFO src_events_stream run #4472 finished in 124 s, 420755 rows written to landing.events
+L-0220 2026-04-10T10:15:02Z INFO ing_orders run #2478 started
+L-0221 2026-04-10T10:15:02Z INFO ing_ad_spend run #8575 started
+L-0222 2026-04-10T10:15:02Z INFO ing_events read 404519 records from landing.events
+L-0223 2026-04-10T10:15:03Z INFO ing_payments run #4171 started
+L-0224 2026-04-10T10:15:03Z INFO ing_events run #8640 started
+L-0225 2026-04-10T10:15:20Z INFO ing_events connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0226 2026-04-10T10:15:41Z INFO ing_ad_spend run #8575 finished in 41 s, 2582 rows written to raw.ad_spend
+L-0227 2026-04-10T10:15:49Z ERROR ing_events data contract violation on landing.events: required field 'session_id' is missing in 404519 of 404519 records
+L-0228 2026-04-10T10:15:50Z WARN ing_events unexpected field 'sid' in landing.events is not in contract v4
+L-0229 2026-04-10T10:15:52Z ERROR ing_events run #8640 failed after 52 s: batch b-2026041010 quarantined, 0 rows written
+L-0230 2026-04-10T10:16:01Z INFO ing_payments run #4171 finished in 61 s, 12024 rows written to raw.payments
+L-0231 2026-04-10T10:16:26Z INFO ing_orders run #2478 finished in 86 s, 31462 rows written to raw.orders
+L-0232 2026-04-10T10:25:01Z INFO stg_orders run #5847 started
+L-0233 2026-04-10T10:25:01Z INFO stg_payments run #8389 started
+L-0234 2026-04-10T10:25:01Z WARN stg_sessions upstream ing_events has no new data since 06:15; skipping run #2788
+L-0235 2026-04-10T10:25:03Z INFO stg_ad_spend run #2234 started
+L-0236 2026-04-10T10:25:36Z INFO stg_ad_spend run #2234 finished in 36 s, 2625 rows written to staging.ad_spend
+L-0237 2026-04-10T10:25:54Z INFO stg_payments run #8389 finished in 54 s, 12806 rows written to staging.payments
+L-0238 2026-04-10T10:26:08Z INFO stg_orders run #5847 finished in 68 s, 32412 rows written to staging.orders
+L-0239 2026-04-10T10:28:44Z INFO fct_sessions garbage collection took 11.1 s
+L-0240 2026-04-10T10:34:53Z INFO stg_payments garbage collection took 19.3 s
+L-0241 2026-04-10T10:35:01Z WARN fct_sessions upstream stg_sessions has no new data since 06:25; skipping run #4256
+L-0242 2026-04-10T10:35:02Z INFO fct_orders run #7545 started
+L-0243 2026-04-10T10:35:02Z INFO fct_marketing_spend run #6074 started
+L-0244 2026-04-10T10:35:39Z INFO fct_marketing_spend run #6074 finished in 39 s, 2476 rows written to analytics.fct_marketing_spend
+L-0245 2026-04-10T10:37:28Z INFO fct_orders run #7545 finished in 148 s, 29215 rows written to analytics.fct_orders
+L-0246 2026-04-10T10:45:01Z WARN mart_marketing_roi upstream fct_sessions has no new data since 06:35; skipping run #4360

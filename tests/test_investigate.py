@@ -1,0 +1,94 @@
+import sample
+
+from incident_rca_agent.investigate import MAX_TOOL_CALLS, investigate
+from incident_rca_agent.llm import LLM
+from incident_rca_agent.tools import TOOLS, Session
+
+
+class ScriptedModel:
+    """Answers each tool step from a script: a list of (tool name, arguments) per reply."""
+
+    def __init__(self, *replies):
+        self.replies = list(replies)
+        self.requests = []
+
+    def __call__(self, request):
+        self.requests.append(request)
+        calls = self.replies.pop(0) if self.replies else []
+        return {
+            "content": "" if calls else "I have what I need.",
+            "tool_calls": [{"name": name, "arguments": arguments} for name, arguments in calls],
+            "prompt_tokens": 2000,
+            "output_tokens": 40,
+        }
+
+
+def run(tmp_path, *replies):
+    model = ScriptedModel(*replies)
+    llm = LLM(mode="live", runs_root=tmp_path, num_ctx=16384, transport=model)
+    session = Session(sample.incident(), sample.platform(), sample.knowledge())
+    return investigate(llm, session, label="sample"), model, session
+
+
+def test_the_code_reads_the_alert_first_and_offers_the_tools(tmp_path):
+    investigation, model, _ = run(tmp_path)
+    first = model.requests[0]
+    assert first["tools"] == TOOLS
+    assert "format" not in first
+    assert "[ALERT] ALR-4471" in first["messages"][-1]["content"]
+    assert [use.name for use in investigation.uses] == ["get_alert"]
+    assert not investigation.uses[0].by_model
+
+
+def test_tool_results_go_back_to_the_model_as_tool_messages(tmp_path):
+    lineage = ("get_lineage", {"pipeline": "mart_daily_revenue", "direction": "upstream"})
+    investigation, model, _ = run(tmp_path, [lineage])
+    second = model.requests[1]["messages"]
+    assert second[-2] == {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [{"function": {"name": "get_lineage", "arguments": lineage[1]}}],
+    }
+    assert second[-1]["role"] == "tool" and second[-1]["tool_name"] == "get_lineage"
+    assert second[-1]["content"].startswith("[LIN-1] Lineage of mart_daily_revenue")
+    assert investigation.uses[1].source_ids == ["LIN-1"]
+
+
+def test_several_calls_in_one_reply_get_one_result_each_in_order(tmp_path):
+    calls = [("list_changes", {}), ("search_runbooks", {"query": "HTTP 429"})]
+    _, model, _ = run(tmp_path, calls)
+    messages = model.requests[1]["messages"]
+    assert [m.get("tool_name") for m in messages[-2:]] == ["list_changes", "search_runbooks"]
+
+
+def test_the_loop_ends_when_the_model_stops_asking(tmp_path):
+    investigation, model, _ = run(tmp_path, [("list_changes", {})])
+    assert len(model.requests) == 2
+    assert investigation.stopped == "the model had enough evidence"
+    assert investigation.model_calls == 2
+
+
+def test_at_most_eight_tool_calls_including_the_alert(tmp_path):
+    greedy = [[("search_logs", {"query": f"error {n}"})] for n in range(20)]
+    investigation, model, _ = run(tmp_path, *greedy)
+    assert MAX_TOOL_CALLS == 8
+    assert len(investigation.uses) == 8
+    assert len(model.requests) == 7
+    assert investigation.stopped == "the limit of 8 tool calls was reached"
+
+
+def test_calls_beyond_the_limit_are_not_run(tmp_path):
+    first = [("list_changes", {})] * 6
+    second = [("search_runbooks", {"query": "429"}), ("search_past_incidents", {"query": "429"})]
+    investigation, _, session = run(tmp_path, first, second)
+    assert len(investigation.uses) == 8
+    assert investigation.skipped == 1
+    assert [use.name for use in investigation.uses][-1] == "search_runbooks"
+    assert not any(source.kind == "past_incident" for source in session.sources.values())
+
+
+def test_time_and_model_calls_are_added_up(tmp_path):
+    investigation, _, _ = run(tmp_path, [("list_changes", {})], [("search_runbooks", {"query": "429"})])
+    assert investigation.model_calls == 3
+    assert investigation.seconds >= 0
+    assert investigation.source_ids()[:2] == ["ALERT", "CHG-4402"]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-5287",
+    "time": "2026-07-14T01:57:00Z",
+    "kind": "deploy",
+    "target": "ing_payments",
+    "author": "data-platform",
+    "summary": "deploy ing_payments v1.5.5: documents raw.payments"
+  },
+  {
+    "id": "CHG-5288",
+    "time": "2026-07-14T11:44:00Z",
+    "kind": "config",
+    "target": "ing_payments",
+    "author": "data-platform",
+    "summary": "config v14: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-5289",
+    "time": "2026-07-15T10:04:00Z",
+    "kind": "config",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "config v27: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-5290",
+    "time": "2026-07-15T21:46:00Z",
+    "kind": "config",
+    "target": "src_payments_api",
+    "author": "data-platform",
+    "summary": "config v7: alert_channel changed from #data-alerts to #data-oncall"
+  },
+  {
+    "id": "CHG-5291",
+    "time": "2026-07-16T00:55:00Z",
+    "kind": "config",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "config v7: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-5292",
+    "time": "2026-07-16T23:18:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Weekly cohort retention' published"
+  },
+  {
+    "id": "CHG-5293",
+    "time": "2026-07-17T06:14:00Z",
+    "kind": "config",
+    "target": "stg_orders",
+    "author": "analytics-eng",
+    "summary": "config v14: alert_channel changed from #data-alerts to #data-oncall"
+  }
+]

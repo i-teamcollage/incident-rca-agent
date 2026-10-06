@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-7371",
+    "time": "2026-08-03T23:26:00Z",
+    "kind": "deploy",
+    "target": "src_payments_api",
+    "author": "data-platform",
+    "summary": "deploy src_payments_api v4.3.2: updates the tests for landing.payments"
+  },
+  {
+    "id": "CHG-7372",
+    "time": "2026-08-03T23:43:00Z",
+    "kind": "infra",
+    "target": "secret-store",
+    "author": "sre",
+    "summary": "audit logging enabled on the secret store"
+  },
+  {
+    "id": "CHG-7373",
+    "time": "2026-08-05T08:31:00Z",
+    "kind": "deploy",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "deploy mart_delivery_sla v1.5.4: updates the tests for marts.delivery_sla"
+  },
+  {
+    "id": "CHG-7374",
+    "time": "2026-08-07T19:34:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Carrier on-time rate' published"
+  },
+  {
+    "id": "CHG-7375",
+    "time": "2026-08-08T19:53:00Z",
+    "kind": "config",
+    "target": "fct_sessions",
+    "author": "marketing-data",
+    "summary": "config v16: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-7376",
+    "time": "2026-08-09T14:50:00Z",
+    "kind": "config",
+    "target": "stg_payments",
+    "author": "analytics-eng",
+    "summary": "config v16: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-7377",
+    "time": "2026-08-10T03:23:00Z",
+    "kind": "deploy",
+    "target": "exp_crm_segments",
+    "author": "marketing-data",
+    "summary": "deploy exp_crm_segments v3.10.1: refactors the incremental filter"
+  }
+]

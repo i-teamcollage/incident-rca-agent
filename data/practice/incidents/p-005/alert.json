@@ -1,0 +1,9 @@
+{
+  "id": "ALR-9535",
+  "fired_at": "2026-08-31T18:34:00Z",
+  "pipeline": "stg_sessions",
+  "check": "failed_runs",
+  "severity": "medium",
+  "message": "3 consecutive runs of stg_sessions failed, the last at 18:25 UTC",
+  "window_start": "2026-08-31T12:34:00Z"
+}

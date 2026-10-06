@@ -1,0 +1,408 @@
+{
+  "pipelines": [
+    {
+      "name": "src_shop_db",
+      "layer": "source",
+      "owner": "data-platform",
+      "schedule": "hourly at :05",
+      "reads": "shopdb-replica.internal",
+      "writes": "landing.shop_orders",
+      "host": "shopdb-replica.internal"
+    },
+    {
+      "name": "src_payments_api",
+      "layer": "source",
+      "owner": "data-platform",
+      "schedule": "hourly at :05",
+      "reads": "api.payments.example",
+      "writes": "landing.payments",
+      "host": "api.payments.example"
+    },
+    {
+      "name": "src_crm_api",
+      "layer": "source",
+      "owner": "data-platform",
+      "schedule": "hourly at :05",
+      "reads": "api.crm.example",
+      "writes": "landing.crm_contacts",
+      "host": "api.crm.example"
+    },
+    {
+      "name": "src_ads_api",
+      "layer": "source",
+      "owner": "marketing-data",
+      "schedule": "hourly at :05",
+      "reads": "api.ads.example",
+      "writes": "landing.ad_spend",
+      "host": "api.ads.example"
+    },
+    {
+      "name": "src_partner_sftp",
+      "layer": "source",
+      "owner": "data-platform",
+      "schedule": "hourly at :05",
+      "reads": "sftp.logistics-partner.example",
+      "writes": "landing.shipments",
+      "host": "sftp.logistics-partner.example"
+    },
+    {
+      "name": "src_events_stream",
+      "layer": "source",
+      "owner": "data-platform",
+      "schedule": "hourly at :05",
+      "reads": "broker-1.stream.internal",
+      "writes": "landing.events",
+      "host": "broker-1.stream.internal"
+    },
+    {
+      "name": "ing_orders",
+      "layer": "ingestion",
+      "owner": "data-platform",
+      "schedule": "hourly at :15",
+      "reads": "landing.shop_orders",
+      "writes": "raw.orders",
+      "host": ""
+    },
+    {
+      "name": "ing_payments",
+      "layer": "ingestion",
+      "owner": "data-platform",
+      "schedule": "hourly at :15",
+      "reads": "landing.payments",
+      "writes": "raw.payments",
+      "host": ""
+    },
+    {
+      "name": "ing_crm_contacts",
+      "layer": "ingestion",
+      "owner": "data-platform",
+      "schedule": "hourly at :15",
+      "reads": "landing.crm_contacts",
+      "writes": "raw.crm_contacts",
+      "host": ""
+    },
+    {
+      "name": "ing_ad_spend",
+      "layer": "ingestion",
+      "owner": "marketing-data",
+      "schedule": "hourly at :15",
+      "reads": "landing.ad_spend",
+      "writes": "raw.ad_spend",
+      "host": ""
+    },
+    {
+      "name": "ing_shipments",
+      "layer": "ingestion",
+      "owner": "data-platform",
+      "schedule": "hourly at :15",
+      "reads": "landing.shipments",
+      "writes": "raw.shipments",
+      "host": ""
+    },
+    {
+      "name": "ing_events",
+      "layer": "ingestion",
+      "owner": "data-platform",
+      "schedule": "hourly at :15",
+      "reads": "landing.events",
+      "writes": "raw.events",
+      "host": ""
+    },
+    {
+      "name": "stg_orders",
+      "layer": "staging",
+      "owner": "analytics-eng",
+      "schedule": "hourly at :25",
+      "reads": "raw.orders",
+      "writes": "staging.orders",
+      "host": ""
+    },
+    {
+      "name": "stg_payments",
+      "layer": "staging",
+      "owner": "analytics-eng",
+      "schedule": "hourly at :25",
+      "reads": "raw.payments",
+      "writes": "staging.payments",
+      "host": ""
+    },
+    {
+      "name": "stg_customers",
+      "layer": "staging",
+      "owner": "analytics-eng",
+      "schedule": "hourly at :25",
+      "reads": "raw.crm_contacts, raw.orders",
+      "writes": "staging.customers",
+      "host": ""
+    },
+    {
+      "name": "stg_ad_spend",
+      "layer": "staging",
+      "owner": "marketing-data",
+      "schedule": "hourly at :25",
+      "reads": "raw.ad_spend",
+      "writes": "staging.ad_spend",
+      "host": ""
+    },
+    {
+      "name": "stg_shipments",
+      "layer": "staging",
+      "owner": "analytics-eng",
+      "schedule": "hourly at :25",
+      "reads": "raw.shipments",
+      "writes": "staging.shipments",
+      "host": ""
+    },
+    {
+      "name": "stg_sessions",
+      "layer": "staging",
+      "owner": "marketing-data",
+      "schedule": "hourly at :25",
+      "reads": "raw.events",
+      "writes": "staging.sessions",
+      "host": ""
+    },
+    {
+      "name": "dim_customers",
+      "layer": "model",
+      "owner": "analytics-eng",
+      "schedule": "hourly at :32",
+      "reads": "staging.customers",
+      "writes": "analytics.dim_customers",
+      "host": ""
+    },
+    {
+      "name": "fct_orders",
+      "layer": "model",
+      "owner": "analytics-eng",
+      "schedule": "hourly at :35",
+      "reads": "staging.orders, staging.payments",
+      "writes": "analytics.fct_orders",
+      "host": ""
+    },
+    {
+      "name": "fct_shipments",
+      "layer": "model",
+      "owner": "analytics-eng",
+      "schedule": "hourly at :40",
+      "reads": "staging.shipments, analytics.fct_orders",
+      "writes": "analytics.fct_shipments",
+      "host": ""
+    },
+    {
+      "name": "fct_marketing_spend",
+      "layer": "model",
+      "owner": "marketing-data",
+      "schedule": "hourly at :35",
+      "reads": "staging.ad_spend",
+      "writes": "analytics.fct_marketing_spend",
+      "host": ""
+    },
+    {
+      "name": "fct_sessions",
+      "layer": "model",
+      "owner": "marketing-data",
+      "schedule": "hourly at :35",
+      "reads": "staging.sessions",
+      "writes": "analytics.fct_sessions",
+      "host": ""
+    },
+    {
+      "name": "mart_daily_revenue",
+      "layer": "mart",
+      "owner": "finance-data",
+      "schedule": "hourly at :45",
+      "reads": "analytics.fct_orders, analytics.dim_customers",
+      "writes": "marts.daily_revenue",
+      "host": ""
+    },
+    {
+      "name": "mart_customer_ltv",
+      "layer": "mart",
+      "owner": "analytics-eng",
+      "schedule": "hourly at :45",
+      "reads": "analytics.fct_orders, analytics.dim_customers",
+      "writes": "marts.customer_ltv",
+      "host": ""
+    },
+    {
+      "name": "mart_delivery_sla",
+      "layer": "mart",
+      "owner": "analytics-eng",
+      "schedule": "hourly at :45",
+      "reads": "analytics.fct_shipments",
+      "writes": "marts.delivery_sla",
+      "host": ""
+    },
+    {
+      "name": "mart_marketing_roi",
+      "layer": "mart",
+      "owner": "marketing-data",
+      "schedule": "hourly at :45",
+      "reads": "analytics.fct_marketing_spend, analytics.fct_sessions, analytics.fct_orders",
+      "writes": "marts.marketing_roi",
+      "host": ""
+    },
+    {
+      "name": "exp_finance_ledger",
+      "layer": "export",
+      "owner": "finance-data",
+      "schedule": "hourly at :55",
+      "reads": "marts.daily_revenue",
+      "writes": "sftp.finance.example:/inbound",
+      "host": "sftp.finance.example"
+    },
+    {
+      "name": "exp_crm_segments",
+      "layer": "export",
+      "owner": "marketing-data",
+      "schedule": "hourly at :55",
+      "reads": "marts.customer_ltv",
+      "writes": "api.crm.example /v3/segments",
+      "host": "api.crm.example"
+    },
+    {
+      "name": "exp_bi_dashboards",
+      "layer": "export",
+      "owner": "analytics-eng",
+      "schedule": "hourly at :55",
+      "reads": "marts.daily_revenue, marts.delivery_sla, marts.marketing_roi",
+      "writes": "bi.internal extracts",
+      "host": "bi.internal"
+    }
+  ],
+  "edges": [
+    [
+      "src_shop_db",
+      "ing_orders"
+    ],
+    [
+      "src_payments_api",
+      "ing_payments"
+    ],
+    [
+      "src_crm_api",
+      "ing_crm_contacts"
+    ],
+    [
+      "src_ads_api",
+      "ing_ad_spend"
+    ],
+    [
+      "src_partner_sftp",
+      "ing_shipments"
+    ],
+    [
+      "src_events_stream",
+      "ing_events"
+    ],
+    [
+      "ing_orders",
+      "stg_orders"
+    ],
+    [
+      "ing_orders",
+      "stg_customers"
+    ],
+    [
+      "ing_payments",
+      "stg_payments"
+    ],
+    [
+      "ing_crm_contacts",
+      "stg_customers"
+    ],
+    [
+      "ing_ad_spend",
+      "stg_ad_spend"
+    ],
+    [
+      "ing_shipments",
+      "stg_shipments"
+    ],
+    [
+      "ing_events",
+      "stg_sessions"
+    ],
+    [
+      "stg_customers",
+      "dim_customers"
+    ],
+    [
+      "stg_orders",
+      "fct_orders"
+    ],
+    [
+      "stg_payments",
+      "fct_orders"
+    ],
+    [
+      "stg_shipments",
+      "fct_shipments"
+    ],
+    [
+      "fct_orders",
+      "fct_shipments"
+    ],
+    [
+      "stg_ad_spend",
+      "fct_marketing_spend"
+    ],
+    [
+      "stg_sessions",
+      "fct_sessions"
+    ],
+    [
+      "fct_orders",
+      "mart_daily_revenue"
+    ],
+    [
+      "dim_customers",
+      "mart_daily_revenue"
+    ],
+    [
+      "fct_orders",
+      "mart_customer_ltv"
+    ],
+    [
+      "dim_customers",
+      "mart_customer_ltv"
+    ],
+    [
+      "fct_shipments",
+      "mart_delivery_sla"
+    ],
+    [
+      "fct_marketing_spend",
+      "mart_marketing_roi"
+    ],
+    [
+      "fct_sessions",
+      "mart_marketing_roi"
+    ],
+    [
+      "fct_orders",
+      "mart_marketing_roi"
+    ],
+    [
+      "mart_daily_revenue",
+      "exp_finance_ledger"
+    ],
+    [
+      "mart_customer_ltv",
+      "exp_crm_segments"
+    ],
+    [
+      "mart_daily_revenue",
+      "exp_bi_dashboards"
+    ],
+    [
+      "mart_delivery_sla",
+      "exp_bi_dashboards"
+    ],
+    [
+      "mart_marketing_roi",
+      "exp_bi_dashboards"
+    ]
+  ]
+}

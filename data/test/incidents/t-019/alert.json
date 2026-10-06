@@ -1,0 +1,9 @@
+{
+  "id": "ALR-5686",
+  "fired_at": "2026-08-15T17:17:00Z",
+  "pipeline": "src_ads_api",
+  "check": "failed_runs",
+  "severity": "medium",
+  "message": "2 consecutive runs of src_ads_api failed, the last at 17:05 UTC",
+  "window_start": "2026-08-15T11:17:00Z"
+}

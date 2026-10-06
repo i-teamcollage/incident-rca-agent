@@ -1,0 +1,368 @@
+L-0001 2026-05-14T13:51:17Z INFO src_crm_api garbage collection took 13.0 s
+L-0002 2026-05-14T13:51:54Z INFO stg_payments schema cache refreshed (200 tables)
+L-0003 2026-05-14T13:52:17Z INFO stg_customers garbage collection took 16.1 s
+L-0004 2026-05-14T13:54:27Z INFO ing_orders 49 late-arriving rows older than 48 h merged into raw.orders
+L-0005 2026-05-14T13:55:01Z INFO exp_crm_segments run #7678 started
+L-0006 2026-05-14T13:55:31Z INFO exp_crm_segments delivered 9945 rows to api.crm.example
+L-0007 2026-05-14T13:56:03Z INFO exp_crm_segments run #7678 finished in 63 s, 9945 rows written to api.crm.example /v3/segments
+L-0008 2026-05-14T13:56:14Z WARN ing_payments statistics for raw.payments are stale; running analyze
+L-0009 2026-05-14T13:58:33Z INFO ing_ad_spend schema cache refreshed (211 tables)
+L-0010 2026-05-14T14:05:01Z INFO src_shop_db run #9840 started
+L-0011 2026-05-14T14:05:02Z INFO src_crm_api run #5641 started
+L-0012 2026-05-14T14:05:03Z INFO src_payments_api run #7161 started
+L-0013 2026-05-14T14:05:30Z INFO src_crm_api fetched 4324 records from api.crm.example in 8 pages
+L-0014 2026-05-14T14:05:35Z INFO src_payments_api fetched 12366 records from api.payments.example in 24 pages
+L-0015 2026-05-14T14:05:51Z INFO src_shop_db extracted 31526 rows from shopdb-replica.internal
+L-0016 2026-05-14T14:06:00Z INFO src_crm_api run #5641 finished in 60 s, 4324 rows written to landing.crm_contacts
+L-0017 2026-05-14T14:06:10Z INFO src_payments_api run #7161 finished in 70 s, 12366 rows written to landing.payments
+L-0018 2026-05-14T14:06:42Z INFO src_shop_db run #9840 finished in 102 s, 31526 rows written to landing.shop_orders
+L-0019 2026-05-14T14:11:06Z WARN src_shop_db slow query on landing.shop_orders: 19.4 s (threshold 10 s)
+L-0020 2026-05-14T14:13:35Z INFO ing_payments heartbeat ok, 9 active workers
+L-0021 2026-05-14T14:15:01Z INFO ing_payments run #6403 started
+L-0022 2026-05-14T14:15:02Z INFO ing_ad_spend run #5874 started
+L-0023 2026-05-14T14:15:03Z INFO ing_orders run #6279 started
+L-0024 2026-05-14T14:15:03Z INFO ing_crm_contacts run #5269 started
+L-0025 2026-05-14T14:15:22Z INFO ing_ad_spend loaded 2600 rows from landing.ad_spend into raw.ad_spend
+L-0026 2026-05-14T14:15:24Z INFO ing_crm_contacts loaded 4548 rows from landing.crm_contacts into raw.crm_contacts
+L-0027 2026-05-14T14:15:32Z INFO ing_payments loaded 12541 rows from landing.payments into raw.payments
+L-0028 2026-05-14T14:15:37Z INFO ing_orders loaded 32412 rows from landing.shop_orders into raw.orders
+L-0029 2026-05-14T14:15:44Z INFO ing_ad_spend run #5874 finished in 44 s, 2583 rows written to raw.ad_spend
+L-0030 2026-05-14T14:15:49Z INFO ing_crm_contacts run #5269 finished in 49 s, 4465 rows written to raw.crm_contacts
+L-0031 2026-05-14T14:16:05Z INFO ing_payments run #6403 finished in 65 s, 12442 rows written to raw.payments
+L-0032 2026-05-14T14:16:13Z WARN ing_orders statistics for raw.orders are stale; running analyze
+L-0033 2026-05-14T14:16:15Z INFO ing_orders run #6279 finished in 75 s, 32253 rows written to raw.orders
+L-0034 2026-05-14T14:20:29Z INFO ing_payments schema cache refreshed (246 tables)
+L-0035 2026-05-14T14:25:02Z INFO stg_orders run #9711 started
+L-0036 2026-05-14T14:25:02Z INFO stg_customers run #7361 started
+L-0037 2026-05-14T14:25:03Z INFO stg_payments run #5187 started
+L-0038 2026-05-14T14:25:27Z INFO stg_payments 15 data tests passed on staging.payments
+L-0039 2026-05-14T14:25:32Z INFO stg_customers 6 data tests passed on staging.customers
+L-0040 2026-05-14T14:25:34Z INFO stg_orders 4 data tests passed on staging.orders
+L-0041 2026-05-14T14:25:50Z INFO fct_orders heartbeat ok, 4 active workers
+L-0042 2026-05-14T14:25:54Z INFO stg_payments run #5187 finished in 54 s, 13204 rows written to staging.payments
+L-0043 2026-05-14T14:26:05Z INFO stg_customers run #7361 finished in 65 s, 9769 rows written to staging.customers
+L-0044 2026-05-14T14:26:08Z INFO stg_orders run #9711 finished in 68 s, 30869 rows written to staging.orders
+L-0045 2026-05-14T14:27:44Z WARN exp_crm_segments slow query on marts.customer_ltv: 17.7 s (threshold 10 s)
+L-0046 2026-05-14T14:30:51Z INFO src_crm_api 616 late-arriving rows older than 48 h merged into landing.crm_contacts
+L-0047 2026-05-14T14:32:01Z INFO dim_customers run #6537 started
+L-0048 2026-05-14T14:32:30Z INFO dim_customers 4 data tests passed on analytics.dim_customers
+L-0049 2026-05-14T14:33:00Z INFO dim_customers run #6537 finished in 60 s, 9284 rows written to analytics.dim_customers
+L-0050 2026-05-14T14:33:25Z WARN stg_payments slow query on staging.payments: 19.1 s (threshold 10 s)
+L-0051 2026-05-14T14:35:01Z INFO fct_orders run #2225 started
+L-0052 2026-05-14T14:36:12Z INFO fct_orders 4 data tests passed on analytics.fct_orders
+L-0053 2026-05-14T14:37:24Z INFO fct_orders run #2225 finished in 144 s, 31261 rows written to analytics.fct_orders
+L-0054 2026-05-14T14:40:03Z INFO stg_payments garbage collection took 13.2 s
+L-0055 2026-05-14T14:42:14Z INFO ing_crm_contacts garbage collection took 14.3 s
+L-0056 2026-05-14T14:44:55Z INFO ing_ad_spend garbage collection took 19.5 s
+L-0057 2026-05-14T14:45:01Z INFO mart_customer_ltv run #8455 started
+L-0058 2026-05-14T14:45:45Z INFO mart_customer_ltv refreshed marts.customer_ltv (9602 rows)
+L-0059 2026-05-14T14:46:31Z INFO mart_customer_ltv run #8455 finished in 91 s, 9602 rows written to marts.customer_ltv
+L-0060 2026-05-14T14:52:33Z INFO stg_customers garbage collection took 13.0 s
+L-0061 2026-05-14T14:53:01Z INFO mart_customer_ltv 888 late-arriving rows older than 48 h merged into marts.customer_ltv
+L-0062 2026-05-14T14:55:02Z INFO exp_crm_segments run #7679 started
+L-0063 2026-05-14T14:55:31Z INFO exp_crm_segments delivered 9560 rows to api.crm.example
+L-0064 2026-05-14T14:55:48Z INFO fct_orders garbage collection took 15.5 s
+L-0065 2026-05-14T14:56:02Z INFO exp_crm_segments run #7679 finished in 62 s, 9560 rows written to api.crm.example /v3/segments
+L-0066 2026-05-14T15:05:01Z INFO src_crm_api run #5642 started
+L-0067 2026-05-14T15:05:02Z INFO src_shop_db run #9841 started
+L-0068 2026-05-14T15:05:02Z INFO src_payments_api run #7162 started
+L-0069 2026-05-14T15:05:37Z INFO src_payments_api fetched 12207 records from api.payments.example in 24 pages
+L-0070 2026-05-14T15:06:00Z INFO src_crm_api run #5642 finished in 60 s, 4106 rows written to landing.crm_contacts
+L-0071 2026-05-14T15:06:14Z INFO src_payments_api run #7162 finished in 74 s, 12207 rows written to landing.payments
+L-0072 2026-05-14T15:06:32Z INFO src_shop_db run #9841 finished in 92 s, 33221 rows written to landing.shop_orders
+L-0073 2026-05-14T15:09:23Z INFO exp_crm_segments garbage collection took 13.2 s
+L-0074 2026-05-14T15:10:27Z INFO ing_ad_spend connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0075 2026-05-14T15:15:01Z INFO ing_orders run #6280 started
+L-0076 2026-05-14T15:15:01Z INFO ing_crm_contacts run #5270 started
+L-0077 2026-05-14T15:15:02Z INFO ing_payments run #6404 started
+L-0078 2026-05-14T15:15:02Z INFO ing_ad_spend run #5875 started
+L-0079 2026-05-14T15:15:23Z INFO ing_crm_contacts loaded 4516 rows from landing.crm_contacts into raw.crm_contacts
+L-0080 2026-05-14T15:15:32Z INFO ing_payments loaded 13058 rows from landing.payments into raw.payments
+L-0081 2026-05-14T15:15:41Z INFO ing_orders loaded 31070 rows from landing.shop_orders into raw.orders
+L-0082 2026-05-14T15:15:43Z INFO ing_ad_spend run #5875 finished in 43 s, 2762 rows written to raw.ad_spend
+L-0083 2026-05-14T15:15:46Z INFO ing_crm_contacts run #5270 finished in 46 s, 4461 rows written to raw.crm_contacts
+L-0084 2026-05-14T15:16:05Z INFO ing_payments run #6404 finished in 65 s, 13009 rows written to raw.payments
+L-0085 2026-05-14T15:16:22Z INFO ing_orders run #6280 finished in 82 s, 30516 rows written to raw.orders
+L-0086 2026-05-14T15:18:15Z WARN dim_customers statistics for analytics.dim_customers are stale; running analyze
+L-0087 2026-05-14T15:19:41Z INFO ing_orders schema cache refreshed (256 tables)
+L-0088 2026-05-14T15:21:21Z WARN mart_customer_ltv statistics for marts.customer_ltv are stale; running analyze
+L-0089 2026-05-14T15:25:01Z INFO stg_orders run #9712 started
+L-0090 2026-05-14T15:25:01Z INFO stg_customers run #7362 started
+L-0091 2026-05-14T15:25:02Z INFO stg_payments run #5188 started
+L-0092 2026-05-14T15:25:29Z INFO stg_payments 17 data tests passed on staging.payments
+L-0093 2026-05-14T15:25:31Z INFO stg_customers 4 data tests passed on staging.customers
+L-0094 2026-05-14T15:25:38Z INFO stg_orders 9 data tests passed on staging.orders
+L-0095 2026-05-14T15:25:59Z INFO stg_payments run #5188 finished in 59 s, 13119 rows written to staging.payments
+L-0096 2026-05-14T15:26:02Z INFO stg_customers run #7362 finished in 62 s, 9507 rows written to staging.customers
+L-0097 2026-05-14T15:26:17Z INFO stg_orders run #9712 finished in 77 s, 32050 rows written to staging.orders
+L-0098 2026-05-14T15:28:26Z WARN ing_orders statistics for raw.orders are stale; running analyze
+L-0099 2026-05-14T15:32:01Z INFO dim_customers run #6538 started
+L-0100 2026-05-14T15:32:31Z INFO dim_customers 17 data tests passed on analytics.dim_customers
+L-0101 2026-05-14T15:33:02Z INFO dim_customers run #6538 finished in 62 s, 9671 rows written to analytics.dim_customers
+L-0102 2026-05-14T15:34:22Z INFO ing_crm_contacts connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0103 2026-05-14T15:35:02Z INFO fct_orders run #2226 started
+L-0104 2026-05-14T15:35:17Z WARN stg_payments statistics for staging.payments are stale; running analyze
+L-0105 2026-05-14T15:36:13Z INFO fct_orders 10 data tests passed on analytics.fct_orders
+L-0106 2026-05-14T15:37:26Z INFO fct_orders run #2226 finished in 146 s, 29836 rows written to analytics.fct_orders
+L-0107 2026-05-14T15:40:29Z INFO mart_customer_ltv connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0108 2026-05-14T15:41:26Z WARN fct_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0109 2026-05-14T15:41:56Z WARN fct_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0110 2026-05-14T15:45:03Z INFO mart_customer_ltv run #8456 started
+L-0111 2026-05-14T15:45:52Z WARN fct_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0112 2026-05-14T15:46:36Z INFO mart_customer_ltv refreshed marts.customer_ltv (25244 rows)
+L-0113 2026-05-14T15:47:14Z WARN mart_customer_ltv memory at 88% of the 8 GiB limit while joining analytics.fct_orders, analytics.dim_customers
+L-0114 2026-05-14T15:48:12Z INFO mart_customer_ltv run #8456 finished in 192 s, 25244 rows written to marts.customer_ltv
+L-0115 2026-05-14T15:50:58Z WARN stg_customers deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0116 2026-05-14T15:55:02Z WARN exp_crm_segments row count 24857 is 2.8x the usual for this hour
+L-0117 2026-05-14T15:55:03Z INFO exp_crm_segments run #7680 started
+L-0118 2026-05-14T15:56:06Z INFO ing_payments 878 late-arriving rows older than 48 h merged into raw.payments
+L-0119 2026-05-14T15:56:17Z WARN exp_crm_segments slow query on marts.customer_ltv: 14.1 s (threshold 10 s)
+L-0120 2026-05-14T15:56:57Z INFO exp_crm_segments run #7680 finished in 117 s, 24857 rows written to api.crm.example /v3/segments
+L-0121 2026-05-14T15:58:56Z INFO stg_customers heartbeat ok, 4 active workers
+L-0122 2026-05-14T16:05:02Z INFO src_shop_db run #9842 started
+L-0123 2026-05-14T16:05:02Z INFO src_crm_api run #5643 started
+L-0124 2026-05-14T16:05:03Z INFO src_payments_api run #7163 started
+L-0125 2026-05-14T16:05:29Z INFO src_crm_api fetched 4564 records from api.crm.example in 9 pages
+L-0126 2026-05-14T16:05:36Z INFO src_payments_api fetched 12619 records from api.payments.example in 25 pages
+L-0127 2026-05-14T16:05:44Z INFO src_shop_db connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0128 2026-05-14T16:05:49Z INFO src_shop_db extracted 32507 rows from shopdb-replica.internal
+L-0129 2026-05-14T16:05:59Z INFO src_crm_api run #5643 finished in 59 s, 4564 rows written to landing.crm_contacts
+L-0130 2026-05-14T16:06:13Z INFO src_payments_api run #7163 finished in 73 s, 12619 rows written to landing.payments
+L-0131 2026-05-14T16:06:39Z INFO src_shop_db run #9842 finished in 99 s, 32507 rows written to landing.shop_orders
+L-0132 2026-05-14T16:07:09Z INFO exp_crm_segments garbage collection took 15.7 s
+L-0133 2026-05-14T16:09:42Z WARN exp_crm_segments slow query on marts.customer_ltv: 18.1 s (threshold 10 s)
+L-0134 2026-05-14T16:10:07Z INFO dim_customers connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0135 2026-05-14T16:13:42Z INFO ing_ad_spend heartbeat ok, 9 active workers
+L-0136 2026-05-14T16:14:00Z INFO ing_ad_spend schema cache refreshed (195 tables)
+L-0137 2026-05-14T16:15:01Z INFO ing_orders run #6281 started
+L-0138 2026-05-14T16:15:02Z INFO ing_payments run #6405 started
+L-0139 2026-05-14T16:15:02Z INFO ing_ad_spend run #5876 started
+L-0140 2026-05-14T16:15:03Z INFO ing_crm_contacts run #5271 started
+L-0141 2026-05-14T16:15:20Z INFO ing_ad_spend loaded 2697 rows from landing.ad_spend into raw.ad_spend
+L-0142 2026-05-14T16:15:22Z INFO ing_crm_contacts loaded 4493 rows from landing.crm_contacts into raw.crm_contacts
+L-0143 2026-05-14T16:15:32Z INFO ing_payments loaded 13420 rows from landing.payments into raw.payments
+L-0144 2026-05-14T16:15:40Z INFO ing_ad_spend run #5876 finished in 40 s, 2673 rows written to raw.ad_spend
+L-0145 2026-05-14T16:15:41Z INFO ing_orders loaded 32139 rows from landing.shop_orders into raw.orders
+L-0146 2026-05-14T16:15:45Z INFO ing_crm_contacts run #5271 finished in 45 s, 4458 rows written to raw.crm_contacts
+L-0147 2026-05-14T16:16:04Z INFO ing_payments run #6405 finished in 64 s, 13232 rows written to raw.payments
+L-0148 2026-05-14T16:16:22Z INFO ing_orders run #6281 finished in 82 s, 31761 rows written to raw.orders
+L-0149 2026-05-14T16:18:52Z INFO ing_ad_spend connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0150 2026-05-14T16:19:19Z INFO stg_orders heartbeat ok, 5 active workers
+L-0151 2026-05-14T16:23:53Z INFO dim_customers garbage collection took 15.9 s
+L-0152 2026-05-14T16:25:01Z INFO stg_customers run #7363 started
+L-0153 2026-05-14T16:25:02Z INFO stg_orders run #9713 started
+L-0154 2026-05-14T16:25:02Z INFO stg_payments run #5189 started
+L-0155 2026-05-14T16:25:30Z INFO stg_payments 7 data tests passed on staging.payments
+L-0156 2026-05-14T16:25:33Z INFO stg_orders 6 data tests passed on staging.orders
+L-0157 2026-05-14T16:25:35Z INFO stg_customers 15 data tests passed on staging.customers
+L-0158 2026-05-14T16:26:00Z INFO stg_payments run #5189 finished in 60 s, 12415 rows written to staging.payments
+L-0159 2026-05-14T16:26:07Z INFO stg_orders run #9713 finished in 67 s, 33228 rows written to staging.orders
+L-0160 2026-05-14T16:26:11Z INFO stg_customers run #7363 finished in 71 s, 9497 rows written to staging.customers
+L-0161 2026-05-14T16:28:53Z INFO ing_orders 114 late-arriving rows older than 48 h merged into raw.orders
+L-0162 2026-05-14T16:32:01Z INFO dim_customers run #6539 started
+L-0163 2026-05-14T16:32:31Z INFO dim_customers 9 data tests passed on analytics.dim_customers
+L-0164 2026-05-14T16:33:03Z INFO dim_customers run #6539 finished in 63 s, 9663 rows written to analytics.dim_customers
+L-0165 2026-05-14T16:35:01Z INFO fct_orders run #2227 started
+L-0166 2026-05-14T16:35:57Z WARN src_crm_api deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0167 2026-05-14T16:36:08Z INFO fct_orders 14 data tests passed on analytics.fct_orders
+L-0168 2026-05-14T16:36:38Z WARN fct_orders statistics for analytics.fct_orders are stale; running analyze
+L-0169 2026-05-14T16:37:01Z INFO src_shop_db garbage collection took 12.8 s
+L-0170 2026-05-14T16:37:06Z WARN stg_orders slow query on staging.orders: 11.8 s (threshold 10 s)
+L-0171 2026-05-14T16:37:17Z INFO fct_orders run #2227 finished in 137 s, 33337 rows written to analytics.fct_orders
+L-0172 2026-05-14T16:42:27Z INFO stg_orders 116 late-arriving rows older than 48 h merged into staging.orders
+L-0173 2026-05-14T16:42:56Z WARN src_payments_api deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0174 2026-05-14T16:44:09Z WARN mart_customer_ltv slow query on marts.customer_ltv: 17.1 s (threshold 10 s)
+L-0175 2026-05-14T16:44:26Z INFO ing_ad_spend connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0176 2026-05-14T16:45:01Z INFO mart_customer_ltv run #8457 started
+L-0177 2026-05-14T16:47:51Z WARN mart_customer_ltv memory at 96% of the 8 GiB limit while joining analytics.fct_orders, analytics.dim_customers
+L-0178 2026-05-14T16:48:50Z INFO ing_orders schema cache refreshed (218 tables)
+L-0179 2026-05-14T16:49:44Z ERROR mart_customer_ltv container mart_customer_ltv-8457 was OOMKilled (exit code 137)
+L-0180 2026-05-14T16:49:45Z ERROR mart_customer_ltv run #8457 failed after 285 s: exit code 137
+L-0181 2026-05-14T16:51:41Z WARN stg_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0182 2026-05-14T16:52:34Z INFO src_payments_api connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0183 2026-05-14T16:53:06Z INFO mart_customer_ltv 432 late-arriving rows older than 48 h merged into marts.customer_ltv
+L-0184 2026-05-14T16:53:56Z WARN ing_ad_spend slow query on raw.ad_spend: 16.0 s (threshold 10 s)
+L-0185 2026-05-14T16:55:01Z WARN exp_crm_segments upstream mart_customer_ltv has no new data since 15:45; skipping run #7681
+L-0186 2026-05-14T16:57:00Z INFO ing_payments 94 late-arriving rows older than 48 h merged into raw.payments
+L-0187 2026-05-14T17:02:06Z INFO src_shop_db connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0188 2026-05-14T17:02:30Z INFO stg_customers 11 late-arriving rows older than 48 h merged into staging.customers
+L-0189 2026-05-14T17:02:54Z INFO dim_customers 107 late-arriving rows older than 48 h merged into analytics.dim_customers
+L-0190 2026-05-14T17:05:01Z INFO src_payments_api run #7164 started
+L-0191 2026-05-14T17:05:02Z INFO src_shop_db run #9843 started
+L-0192 2026-05-14T17:05:02Z INFO src_crm_api run #5644 started
+L-0193 2026-05-14T17:05:28Z WARN dim_customers deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0194 2026-05-14T17:05:29Z INFO src_crm_api fetched 4755 records from api.crm.example in 9 pages
+L-0195 2026-05-14T17:05:35Z INFO src_payments_api fetched 13825 records from api.payments.example in 27 pages
+L-0196 2026-05-14T17:05:51Z INFO src_shop_db extracted 36893 rows from shopdb-replica.internal
+L-0197 2026-05-14T17:05:58Z INFO src_crm_api run #5644 finished in 58 s, 4755 rows written to landing.crm_contacts
+L-0198 2026-05-14T17:06:11Z INFO src_payments_api run #7164 finished in 71 s, 13825 rows written to landing.payments
+L-0199 2026-05-14T17:06:42Z INFO src_shop_db run #9843 finished in 102 s, 36893 rows written to landing.shop_orders
+L-0200 2026-05-14T17:10:16Z INFO src_payments_api connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0201 2026-05-14T17:11:43Z INFO ing_ad_spend heartbeat ok, 9 active workers
+L-0202 2026-05-14T17:15:01Z INFO ing_payments run #6406 started
+L-0203 2026-05-14T17:15:02Z INFO ing_orders run #6282 started
+L-0204 2026-05-14T17:15:03Z INFO ing_crm_contacts run #5272 started
+L-0205 2026-05-14T17:15:03Z INFO ing_ad_spend run #5877 started
+L-0206 2026-05-14T17:15:21Z INFO ing_ad_spend loaded 3002 rows from landing.ad_spend into raw.ad_spend
+L-0207 2026-05-14T17:15:22Z INFO ing_crm_contacts loaded 4942 rows from landing.crm_contacts into raw.crm_contacts
+L-0208 2026-05-14T17:15:31Z INFO ing_payments loaded 14689 rows from landing.payments into raw.payments
+L-0209 2026-05-14T17:15:42Z INFO ing_orders loaded 35891 rows from landing.shop_orders into raw.orders
+L-0210 2026-05-14T17:15:43Z INFO ing_ad_spend run #5877 finished in 43 s, 2972 rows written to raw.ad_spend
+L-0211 2026-05-14T17:15:44Z INFO ing_crm_contacts run #5272 finished in 44 s, 4852 rows written to raw.crm_contacts
+L-0212 2026-05-14T17:16:02Z INFO ing_payments run #6406 finished in 62 s, 14411 rows written to raw.payments
+L-0213 2026-05-14T17:16:24Z INFO ing_orders run #6282 finished in 84 s, 35335 rows written to raw.orders
+L-0214 2026-05-14T17:16:39Z INFO stg_payments garbage collection took 13.4 s
+L-0215 2026-05-14T17:22:14Z INFO mart_customer_ltv garbage collection took 11.4 s
+L-0216 2026-05-14T17:22:37Z INFO ing_payments schema cache refreshed (227 tables)
+L-0217 2026-05-14T17:25:02Z INFO stg_payments run #5190 started
+L-0218 2026-05-14T17:25:02Z INFO stg_customers run #7364 started
+L-0219 2026-05-14T17:25:03Z INFO stg_orders run #9714 started
+L-0220 2026-05-14T17:25:30Z INFO stg_payments 17 data tests passed on staging.payments
+L-0221 2026-05-14T17:25:33Z INFO stg_customers 5 data tests passed on staging.customers
+L-0222 2026-05-14T17:25:37Z INFO stg_orders 5 data tests passed on staging.orders
+L-0223 2026-05-14T17:26:00Z INFO stg_payments run #5190 finished in 60 s, 13825 rows written to staging.payments
+L-0224 2026-05-14T17:26:06Z INFO stg_customers run #7364 finished in 66 s, 10195 rows written to staging.customers
+L-0225 2026-05-14T17:26:15Z INFO stg_orders run #9714 finished in 75 s, 33950 rows written to staging.orders
+L-0226 2026-05-14T17:30:48Z INFO stg_customers 96 late-arriving rows older than 48 h merged into staging.customers
+L-0227 2026-05-14T17:31:51Z INFO ing_orders schema cache refreshed (180 tables)
+L-0228 2026-05-14T17:32:03Z INFO dim_customers run #6540 started
+L-0229 2026-05-14T17:32:30Z INFO dim_customers 15 data tests passed on analytics.dim_customers
+L-0230 2026-05-14T17:33:01Z INFO dim_customers run #6540 finished in 61 s, 10112 rows written to analytics.dim_customers
+L-0231 2026-05-14T17:33:21Z INFO ing_crm_contacts connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0232 2026-05-14T17:33:38Z INFO ing_crm_contacts schema cache refreshed (180 tables)
+L-0233 2026-05-14T17:35:03Z INFO fct_orders run #2228 started
+L-0234 2026-05-14T17:36:13Z INFO fct_orders 6 data tests passed on analytics.fct_orders
+L-0235 2026-05-14T17:36:47Z WARN mart_customer_ltv statistics for marts.customer_ltv are stale; running analyze
+L-0236 2026-05-14T17:37:27Z INFO fct_orders run #2228 finished in 147 s, 33019 rows written to analytics.fct_orders
+L-0237 2026-05-14T17:40:07Z INFO src_shop_db 779 late-arriving rows older than 48 h merged into landing.shop_orders
+L-0238 2026-05-14T17:41:01Z INFO ing_orders garbage collection took 19.8 s
+L-0239 2026-05-14T17:41:05Z INFO ing_payments garbage collection took 19.7 s
+L-0240 2026-05-14T17:44:40Z INFO src_crm_api 678 late-arriving rows older than 48 h merged into landing.crm_contacts
+L-0241 2026-05-14T17:45:01Z INFO mart_customer_ltv run #8458 started
+L-0242 2026-05-14T17:45:26Z INFO stg_orders connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0243 2026-05-14T17:47:26Z WARN mart_customer_ltv memory at 99% of the 8 GiB limit while joining analytics.fct_orders, analytics.dim_customers
+L-0244 2026-05-14T17:47:29Z INFO ing_payments garbage collection took 13.6 s
+L-0245 2026-05-14T17:47:34Z INFO ing_payments 667 late-arriving rows older than 48 h merged into raw.payments
+L-0246 2026-05-14T17:49:03Z ERROR mart_customer_ltv container mart_customer_ltv-8458 was OOMKilled (exit code 137)
+L-0247 2026-05-14T17:49:04Z ERROR mart_customer_ltv run #8458 failed after 244 s: exit code 137
+L-0248 2026-05-14T17:55:01Z WARN exp_crm_segments upstream mart_customer_ltv has no new data since 15:45; skipping run #7682
+L-0249 2026-05-14T17:56:35Z INFO ing_crm_contacts garbage collection took 16.2 s
+L-0250 2026-05-14T18:05:01Z INFO src_shop_db run #9844 started
+L-0251 2026-05-14T18:05:01Z INFO src_crm_api run #5645 started
+L-0252 2026-05-14T18:05:02Z INFO src_payments_api run #7165 started
+L-0253 2026-05-14T18:05:40Z INFO src_payments_api fetched 15927 records from api.payments.example in 31 pages
+L-0254 2026-05-14T18:06:04Z INFO src_crm_api run #5645 finished in 64 s, 5002 rows written to landing.crm_contacts
+L-0255 2026-05-14T18:06:21Z INFO src_payments_api run #7165 finished in 81 s, 15927 rows written to landing.payments
+L-0256 2026-05-14T18:06:43Z INFO src_shop_db run #9844 finished in 103 s, 39561 rows written to landing.shop_orders
+L-0257 2026-05-14T18:07:54Z INFO ing_ad_spend connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0258 2026-05-14T18:10:11Z WARN ing_ad_spend slow query on raw.ad_spend: 15.7 s (threshold 10 s)
+L-0259 2026-05-14T18:10:24Z INFO stg_customers schema cache refreshed (259 tables)
+L-0260 2026-05-14T18:10:51Z INFO stg_customers garbage collection took 19.8 s
+L-0261 2026-05-14T18:12:53Z WARN stg_customers statistics for staging.customers are stale; running analyze
+L-0262 2026-05-14T18:14:54Z WARN stg_orders statistics for staging.orders are stale; running analyze
+L-0263 2026-05-14T18:15:01Z INFO ing_orders run #6283 started
+L-0264 2026-05-14T18:15:01Z INFO ing_payments run #6407 started
+L-0265 2026-05-14T18:15:01Z INFO ing_ad_spend run #5878 started
+L-0266 2026-05-14T18:15:02Z INFO ing_crm_contacts run #5273 started
+L-0267 2026-05-14T18:15:22Z INFO ing_ad_spend loaded 3166 rows from landing.ad_spend into raw.ad_spend
+L-0268 2026-05-14T18:15:31Z INFO ing_payments loaded 16066 rows from landing.payments into raw.payments
+L-0269 2026-05-14T18:15:45Z INFO ing_ad_spend run #5878 finished in 45 s, 3159 rows written to raw.ad_spend
+L-0270 2026-05-14T18:15:46Z INFO ing_crm_contacts run #5273 finished in 46 s, 5342 rows written to raw.crm_contacts
+L-0271 2026-05-14T18:16:02Z INFO ing_payments run #6407 finished in 62 s, 15773 rows written to raw.payments
+L-0272 2026-05-14T18:16:28Z INFO ing_orders run #6283 finished in 88 s, 37555 rows written to raw.orders
+L-0273 2026-05-14T18:18:57Z INFO dim_customers schema cache refreshed (199 tables)
+L-0274 2026-05-14T18:19:12Z WARN src_payments_api slow query on landing.payments: 15.1 s (threshold 10 s)
+L-0275 2026-05-14T18:21:57Z INFO stg_orders heartbeat ok, 7 active workers
+L-0276 2026-05-14T18:25:01Z INFO stg_orders run #9715 started
+L-0277 2026-05-14T18:25:01Z INFO stg_payments run #5191 started
+L-0278 2026-05-14T18:25:01Z INFO stg_customers run #7365 started
+L-0279 2026-05-14T18:25:28Z INFO stg_payments 10 data tests passed on staging.payments
+L-0280 2026-05-14T18:25:34Z INFO stg_orders 10 data tests passed on staging.orders
+L-0281 2026-05-14T18:25:34Z INFO stg_customers 12 data tests passed on staging.customers
+L-0282 2026-05-14T18:25:56Z INFO stg_payments run #5191 finished in 56 s, 14357 rows written to staging.payments
+L-0283 2026-05-14T18:26:09Z INFO stg_orders run #9715 finished in 69 s, 38983 rows written to staging.orders
+L-0284 2026-05-14T18:26:09Z INFO stg_customers run #7365 finished in 69 s, 11782 rows written to staging.customers
+L-0285 2026-05-14T18:26:33Z WARN stg_orders slow query on staging.orders: 12.8 s (threshold 10 s)
+L-0286 2026-05-14T18:30:59Z WARN stg_payments slow query on staging.payments: 19.1 s (threshold 10 s)
+L-0287 2026-05-14T18:32:02Z INFO dim_customers run #6541 started
+L-0288 2026-05-14T18:32:30Z INFO dim_customers 12 data tests passed on analytics.dim_customers
+L-0289 2026-05-14T18:33:01Z INFO dim_customers run #6541 finished in 61 s, 11818 rows written to analytics.dim_customers
+L-0290 2026-05-14T18:33:11Z WARN src_payments_api statistics for landing.payments are stale; running analyze
+L-0291 2026-05-14T18:33:35Z INFO stg_customers schema cache refreshed (241 tables)
+L-0292 2026-05-14T18:34:20Z INFO src_payments_api connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0293 2026-05-14T18:35:02Z INFO fct_orders run #2229 started
+L-0294 2026-05-14T18:36:20Z INFO fct_orders 9 data tests passed on analytics.fct_orders
+L-0295 2026-05-14T18:37:41Z INFO fct_orders run #2229 finished in 161 s, 38944 rows written to analytics.fct_orders
+L-0296 2026-05-14T18:39:23Z WARN stg_payments statistics for staging.payments are stale; running analyze
+L-0297 2026-05-14T18:40:15Z WARN mart_customer_ltv deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0298 2026-05-14T18:41:56Z INFO stg_orders 99 late-arriving rows older than 48 h merged into staging.orders
+L-0299 2026-05-14T18:45:01Z INFO mart_customer_ltv run #8459 started
+L-0300 2026-05-14T18:46:30Z WARN src_shop_db deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0301 2026-05-14T18:48:20Z WARN mart_customer_ltv memory at 97% of the 8 GiB limit while joining analytics.fct_orders, analytics.dim_customers
+L-0302 2026-05-14T18:50:33Z ERROR mart_customer_ltv container mart_customer_ltv-8459 was OOMKilled (exit code 137)
+L-0303 2026-05-14T18:50:34Z ERROR mart_customer_ltv run #8459 failed after 334 s: exit code 137
+L-0304 2026-05-14T18:51:23Z WARN mart_customer_ltv statistics for marts.customer_ltv are stale; running analyze
+L-0305 2026-05-14T18:54:01Z INFO stg_payments connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0306 2026-05-14T18:55:01Z WARN exp_crm_segments upstream mart_customer_ltv has no new data since 15:45; skipping run #7683
+L-0307 2026-05-14T18:57:49Z INFO dim_customers schema cache refreshed (232 tables)
+L-0308 2026-05-14T19:01:06Z INFO ing_orders 98 late-arriving rows older than 48 h merged into raw.orders
+L-0309 2026-05-14T19:01:24Z INFO stg_customers connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0310 2026-05-14T19:04:02Z WARN src_payments_api statistics for landing.payments are stale; running analyze
+L-0311 2026-05-14T19:05:02Z INFO src_shop_db run #9845 started
+L-0312 2026-05-14T19:05:03Z INFO src_payments_api run #7166 started
+L-0313 2026-05-14T19:05:03Z INFO src_crm_api run #5646 started
+L-0314 2026-05-14T19:05:35Z INFO src_crm_api fetched 5230 records from api.crm.example in 10 pages
+L-0315 2026-05-14T19:05:37Z INFO src_payments_api fetched 15841 records from api.payments.example in 31 pages
+L-0316 2026-05-14T19:05:51Z INFO src_shop_db extracted 41667 rows from shopdb-replica.internal
+L-0317 2026-05-14T19:06:06Z WARN src_shop_db statistics for landing.shop_orders are stale; running analyze
+L-0318 2026-05-14T19:06:10Z INFO src_crm_api run #5646 finished in 70 s, 5230 rows written to landing.crm_contacts
+L-0319 2026-05-14T19:06:14Z INFO src_payments_api run #7166 finished in 74 s, 15841 rows written to landing.payments
+L-0320 2026-05-14T19:06:42Z INFO src_shop_db run #9845 finished in 102 s, 41667 rows written to landing.shop_orders
+L-0321 2026-05-14T19:14:11Z INFO ing_payments garbage collection took 12.9 s
+L-0322 2026-05-14T19:15:01Z INFO ing_ad_spend run #5879 started
+L-0323 2026-05-14T19:15:02Z INFO ing_orders run #6284 started
+L-0324 2026-05-14T19:15:02Z INFO ing_crm_contacts run #5274 started
+L-0325 2026-05-14T19:15:03Z INFO ing_payments run #6408 started
+L-0326 2026-05-14T19:15:23Z INFO ing_ad_spend loaded 3548 rows from landing.ad_spend into raw.ad_spend
+L-0327 2026-05-14T19:15:26Z INFO ing_crm_contacts loaded 5629 rows from landing.crm_contacts into raw.crm_contacts
+L-0328 2026-05-14T19:15:29Z INFO ing_payments 343 late-arriving rows older than 48 h merged into raw.payments
+L-0329 2026-05-14T19:15:35Z INFO ing_payments loaded 16199 rows from landing.payments into raw.payments
+L-0330 2026-05-14T19:15:43Z INFO ing_orders loaded 38977 rows from landing.shop_orders into raw.orders
+L-0331 2026-05-14T19:15:46Z INFO ing_ad_spend run #5879 finished in 46 s, 3502 rows written to raw.ad_spend
+L-0332 2026-05-14T19:15:53Z INFO ing_crm_contacts run #5274 finished in 53 s, 5521 rows written to raw.crm_contacts
+L-0333 2026-05-14T19:16:08Z INFO src_crm_api garbage collection took 13.5 s
+L-0334 2026-05-14T19:16:10Z INFO ing_payments run #6408 finished in 70 s, 16067 rows written to raw.payments
+L-0335 2026-05-14T19:16:26Z INFO ing_orders run #6284 finished in 86 s, 38832 rows written to raw.orders
+L-0336 2026-05-14T19:16:56Z INFO ing_ad_spend 258 late-arriving rows older than 48 h merged into raw.ad_spend
+L-0337 2026-05-14T19:17:13Z INFO stg_orders garbage collection took 16.4 s
+L-0338 2026-05-14T19:19:10Z WARN ing_payments deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0339 2026-05-14T19:19:16Z WARN dim_customers statistics for analytics.dim_customers are stale; running analyze
+L-0340 2026-05-14T19:19:40Z WARN stg_customers deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0341 2026-05-14T19:21:47Z WARN ing_payments slow query on raw.payments: 15.4 s (threshold 10 s)
+L-0342 2026-05-14T19:25:01Z INFO stg_orders run #9716 started
+L-0343 2026-05-14T19:25:01Z INFO stg_payments run #5192 started
+L-0344 2026-05-14T19:25:02Z INFO stg_customers run #7366 started
+L-0345 2026-05-14T19:25:20Z INFO ing_orders heartbeat ok, 5 active workers
+L-0346 2026-05-14T19:25:30Z INFO stg_payments 15 data tests passed on staging.payments
+L-0347 2026-05-14T19:25:33Z INFO stg_customers 6 data tests passed on staging.customers
+L-0348 2026-05-14T19:25:38Z INFO stg_orders 5 data tests passed on staging.orders
+L-0349 2026-05-14T19:26:01Z INFO stg_payments run #5192 finished in 61 s, 15830 rows written to staging.payments
+L-0350 2026-05-14T19:26:07Z INFO stg_customers run #7366 finished in 67 s, 11652 rows written to staging.customers
+L-0351 2026-05-14T19:26:16Z INFO stg_orders run #9716 finished in 76 s, 39775 rows written to staging.orders
+L-0352 2026-05-14T19:28:01Z WARN fct_orders statistics for analytics.fct_orders are stale; running analyze
+L-0353 2026-05-14T19:32:01Z INFO dim_customers run #6542 started
+L-0354 2026-05-14T19:33:05Z INFO dim_customers run #6542 finished in 65 s, 12143 rows written to analytics.dim_customers
+L-0355 2026-05-14T19:34:24Z WARN stg_payments statistics for staging.payments are stale; running analyze
+L-0356 2026-05-14T19:34:31Z INFO ing_ad_spend 674 late-arriving rows older than 48 h merged into raw.ad_spend
+L-0357 2026-05-14T19:35:01Z INFO fct_orders run #2230 started
+L-0358 2026-05-14T19:36:20Z INFO fct_orders 16 data tests passed on analytics.fct_orders
+L-0359 2026-05-14T19:37:32Z INFO dim_customers heartbeat ok, 5 active workers
+L-0360 2026-05-14T19:37:41Z INFO fct_orders run #2230 finished in 161 s, 39435 rows written to analytics.fct_orders
+L-0361 2026-05-14T19:40:40Z INFO fct_orders connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0362 2026-05-14T19:44:56Z INFO stg_orders connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0363 2026-05-14T19:45:02Z INFO mart_customer_ltv run #8460 started
+L-0364 2026-05-14T19:46:42Z INFO stg_payments schema cache refreshed (244 tables)
+L-0365 2026-05-14T19:47:07Z INFO fct_orders 341 late-arriving rows older than 48 h merged into analytics.fct_orders
+L-0366 2026-05-14T19:47:36Z WARN stg_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0367 2026-05-14T19:48:06Z WARN mart_customer_ltv memory at 97% of the 8 GiB limit while joining analytics.fct_orders, analytics.dim_customers
+L-0368 2026-05-14T19:48:34Z INFO fct_orders garbage collection took 17.3 s

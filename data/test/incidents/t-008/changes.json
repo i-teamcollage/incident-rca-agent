@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-3326",
+    "time": "2026-03-05T16:35:00Z",
+    "kind": "config",
+    "target": "fct_marketing_spend",
+    "author": "marketing-data",
+    "summary": "config v5: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-3327",
+    "time": "2026-03-06T10:50:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Carrier on-time rate' published"
+  },
+  {
+    "id": "CHG-3328",
+    "time": "2026-03-07T15:51:00Z",
+    "kind": "deploy",
+    "target": "mart_customer_ltv",
+    "author": "analytics-eng",
+    "summary": "deploy mart_customer_ltv v4.11.3: documents marts.customer_ltv"
+  },
+  {
+    "id": "CHG-3329",
+    "time": "2026-03-08T11:39:00Z",
+    "kind": "deploy",
+    "target": "src_events_stream",
+    "author": "data-platform",
+    "summary": "deploy src_events_stream v1.4.2: adds column gift_wrap"
+  },
+  {
+    "id": "CHG-3330",
+    "time": "2026-03-08T12:19:00Z",
+    "kind": "deploy",
+    "target": "ing_orders",
+    "author": "data-platform",
+    "summary": "deploy ing_orders v4.5.9: renames an internal macro"
+  },
+  {
+    "id": "CHG-3331",
+    "time": "2026-03-08T21:57:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Campaign spend pacing' published"
+  },
+  {
+    "id": "CHG-3332",
+    "time": "2026-03-09T20:04:00Z",
+    "kind": "deploy",
+    "target": "ing_payments",
+    "author": "data-platform",
+    "summary": "deploy ing_payments v2.12.3: adds column coupon_code"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "CHG-3595",
+    "time": "2026-06-26T03:56:00Z",
+    "kind": "infra",
+    "target": "warehouse.internal",
+    "author": "sre",
+    "summary": "minor version upgrade during the maintenance window"
+  },
+  {
+    "id": "CHG-3596",
+    "time": "2026-06-28T20:29:00Z",
+    "kind": "infra",
+    "target": "warehouse.internal",
+    "author": "sre",
+    "summary": "minor version upgrade during the maintenance window"
+  },
+  {
+    "id": "CHG-3597",
+    "time": "2026-06-29T19:25:00Z",
+    "kind": "config",
+    "target": "src_shop_db",
+    "author": "data-platform",
+    "summary": "config v12: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-3598",
+    "time": "2026-07-01T01:40:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-3599",
+    "time": "2026-07-01T03:00:00Z",
+    "kind": "notice",
+    "target": "src_ads_api",
+    "author": "data-platform",
+    "summary": "ad platform notice: reports for 2026-07-02 may be published up to 3 hours late; read by src_ads_api"
+  },
+  {
+    "id": "CHG-3600",
+    "time": "2026-07-01T06:53:00Z",
+    "kind": "infra",
+    "target": "scheduler",
+    "author": "sre",
+    "summary": "scheduler upgraded to the next patch release"
+  }
+]

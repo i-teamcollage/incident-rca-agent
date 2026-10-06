@@ -1,0 +1,50 @@
+[
+  {
+    "id": "CHG-7850",
+    "time": "2026-03-09T12:57:00Z",
+    "kind": "config",
+    "target": "fct_shipments",
+    "author": "analytics-eng",
+    "summary": "config v20: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-7851",
+    "time": "2026-03-09T17:48:00Z",
+    "kind": "deploy",
+    "target": "src_crm_api",
+    "author": "data-platform",
+    "summary": "deploy src_crm_api v1.10.0: updates the tests for landing.crm_contacts"
+  },
+  {
+    "id": "CHG-7852",
+    "time": "2026-03-10T15:32:00Z",
+    "kind": "config",
+    "target": "stg_customers",
+    "author": "analytics-eng",
+    "summary": "config v9: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-7853",
+    "time": "2026-03-13T22:24:00Z",
+    "kind": "deploy",
+    "target": "ing_ad_spend",
+    "author": "marketing-data",
+    "summary": "deploy ing_ad_spend v2.5.9: updates the tests for raw.ad_spend"
+  },
+  {
+    "id": "CHG-7854",
+    "time": "2026-03-14T04:51:00Z",
+    "kind": "deploy",
+    "target": "src_partner_sftp",
+    "author": "data-platform",
+    "summary": "deploy src_partner_sftp v3.3.4: speeds up the merge step"
+  },
+  {
+    "id": "CHG-7855",
+    "time": "2026-03-15T08:56:00Z",
+    "kind": "deploy",
+    "target": "fct_marketing_spend",
+    "author": "marketing-data",
+    "summary": "deploy fct_marketing_spend v4.3.2: documents analytics.fct_marketing_spend"
+  }
+]

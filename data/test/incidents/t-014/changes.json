@@ -1,0 +1,66 @@
+[
+  {
+    "id": "CHG-3860",
+    "time": "2026-08-30T05:45:00Z",
+    "kind": "config",
+    "target": "exp_finance_ledger",
+    "author": "finance-data",
+    "summary": "config v14: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-3861",
+    "time": "2026-08-31T08:28:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Weekly cohort retention' published"
+  },
+  {
+    "id": "CHG-3862",
+    "time": "2026-08-31T19:12:00Z",
+    "kind": "deploy",
+    "target": "fct_orders",
+    "author": "analytics-eng",
+    "summary": "deploy fct_orders v3.9.9: updates the tests for analytics.fct_orders"
+  },
+  {
+    "id": "CHG-3863",
+    "time": "2026-09-01T00:22:00Z",
+    "kind": "deploy",
+    "target": "fct_shipments",
+    "author": "analytics-eng",
+    "summary": "deploy fct_shipments v1.1.6: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-3864",
+    "time": "2026-09-01T13:02:00Z",
+    "kind": "config",
+    "target": "fct_sessions",
+    "author": "marketing-data",
+    "summary": "config v16: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-3865",
+    "time": "2026-09-02T01:10:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Weekly cohort retention' published"
+  },
+  {
+    "id": "CHG-3866",
+    "time": "2026-09-05T02:53:00Z",
+    "kind": "deploy",
+    "target": "mart_customer_ltv",
+    "author": "analytics-eng",
+    "summary": "deploy mart_customer_ltv v4.12.2: documents marts.customer_ltv"
+  },
+  {
+    "id": "CHG-3867",
+    "time": "2026-09-05T08:08:00Z",
+    "kind": "config",
+    "target": "src_ads_api",
+    "author": "marketing-data",
+    "summary": "config v5: retries for api.ads.example changed from 3 to 8"
+  }
+]

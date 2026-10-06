@@ -1,0 +1,82 @@
+[
+  {
+    "id": "CHG-3358",
+    "time": "2026-07-22T14:01:00Z",
+    "kind": "config",
+    "target": "src_ads_api",
+    "author": "marketing-data",
+    "summary": "config v16: alert_channel changed from #data-alerts to #data-oncall"
+  },
+  {
+    "id": "CHG-3359",
+    "time": "2026-07-24T11:11:00Z",
+    "kind": "deploy",
+    "target": "src_crm_api",
+    "author": "data-platform",
+    "summary": "deploy src_crm_api v4.6.0: speeds up the merge step"
+  },
+  {
+    "id": "CHG-3360",
+    "time": "2026-07-24T20:48:00Z",
+    "kind": "config",
+    "target": "mart_daily_revenue",
+    "author": "finance-data",
+    "summary": "config v30: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-3361",
+    "time": "2026-07-25T21:27:00Z",
+    "kind": "deploy",
+    "target": "ing_crm_contacts",
+    "author": "data-platform",
+    "summary": "deploy ing_crm_contacts v4.3.2: adds column utm_campaign"
+  },
+  {
+    "id": "CHG-3362",
+    "time": "2026-07-25T22:38:00Z",
+    "kind": "deploy",
+    "target": "fct_sessions",
+    "author": "marketing-data",
+    "summary": "deploy fct_sessions v2.0.6: speeds up the merge step"
+  },
+  {
+    "id": "CHG-3363",
+    "time": "2026-07-25T22:51:00Z",
+    "kind": "infra",
+    "target": "secret-store",
+    "author": "sre",
+    "summary": "audit logging enabled on the secret store"
+  },
+  {
+    "id": "CHG-3364",
+    "time": "2026-07-26T05:05:00Z",
+    "kind": "config",
+    "target": "ing_events",
+    "author": "data-platform",
+    "summary": "config v5: alert_channel changed from #data-alerts to #data-oncall"
+  },
+  {
+    "id": "CHG-3365",
+    "time": "2026-07-27T16:15:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Carrier on-time rate' published"
+  },
+  {
+    "id": "CHG-3366",
+    "time": "2026-07-28T11:27:00Z",
+    "kind": "notice",
+    "target": "ing_ad_spend",
+    "author": "data-platform",
+    "summary": "release notes from the ad platform: field cost renamed to cost_micros in landing.ad_spend, read by ing_ad_spend"
+  },
+  {
+    "id": "CHG-3367",
+    "time": "2026-07-28T12:04:00Z",
+    "kind": "deploy",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "deploy exp_bi_dashboards v3.2.2: adds a not-null test on loyalty_tier"
+  }
+]

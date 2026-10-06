@@ -1,0 +1,9 @@
+{
+  "id": "ALR-1484",
+  "fired_at": "2026-03-11T17:50:00Z",
+  "pipeline": "fct_marketing_spend",
+  "check": "freshness",
+  "severity": "medium",
+  "message": "fct_marketing_spend has not loaded new data since 2026-03-11 14:35 UTC (freshness SLA 3 h)",
+  "window_start": "2026-03-11T11:50:00Z"
+}

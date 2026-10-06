@@ -1,0 +1,74 @@
+[
+  {
+    "id": "CHG-4431",
+    "time": "2026-04-24T03:26:00Z",
+    "kind": "deploy",
+    "target": "mart_daily_revenue",
+    "author": "finance-data",
+    "summary": "deploy mart_daily_revenue v4.5.9: adds column coupon_code"
+  },
+  {
+    "id": "CHG-4432",
+    "time": "2026-04-24T04:47:00Z",
+    "kind": "infra",
+    "target": "scheduler",
+    "author": "sre",
+    "summary": "scheduler upgraded to the next patch release"
+  },
+  {
+    "id": "CHG-4433",
+    "time": "2026-04-24T11:22:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Weekly cohort retention' published"
+  },
+  {
+    "id": "CHG-4434",
+    "time": "2026-04-24T23:18:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-4435",
+    "time": "2026-04-25T01:29:00Z",
+    "kind": "infra",
+    "target": "warehouse.internal",
+    "author": "sre",
+    "summary": "minor version upgrade during the maintenance window"
+  },
+  {
+    "id": "CHG-4436",
+    "time": "2026-04-25T10:33:00Z",
+    "kind": "deploy",
+    "target": "ing_shipments",
+    "author": "data-platform",
+    "summary": "deploy ing_shipments v3.9.6: speeds up the merge step"
+  },
+  {
+    "id": "CHG-4437",
+    "time": "2026-04-26T10:11:00Z",
+    "kind": "config",
+    "target": "src_crm_api",
+    "author": "data-platform",
+    "summary": "config v10: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-4438",
+    "time": "2026-04-26T20:22:00Z",
+    "kind": "infra",
+    "target": "scheduler",
+    "author": "sre",
+    "summary": "scheduler upgraded to the next patch release"
+  },
+  {
+    "id": "CHG-4439",
+    "time": "2026-04-29T14:20:00Z",
+    "kind": "backfill",
+    "target": "src_payments_api",
+    "author": "data-platform",
+    "summary": "backfill of 2025 payments started; it shares the api.payments.example API key with src_payments_api"
+  }
+]

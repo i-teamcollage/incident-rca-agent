@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-7402",
+    "time": "2026-03-24T22:47:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Weekly cohort retention' published"
+  },
+  {
+    "id": "CHG-7403",
+    "time": "2026-03-25T09:27:00Z",
+    "kind": "infra",
+    "target": "worker-pool",
+    "author": "sre",
+    "summary": "worker pool scaled from 6 to 8 nodes"
+  },
+  {
+    "id": "CHG-7404",
+    "time": "2026-03-26T11:39:00Z",
+    "kind": "config",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "config v26: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-7405",
+    "time": "2026-03-26T21:01:00Z",
+    "kind": "infra",
+    "target": "secret-store",
+    "author": "sre",
+    "summary": "audit logging enabled on the secret store"
+  },
+  {
+    "id": "CHG-7406",
+    "time": "2026-03-27T22:57:00Z",
+    "kind": "deploy",
+    "target": "fct_shipments",
+    "author": "analytics-eng",
+    "summary": "deploy fct_shipments v4.5.0: documents analytics.fct_shipments"
+  },
+  {
+    "id": "CHG-7407",
+    "time": "2026-03-28T07:53:00Z",
+    "kind": "config",
+    "target": "fct_marketing_spend",
+    "author": "marketing-data",
+    "summary": "config v10: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-7408",
+    "time": "2026-03-29T00:29:00Z",
+    "kind": "deploy",
+    "target": "mart_marketing_roi",
+    "author": "marketing-data",
+    "summary": "deploy mart_marketing_roi v3.1.8: refactors the incremental filter"
+  }
+]

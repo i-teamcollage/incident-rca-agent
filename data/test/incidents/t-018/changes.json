@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-3171",
+    "time": "2026-05-07T23:12:00Z",
+    "kind": "config",
+    "target": "src_partner_sftp",
+    "author": "data-platform",
+    "summary": "config v22: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-3172",
+    "time": "2026-05-08T06:39:00Z",
+    "kind": "infra",
+    "target": "worker-pool",
+    "author": "sre",
+    "summary": "worker pool scaled from 6 to 8 nodes"
+  },
+  {
+    "id": "CHG-3173",
+    "time": "2026-05-10T06:21:00Z",
+    "kind": "deploy",
+    "target": "stg_payments",
+    "author": "analytics-eng",
+    "summary": "deploy stg_payments v4.10.1: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-3174",
+    "time": "2026-05-11T02:48:00Z",
+    "kind": "deploy",
+    "target": "stg_ad_spend",
+    "author": "marketing-data",
+    "summary": "deploy stg_ad_spend v1.3.4: removes the unused column utm_campaign"
+  },
+  {
+    "id": "CHG-3175",
+    "time": "2026-05-11T10:11:00Z",
+    "kind": "deploy",
+    "target": "ing_payments",
+    "author": "data-platform",
+    "summary": "deploy ing_payments v2.9.1: adds column refund_reason"
+  },
+  {
+    "id": "CHG-3176",
+    "time": "2026-05-13T02:16:00Z",
+    "kind": "deploy",
+    "target": "src_crm_api",
+    "author": "data-platform",
+    "summary": "deploy src_crm_api v1.9.5: renames an internal macro"
+  },
+  {
+    "id": "CHG-3177",
+    "time": "2026-05-14T14:56:00Z",
+    "kind": "backfill",
+    "target": "dim_customers",
+    "author": "analytics-eng",
+    "summary": "backfill of dim_customers for 2026-03 started; mart_customer_ltv will read about 3 times the usual rows"
+  }
+]

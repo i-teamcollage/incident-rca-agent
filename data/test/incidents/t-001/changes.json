@@ -1,0 +1,50 @@
+[
+  {
+    "id": "CHG-3819",
+    "time": "2026-05-21T08:12:00Z",
+    "kind": "config",
+    "target": "ing_events",
+    "author": "data-platform",
+    "summary": "config v20: alert_channel changed from #data-alerts to #data-oncall"
+  },
+  {
+    "id": "CHG-3820",
+    "time": "2026-05-23T08:53:00Z",
+    "kind": "deploy",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "deploy exp_bi_dashboards v2.2.7: renames an internal macro"
+  },
+  {
+    "id": "CHG-3821",
+    "time": "2026-05-24T11:52:00Z",
+    "kind": "config",
+    "target": "stg_shipments",
+    "author": "analytics-eng",
+    "summary": "config v26: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-3822",
+    "time": "2026-05-25T11:32:00Z",
+    "kind": "config",
+    "target": "src_payments_api",
+    "author": "data-platform",
+    "summary": "config v15: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-3823",
+    "time": "2026-05-26T09:23:00Z",
+    "kind": "deploy",
+    "target": "stg_shipments",
+    "author": "analytics-eng",
+    "summary": "deploy stg_shipments v1.10.1: adds a not-null test on basket_size"
+  },
+  {
+    "id": "CHG-3824",
+    "time": "2026-05-27T19:21:00Z",
+    "kind": "config",
+    "target": "fct_orders",
+    "author": "analytics-eng",
+    "summary": "config v35: timezone set to Europe/Berln"
+  }
+]

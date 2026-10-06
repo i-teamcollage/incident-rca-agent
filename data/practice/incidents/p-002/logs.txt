@@ -1,0 +1,296 @@
+L-0001 2025-10-25T23:56:46Z WARN stg_sessions slow query on staging.sessions: 15.3 s (threshold 10 s)
+L-0002 2025-10-26T00:03:02Z WARN src_events_stream statistics for landing.events are stale; running analyze
+L-0003 2025-10-26T00:04:10Z INFO ing_orders 663 late-arriving rows older than 48 h merged into raw.orders
+L-0004 2025-10-26T00:05:01Z INFO src_shop_db run #7638 started
+L-0005 2025-10-26T00:05:01Z INFO src_events_stream run #3082 started
+L-0006 2025-10-26T00:05:02Z INFO src_payments_api run #1709 started
+L-0007 2025-10-26T00:05:02Z INFO src_ads_api run #6699 started
+L-0008 2025-10-26T00:05:47Z INFO src_ads_api run #6699 finished in 47 s, 1412 rows written to landing.ad_spend
+L-0009 2025-10-26T00:05:49Z INFO src_events_stream consumed 210163 messages from topic web-events
+L-0010 2025-10-26T00:06:01Z INFO src_payments_api run #1709 finished in 61 s, 6539 rows written to landing.payments
+L-0011 2025-10-26T00:06:29Z INFO src_shop_db run #7638 finished in 89 s, 17124 rows written to landing.shop_orders
+L-0012 2025-10-26T00:06:39Z INFO src_events_stream run #3082 finished in 99 s, 210163 rows written to landing.events
+L-0013 2025-10-26T00:14:17Z WARN stg_orders statistics for staging.orders are stale; running analyze
+L-0014 2025-10-26T00:15:01Z INFO ing_orders run #4788 started
+L-0015 2025-10-26T00:15:01Z INFO ing_ad_spend run #1862 started
+L-0016 2025-10-26T00:15:02Z INFO ing_payments run #6628 started
+L-0017 2025-10-26T00:15:03Z INFO ing_events run #5345 started
+L-0018 2025-10-26T00:15:27Z INFO ing_payments loaded 6388 rows from landing.payments into raw.payments
+L-0019 2025-10-26T00:15:34Z INFO ing_ad_spend run #1862 finished in 34 s, 1381 rows written to raw.ad_spend
+L-0020 2025-10-26T00:15:37Z INFO ing_orders loaded 16233 rows from landing.shop_orders into raw.orders
+L-0021 2025-10-26T00:15:54Z INFO ing_payments run #6628 finished in 54 s, 6293 rows written to raw.payments
+L-0022 2025-10-26T00:16:15Z INFO ing_orders run #4788 finished in 75 s, 16053 rows written to raw.orders
+L-0023 2025-10-26T00:17:07Z INFO ing_events run #5345 finished in 127 s, 225894 rows written to raw.events
+L-0024 2025-10-26T00:25:01Z INFO stg_orders run #8962 started
+L-0025 2025-10-26T00:25:01Z INFO stg_payments run #4936 started
+L-0026 2025-10-26T00:25:01Z INFO stg_ad_spend run #3896 started
+L-0027 2025-10-26T00:25:02Z INFO stg_sessions run #3141 started
+L-0028 2025-10-26T00:25:23Z INFO stg_payments 16 data tests passed on staging.payments
+L-0029 2025-10-26T00:25:31Z INFO stg_orders 14 data tests passed on staging.orders
+L-0030 2025-10-26T00:25:31Z INFO stg_ad_spend run #3896 finished in 31 s, 1265 rows written to staging.ad_spend
+L-0031 2025-10-26T00:25:47Z INFO stg_payments run #4936 finished in 47 s, 6204 rows written to staging.payments
+L-0032 2025-10-26T00:26:02Z INFO stg_orders run #8962 finished in 62 s, 16578 rows written to staging.orders
+L-0033 2025-10-26T00:27:14Z INFO stg_sessions run #3141 finished in 134 s, 29726 rows written to staging.sessions
+L-0034 2025-10-26T00:27:52Z WARN src_events_stream deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0035 2025-10-26T00:27:53Z INFO stg_payments 104 late-arriving rows older than 48 h merged into staging.payments
+L-0036 2025-10-26T00:35:01Z INFO fct_orders run #3318 started
+L-0037 2025-10-26T00:35:02Z INFO fct_marketing_spend run #5784 started
+L-0038 2025-10-26T00:35:02Z INFO fct_sessions run #7892 started
+L-0039 2025-10-26T00:35:36Z INFO fct_marketing_spend run #5784 finished in 36 s, 1299 rows written to analytics.fct_marketing_spend
+L-0040 2025-10-26T00:36:56Z INFO fct_orders run #3318 finished in 116 s, 16186 rows written to analytics.fct_orders
+L-0041 2025-10-26T00:37:33Z INFO fct_sessions run #7892 finished in 153 s, 27724 rows written to analytics.fct_sessions
+L-0042 2025-10-26T00:45:02Z INFO mart_marketing_roi run #5088 started
+L-0043 2025-10-26T00:45:43Z INFO mart_marketing_roi run #5088 finished in 43 s, 329 rows written to marts.marketing_roi
+L-0044 2025-10-26T00:51:45Z WARN src_shop_db statistics for landing.shop_orders are stale; running analyze
+L-0045 2025-10-26T01:05:01Z INFO src_events_stream run #3083 started
+L-0046 2025-10-26T01:05:02Z INFO src_shop_db run #7639 started
+L-0047 2025-10-26T01:05:02Z INFO src_payments_api run #1710 started
+L-0048 2025-10-26T01:05:03Z INFO src_ads_api run #6700 started
+L-0049 2025-10-26T01:05:20Z INFO src_ads_api fetched 1135 records from api.ads.example in 2 pages
+L-0050 2025-10-26T01:05:40Z INFO src_ads_api run #6700 finished in 40 s, 1135 rows written to landing.ad_spend
+L-0051 2025-10-26T01:06:03Z INFO src_payments_api run #1710 finished in 63 s, 5475 rows written to landing.payments
+L-0052 2025-10-26T01:06:26Z INFO src_shop_db run #7639 finished in 86 s, 12883 rows written to landing.shop_orders
+L-0053 2025-10-26T01:06:34Z INFO ing_orders garbage collection took 11.7 s
+L-0054 2025-10-26T01:06:43Z INFO src_events_stream run #3083 finished in 103 s, 184246 rows written to landing.events
+L-0055 2025-10-26T01:08:47Z WARN ing_events slow query on raw.events: 15.2 s (threshold 10 s)
+L-0056 2025-10-26T01:15:01Z INFO ing_events run #5346 started
+L-0057 2025-10-26T01:15:03Z INFO ing_orders run #4789 started
+L-0058 2025-10-26T01:15:03Z INFO ing_payments run #6629 started
+L-0059 2025-10-26T01:15:03Z INFO ing_ad_spend run #1863 started
+L-0060 2025-10-26T01:15:36Z INFO stg_sessions 898 late-arriving rows older than 48 h merged into staging.sessions
+L-0061 2025-10-26T01:15:37Z INFO ing_ad_spend run #1863 finished in 37 s, 1100 rows written to raw.ad_spend
+L-0062 2025-10-26T01:15:53Z INFO ing_payments run #6629 finished in 53 s, 5528 rows written to raw.payments
+L-0063 2025-10-26T01:16:05Z INFO ing_events loaded 176794 rows from landing.events into raw.events
+L-0064 2025-10-26T01:16:11Z INFO ing_orders run #4789 finished in 71 s, 13054 rows written to raw.orders
+L-0065 2025-10-26T01:17:10Z INFO ing_events run #5346 finished in 130 s, 174887 rows written to raw.events
+L-0066 2025-10-26T01:23:46Z INFO fct_marketing_spend schema cache refreshed (218 tables)
+L-0067 2025-10-26T01:23:50Z INFO stg_payments heartbeat ok, 4 active workers
+L-0068 2025-10-26T01:25:02Z INFO stg_orders run #8963 started
+L-0069 2025-10-26T01:25:02Z INFO stg_payments run #4937 started
+L-0070 2025-10-26T01:25:02Z INFO stg_ad_spend run #3897 started
+L-0071 2025-10-26T01:25:02Z INFO stg_sessions run #3142 started
+L-0072 2025-10-26T01:25:15Z INFO stg_ad_spend 14 data tests passed on staging.ad_spend
+L-0073 2025-10-26T01:25:31Z INFO stg_ad_spend run #3897 finished in 31 s, 1101 rows written to staging.ad_spend
+L-0074 2025-10-26T01:25:51Z INFO stg_payments run #4937 finished in 51 s, 5294 rows written to staging.payments
+L-0075 2025-10-26T01:25:56Z INFO stg_orders run #8963 finished in 56 s, 13081 rows written to staging.orders
+L-0076 2025-10-26T01:27:29Z INFO stg_sessions run #3142 finished in 149 s, 23321 rows written to staging.sessions
+L-0077 2025-10-26T01:27:49Z INFO ing_payments connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0078 2025-10-26T01:27:52Z INFO ing_payments schema cache refreshed (259 tables)
+L-0079 2025-10-26T01:28:56Z INFO src_shop_db heartbeat ok, 9 active workers
+L-0080 2025-10-26T01:32:04Z WARN ing_payments deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0081 2025-10-26T01:35:01Z INFO fct_sessions run #7893 started
+L-0082 2025-10-26T01:35:02Z WARN fct_sessions AmbiguousTimeError: 2025-10-26 02:00:00 is ambiguous in Europe/Berlin; both occurrences written to partition 2025-10-26 02
+L-0083 2025-10-26T01:35:03Z INFO fct_orders run #3319 started
+L-0084 2025-10-26T01:35:03Z INFO fct_marketing_spend run #5785 started
+L-0085 2025-10-26T01:35:12Z ERROR fct_sessions completeness test failed: local hour 02 of 2025-10-26 has 2 partitions, expected 1
+L-0086 2025-10-26T01:35:14Z ERROR fct_sessions run #7893 failed after 14 s: data test failed
+L-0087 2025-10-26T01:35:17Z INFO fct_marketing_spend 9 data tests passed on analytics.fct_marketing_spend
+L-0088 2025-10-26T01:35:34Z INFO fct_marketing_spend run #5785 finished in 34 s, 1074 rows written to analytics.fct_marketing_spend
+L-0089 2025-10-26T01:35:54Z INFO stg_orders 162 late-arriving rows older than 48 h merged into staging.orders
+L-0090 2025-10-26T01:36:53Z INFO fct_orders run #3319 finished in 113 s, 13399 rows written to analytics.fct_orders
+L-0091 2025-10-26T01:41:18Z INFO fct_sessions garbage collection took 17.6 s
+L-0092 2025-10-26T01:43:27Z WARN ing_orders slow query on raw.orders: 18.1 s (threshold 10 s)
+L-0093 2025-10-26T01:43:57Z WARN src_ads_api statistics for landing.ad_spend are stale; running analyze
+L-0094 2025-10-26T01:45:01Z WARN mart_marketing_roi upstream fct_sessions has no new data since 00:35; skipping run #5089
+L-0095 2025-10-26T01:55:34Z WARN fct_marketing_spend statistics for analytics.fct_marketing_spend are stale; running analyze
+L-0096 2025-10-26T02:03:21Z INFO ing_orders schema cache refreshed (194 tables)
+L-0097 2025-10-26T02:05:01Z INFO src_shop_db run #7640 started
+L-0098 2025-10-26T02:05:01Z INFO src_payments_api run #1711 started
+L-0099 2025-10-26T02:05:02Z INFO src_ads_api run #6701 started
+L-0100 2025-10-26T02:05:02Z INFO src_events_stream run #3084 started
+L-0101 2025-10-26T02:05:40Z INFO src_shop_db extracted 12480 rows from shopdb-replica.internal
+L-0102 2025-10-26T02:05:44Z INFO src_ads_api run #6701 finished in 44 s, 980 rows written to landing.ad_spend
+L-0103 2025-10-26T02:05:50Z INFO src_events_stream consumed 156067 messages from topic web-events
+L-0104 2025-10-26T02:06:03Z INFO src_payments_api run #1711 finished in 63 s, 4764 rows written to landing.payments
+L-0105 2025-10-26T02:06:21Z INFO src_shop_db run #7640 finished in 81 s, 12480 rows written to landing.shop_orders
+L-0106 2025-10-26T02:06:40Z INFO src_events_stream run #3084 finished in 100 s, 156067 rows written to landing.events
+L-0107 2025-10-26T02:10:59Z INFO ing_ad_spend connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0108 2025-10-26T02:15:01Z INFO ing_orders run #4790 started
+L-0109 2025-10-26T02:15:03Z INFO ing_payments run #6630 started
+L-0110 2025-10-26T02:15:03Z INFO ing_ad_spend run #1864 started
+L-0111 2025-10-26T02:15:03Z INFO ing_events run #5347 started
+L-0112 2025-10-26T02:15:25Z INFO ing_payments loaded 4670 rows from landing.payments into raw.payments
+L-0113 2025-10-26T02:15:34Z INFO ing_ad_spend run #1864 finished in 34 s, 957 rows written to raw.ad_spend
+L-0114 2025-10-26T02:15:51Z INFO ing_payments run #6630 finished in 51 s, 4660 rows written to raw.payments
+L-0115 2025-10-26T02:16:04Z INFO ing_orders run #4790 finished in 64 s, 11654 rows written to raw.orders
+L-0116 2025-10-26T02:17:05Z INFO ing_events run #5347 finished in 125 s, 165325 rows written to raw.events
+L-0117 2025-10-26T02:19:37Z INFO stg_sessions 67 late-arriving rows older than 48 h merged into staging.sessions
+L-0118 2025-10-26T02:25:01Z INFO stg_orders run #8964 started
+L-0119 2025-10-26T02:25:02Z INFO stg_payments run #4938 started
+L-0120 2025-10-26T02:25:02Z INFO stg_ad_spend run #3898 started
+L-0121 2025-10-26T02:25:03Z INFO stg_sessions run #3143 started
+L-0122 2025-10-26T02:25:15Z INFO stg_ad_spend 17 data tests passed on staging.ad_spend
+L-0123 2025-10-26T02:25:25Z INFO stg_payments 14 data tests passed on staging.payments
+L-0124 2025-10-26T02:25:31Z INFO stg_ad_spend run #3898 finished in 31 s, 976 rows written to staging.ad_spend
+L-0125 2025-10-26T02:25:50Z INFO stg_payments run #4938 finished in 50 s, 4579 rows written to staging.payments
+L-0126 2025-10-26T02:25:56Z INFO stg_orders run #8964 finished in 56 s, 12216 rows written to staging.orders
+L-0127 2025-10-26T02:26:10Z INFO stg_sessions 14 data tests passed on staging.sessions
+L-0128 2025-10-26T02:26:38Z WARN fct_orders deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0129 2025-10-26T02:27:21Z INFO stg_sessions run #3143 finished in 141 s, 21288 rows written to staging.sessions
+L-0130 2025-10-26T02:31:38Z WARN ing_payments deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0131 2025-10-26T02:35:02Z INFO fct_orders run #3320 started
+L-0132 2025-10-26T02:35:02Z INFO fct_sessions run #7894 started
+L-0133 2025-10-26T02:35:03Z INFO fct_marketing_spend run #5786 started
+L-0134 2025-10-26T02:35:12Z ERROR fct_sessions completeness test failed: local hour 02 of 2025-10-26 has 2 partitions, expected 1
+L-0135 2025-10-26T02:35:14Z ERROR fct_sessions run #7894 failed after 14 s: data test failed
+L-0136 2025-10-26T02:35:26Z INFO ing_payments heartbeat ok, 7 active workers
+L-0137 2025-10-26T02:35:34Z INFO fct_marketing_spend run #5786 finished in 34 s, 881 rows written to analytics.fct_marketing_spend
+L-0138 2025-10-26T02:35:55Z INFO fct_orders 13 data tests passed on analytics.fct_orders
+L-0139 2025-10-26T02:36:23Z INFO fct_sessions 168 late-arriving rows older than 48 h merged into analytics.fct_sessions
+L-0140 2025-10-26T02:36:50Z INFO fct_orders run #3320 finished in 110 s, 11184 rows written to analytics.fct_orders
+L-0141 2025-10-26T02:44:54Z WARN mart_marketing_roi slow query on marts.marketing_roi: 14.8 s (threshold 10 s)
+L-0142 2025-10-26T02:45:01Z WARN mart_marketing_roi upstream fct_sessions has no new data since 00:35; skipping run #5090
+L-0143 2025-10-26T02:45:16Z INFO src_ads_api heartbeat ok, 8 active workers
+L-0144 2025-10-26T02:52:58Z WARN src_shop_db statistics for landing.shop_orders are stale; running analyze
+L-0145 2025-10-26T02:54:05Z WARN ing_events slow query on raw.events: 19.7 s (threshold 10 s)
+L-0146 2025-10-26T03:02:11Z INFO src_events_stream schema cache refreshed (230 tables)
+L-0147 2025-10-26T03:05:01Z INFO src_payments_api run #1712 started
+L-0148 2025-10-26T03:05:02Z INFO src_shop_db run #7641 started
+L-0149 2025-10-26T03:05:02Z INFO src_ads_api run #6702 started
+L-0150 2025-10-26T03:05:02Z INFO src_events_stream run #3085 started
+L-0151 2025-10-26T03:05:29Z INFO src_payments_api fetched 4612 records from api.payments.example in 9 pages
+L-0152 2025-10-26T03:05:38Z INFO src_shop_db extracted 11916 rows from shopdb-replica.internal
+L-0153 2025-10-26T03:05:43Z INFO src_ads_api run #6702 finished in 43 s, 919 rows written to landing.ad_spend
+L-0154 2025-10-26T03:05:59Z INFO src_payments_api run #1712 finished in 59 s, 4612 rows written to landing.payments
+L-0155 2025-10-26T03:06:16Z INFO src_shop_db run #7641 finished in 76 s, 11916 rows written to landing.shop_orders
+L-0156 2025-10-26T03:06:38Z INFO ing_ad_spend garbage collection took 11.6 s
+L-0157 2025-10-26T03:06:45Z INFO src_events_stream run #3085 finished in 105 s, 150297 rows written to landing.events
+L-0158 2025-10-26T03:13:23Z WARN ing_orders statistics for raw.orders are stale; running analyze
+L-0159 2025-10-26T03:15:01Z INFO ing_payments run #6631 started
+L-0160 2025-10-26T03:15:01Z INFO ing_ad_spend run #1865 started
+L-0161 2025-10-26T03:15:01Z INFO ing_events run #5348 started
+L-0162 2025-10-26T03:15:02Z INFO ing_orders run #4791 started
+L-0163 2025-10-26T03:15:10Z WARN src_shop_db statistics for landing.shop_orders are stale; running analyze
+L-0164 2025-10-26T03:15:31Z INFO ing_orders loaded 11433 rows from landing.shop_orders into raw.orders
+L-0165 2025-10-26T03:15:34Z INFO ing_ad_spend run #1865 finished in 34 s, 919 rows written to raw.ad_spend
+L-0166 2025-10-26T03:15:50Z INFO ing_payments run #6631 finished in 50 s, 4424 rows written to raw.payments
+L-0167 2025-10-26T03:16:02Z INFO ing_orders run #4791 finished in 62 s, 11362 rows written to raw.orders
+L-0168 2025-10-26T03:16:06Z INFO ing_events loaded 155930 rows from landing.events into raw.events
+L-0169 2025-10-26T03:17:13Z INFO ing_events run #5348 finished in 133 s, 153788 rows written to raw.events
+L-0170 2025-10-26T03:25:01Z INFO stg_payments run #4939 started
+L-0171 2025-10-26T03:25:01Z INFO stg_sessions run #3144 started
+L-0172 2025-10-26T03:25:03Z INFO stg_orders run #8965 started
+L-0173 2025-10-26T03:25:03Z INFO stg_ad_spend run #3899 started
+L-0174 2025-10-26T03:25:25Z INFO stg_payments 15 data tests passed on staging.payments
+L-0175 2025-10-26T03:25:28Z INFO stg_ad_spend run #3899 finished in 28 s, 867 rows written to staging.ad_spend
+L-0176 2025-10-26T03:25:30Z INFO stg_orders 4 data tests passed on staging.orders
+L-0177 2025-10-26T03:25:50Z INFO stg_payments run #4939 finished in 50 s, 4598 rows written to staging.payments
+L-0178 2025-10-26T03:26:00Z INFO stg_orders run #8965 finished in 60 s, 11187 rows written to staging.orders
+L-0179 2025-10-26T03:26:10Z INFO stg_sessions 17 data tests passed on staging.sessions
+L-0180 2025-10-26T03:27:20Z INFO stg_sessions run #3144 finished in 140 s, 20347 rows written to staging.sessions
+L-0181 2025-10-26T03:35:01Z INFO fct_orders run #3321 started
+L-0182 2025-10-26T03:35:01Z INFO fct_marketing_spend run #5787 started
+L-0183 2025-10-26T03:35:02Z INFO fct_sessions run #7895 started
+L-0184 2025-10-26T03:35:10Z ERROR fct_sessions completeness test failed: local hour 02 of 2025-10-26 has 2 partitions, expected 1
+L-0185 2025-10-26T03:35:12Z ERROR fct_sessions run #7895 failed after 12 s: data test failed
+L-0186 2025-10-26T03:35:32Z INFO fct_marketing_spend run #5787 finished in 32 s, 832 rows written to analytics.fct_marketing_spend
+L-0187 2025-10-26T03:36:03Z INFO fct_orders 12 data tests passed on analytics.fct_orders
+L-0188 2025-10-26T03:37:06Z INFO fct_orders run #3321 finished in 126 s, 11131 rows written to analytics.fct_orders
+L-0189 2025-10-26T03:42:45Z WARN fct_orders statistics for analytics.fct_orders are stale; running analyze
+L-0190 2025-10-26T03:44:25Z WARN src_shop_db statistics for landing.shop_orders are stale; running analyze
+L-0191 2025-10-26T03:44:54Z INFO stg_ad_spend garbage collection took 16.4 s
+L-0192 2025-10-26T03:44:55Z INFO src_events_stream connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0193 2025-10-26T03:45:01Z WARN mart_marketing_roi upstream fct_sessions has no new data since 00:35; skipping run #5091
+L-0194 2025-10-26T03:48:35Z INFO stg_orders heartbeat ok, 7 active workers
+L-0195 2025-10-26T03:51:05Z INFO stg_payments heartbeat ok, 12 active workers
+L-0196 2025-10-26T03:52:36Z INFO ing_events connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0197 2025-10-26T03:54:09Z INFO src_shop_db heartbeat ok, 12 active workers
+L-0198 2025-10-26T03:59:04Z INFO src_events_stream garbage collection took 15.7 s
+L-0199 2025-10-26T04:01:51Z INFO ing_ad_spend connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0200 2025-10-26T04:02:16Z INFO ing_events garbage collection took 12.0 s
+L-0201 2025-10-26T04:05:02Z INFO src_shop_db run #7642 started
+L-0202 2025-10-26T04:05:02Z INFO src_payments_api run #1713 started
+L-0203 2025-10-26T04:05:03Z INFO src_ads_api run #6703 started
+L-0204 2025-10-26T04:05:03Z INFO src_events_stream run #3086 started
+L-0205 2025-10-26T04:05:19Z INFO src_ads_api fetched 1032 records from api.ads.example in 2 pages
+L-0206 2025-10-26T04:05:28Z INFO src_payments_api fetched 4894 records from api.payments.example in 9 pages
+L-0207 2025-10-26T04:05:39Z INFO src_ads_api run #6703 finished in 39 s, 1032 rows written to landing.ad_spend
+L-0208 2025-10-26T04:05:52Z INFO src_events_stream consumed 157230 messages from topic web-events
+L-0209 2025-10-26T04:05:57Z INFO src_payments_api run #1713 finished in 57 s, 4894 rows written to landing.payments
+L-0210 2025-10-26T04:06:24Z INFO src_shop_db run #7642 finished in 84 s, 12065 rows written to landing.shop_orders
+L-0211 2025-10-26T04:06:45Z INFO src_events_stream run #3086 finished in 105 s, 157230 rows written to landing.events
+L-0212 2025-10-26T04:08:41Z INFO ing_orders garbage collection took 17.4 s
+L-0213 2025-10-26T04:10:28Z INFO fct_orders schema cache refreshed (181 tables)
+L-0214 2025-10-26T04:15:01Z INFO ing_payments run #6632 started
+L-0215 2025-10-26T04:15:01Z INFO ing_ad_spend run #1866 started
+L-0216 2025-10-26T04:15:02Z INFO ing_orders run #4792 started
+L-0217 2025-10-26T04:15:03Z INFO ing_events run #5349 started
+L-0218 2025-10-26T04:15:24Z INFO ing_payments loaded 4987 rows from landing.payments into raw.payments
+L-0219 2025-10-26T04:15:28Z ERROR ing_orders connection to warehouse.internal lost during COPY into raw.orders
+L-0220 2025-10-26T04:15:29Z ERROR ing_orders run #4792 failed after 29 s: warehouse connection lost
+L-0221 2025-10-26T04:15:33Z INFO ing_ad_spend run #1866 finished in 33 s, 960 rows written to raw.ad_spend
+L-0222 2025-10-26T04:15:49Z INFO ing_payments run #6632 finished in 49 s, 4942 rows written to raw.payments
+L-0223 2025-10-26T04:15:59Z INFO fct_marketing_spend schema cache refreshed (215 tables)
+L-0224 2025-10-26T04:16:21Z INFO fct_orders 101 late-arriving rows older than 48 h merged into analytics.fct_orders
+L-0225 2025-10-26T04:16:59Z INFO ing_events run #5349 finished in 119 s, 153152 rows written to raw.events
+L-0226 2025-10-26T04:25:01Z WARN stg_orders upstream ing_orders has no new data since 03:15; skipping run #8966
+L-0227 2025-10-26T04:25:01Z INFO stg_sessions run #3145 started
+L-0228 2025-10-26T04:25:02Z INFO stg_payments run #4940 started
+L-0229 2025-10-26T04:25:03Z INFO stg_ad_spend run #3900 started
+L-0230 2025-10-26T04:25:25Z INFO stg_payments 10 data tests passed on staging.payments
+L-0231 2025-10-26T04:25:28Z INFO stg_ad_spend run #3900 finished in 28 s, 922 rows written to staging.ad_spend
+L-0232 2025-10-26T04:25:50Z INFO stg_payments run #4940 finished in 50 s, 4542 rows written to staging.payments
+L-0233 2025-10-26T04:27:21Z INFO stg_sessions run #3145 finished in 141 s, 20689 rows written to staging.sessions
+L-0234 2025-10-26T04:35:01Z WARN fct_orders upstream stg_orders has no new data since 03:25; skipping run #3322
+L-0235 2025-10-26T04:35:01Z INFO fct_marketing_spend run #5788 started
+L-0236 2025-10-26T04:35:01Z INFO fct_sessions run #7896 started
+L-0237 2025-10-26T04:35:04Z ERROR fct_sessions completeness test failed: local hour 02 of 2025-10-26 has 2 partitions, expected 1
+L-0238 2025-10-26T04:35:06Z ERROR fct_sessions run #7896 failed after 6 s: data test failed
+L-0239 2025-10-26T04:35:35Z INFO fct_marketing_spend run #5788 finished in 35 s, 919 rows written to analytics.fct_marketing_spend
+L-0240 2025-10-26T04:44:16Z WARN fct_orders slow query on analytics.fct_orders: 15.9 s (threshold 10 s)
+L-0241 2025-10-26T04:45:01Z WARN mart_marketing_roi upstream fct_orders has no new data since 03:35; skipping run #5092
+L-0242 2025-10-26T04:48:51Z INFO fct_sessions heartbeat ok, 8 active workers
+L-0243 2025-10-26T04:54:19Z WARN mart_marketing_roi slow query on marts.marketing_roi: 11.4 s (threshold 10 s)
+L-0244 2025-10-26T05:05:02Z INFO src_ads_api run #6704 started
+L-0245 2025-10-26T05:05:03Z INFO src_shop_db run #7643 started
+L-0246 2025-10-26T05:05:03Z INFO src_payments_api run #1714 started
+L-0247 2025-10-26T05:05:03Z INFO src_events_stream run #3087 started
+L-0248 2025-10-26T05:05:31Z INFO src_payments_api fetched 6271 records from api.payments.example in 12 pages
+L-0249 2025-10-26T05:05:41Z INFO src_ads_api run #6704 finished in 41 s, 1267 rows written to landing.ad_spend
+L-0250 2025-10-26T05:06:02Z INFO src_payments_api run #1714 finished in 62 s, 6271 rows written to landing.payments
+L-0251 2025-10-26T05:06:27Z INFO src_shop_db run #7643 finished in 87 s, 15681 rows written to landing.shop_orders
+L-0252 2025-10-26T05:06:41Z INFO src_events_stream run #3087 finished in 101 s, 191095 rows written to landing.events
+L-0253 2025-10-26T05:11:13Z INFO ing_payments garbage collection took 19.4 s
+L-0254 2025-10-26T05:15:00Z WARN src_ads_api statistics for landing.ad_spend are stale; running analyze
+L-0255 2025-10-26T05:15:02Z INFO ing_orders catching up: processing 2 hours of new data
+L-0256 2025-10-26T05:15:02Z INFO ing_payments run #6633 started
+L-0257 2025-10-26T05:15:02Z INFO ing_ad_spend run #1867 started
+L-0258 2025-10-26T05:15:03Z INFO ing_orders run #4793 started
+L-0259 2025-10-26T05:15:03Z INFO ing_events run #5350 started
+L-0260 2025-10-26T05:15:24Z INFO ing_payments loaded 5722 rows from landing.payments into raw.payments
+L-0261 2025-10-26T05:15:36Z INFO ing_ad_spend run #1867 finished in 36 s, 1200 rows written to raw.ad_spend
+L-0262 2025-10-26T05:15:49Z INFO ing_orders loaded 31640 rows from landing.shop_orders into raw.orders
+L-0263 2025-10-26T05:15:49Z INFO ing_payments run #6633 finished in 49 s, 5717 rows written to raw.payments
+L-0264 2025-10-26T05:16:38Z INFO ing_orders run #4793 finished in 98 s, 31192 rows written to raw.orders
+L-0265 2025-10-26T05:17:01Z INFO ing_events run #5350 finished in 121 s, 202222 rows written to raw.events
+L-0266 2025-10-26T05:20:41Z INFO stg_ad_spend connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0267 2025-10-26T05:21:36Z INFO src_shop_db heartbeat ok, 12 active workers
+L-0268 2025-10-26T05:22:40Z INFO fct_marketing_spend connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0269 2025-10-26T05:24:50Z WARN src_shop_db statistics for landing.shop_orders are stale; running analyze
+L-0270 2025-10-26T05:25:01Z INFO stg_payments run #4941 started
+L-0271 2025-10-26T05:25:02Z INFO stg_orders run #8967 started
+L-0272 2025-10-26T05:25:02Z WARN stg_orders row count 29040 is 2.0x the usual for this hour
+L-0273 2025-10-26T05:25:02Z INFO stg_sessions run #3146 started
+L-0274 2025-10-26T05:25:03Z INFO stg_ad_spend run #3901 started
+L-0275 2025-10-26T05:25:22Z INFO stg_payments 6 data tests passed on staging.payments
+L-0276 2025-10-26T05:25:29Z INFO stg_ad_spend run #3901 finished in 29 s, 1254 rows written to staging.ad_spend
+L-0277 2025-10-26T05:25:45Z INFO stg_payments run #4941 finished in 45 s, 5934 rows written to staging.payments
+L-0278 2025-10-26T05:25:47Z INFO stg_orders 6 data tests passed on staging.orders
+L-0279 2025-10-26T05:26:05Z INFO stg_sessions 13 data tests passed on staging.sessions
+L-0280 2025-10-26T05:26:34Z INFO stg_orders run #8967 finished in 94 s, 29040 rows written to staging.orders
+L-0281 2025-10-26T05:27:11Z INFO stg_sessions run #3146 finished in 131 s, 25056 rows written to staging.sessions
+L-0282 2025-10-26T05:32:57Z INFO ing_events heartbeat ok, 11 active workers
+L-0283 2025-10-26T05:35:01Z INFO fct_marketing_spend run #5789 started
+L-0284 2025-10-26T05:35:01Z INFO fct_sessions run #7897 started
+L-0285 2025-10-26T05:35:02Z INFO fct_orders run #3323 started
+L-0286 2025-10-26T05:35:02Z WARN fct_orders row count 29954 is 2.0x the usual for this hour
+L-0287 2025-10-26T05:35:06Z ERROR fct_sessions completeness test failed: local hour 02 of 2025-10-26 has 2 partitions, expected 1
+L-0288 2025-10-26T05:35:08Z ERROR fct_sessions run #7897 failed after 8 s: data test failed
+L-0289 2025-10-26T05:35:18Z INFO fct_marketing_spend 14 data tests passed on analytics.fct_marketing_spend
+L-0290 2025-10-26T05:35:37Z INFO fct_marketing_spend run #5789 finished in 37 s, 1202 rows written to analytics.fct_marketing_spend
+L-0291 2025-10-26T05:36:37Z INFO fct_orders 15 data tests passed on analytics.fct_orders
+L-0292 2025-10-26T05:37:02Z WARN ing_payments statistics for raw.payments are stale; running analyze
+L-0293 2025-10-26T05:38:15Z INFO fct_orders run #3323 finished in 195 s, 29954 rows written to analytics.fct_orders
+L-0294 2025-10-26T05:42:42Z WARN src_events_stream statistics for landing.events are stale; running analyze
+L-0295 2025-10-26T05:45:01Z WARN mart_marketing_roi upstream fct_sessions has no new data since 00:35; skipping run #5093
+L-0296 2025-10-26T05:45:10Z INFO stg_payments schema cache refreshed (249 tables)

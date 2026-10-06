@@ -1,0 +1,9 @@
+{
+  "id": "ALR-7443",
+  "fired_at": "2026-07-15T21:07:00Z",
+  "pipeline": "src_partner_sftp",
+  "check": "failed_runs",
+  "severity": "medium",
+  "message": "3 consecutive runs of src_partner_sftp failed, the last at 21:05 UTC",
+  "window_start": "2026-07-15T15:07:00Z"
+}

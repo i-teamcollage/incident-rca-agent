@@ -1,0 +1,50 @@
+[
+  {
+    "id": "CHG-7500",
+    "time": "2026-07-28T00:40:00Z",
+    "kind": "deploy",
+    "target": "stg_payments",
+    "author": "analytics-eng",
+    "summary": "deploy stg_payments v4.3.8: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-7501",
+    "time": "2026-07-30T00:29:00Z",
+    "kind": "deploy",
+    "target": "stg_sessions",
+    "author": "marketing-data",
+    "summary": "deploy stg_sessions v2.6.9: adds column refund_reason"
+  },
+  {
+    "id": "CHG-7502",
+    "time": "2026-07-30T05:59:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-7503",
+    "time": "2026-07-30T22:51:00Z",
+    "kind": "deploy",
+    "target": "stg_ad_spend",
+    "author": "marketing-data",
+    "summary": "deploy stg_ad_spend v1.11.6: documents staging.ad_spend"
+  },
+  {
+    "id": "CHG-7504",
+    "time": "2026-07-31T13:56:00Z",
+    "kind": "deploy",
+    "target": "dim_customers",
+    "author": "analytics-eng",
+    "summary": "deploy dim_customers v2.4.2: speeds up the merge step"
+  },
+  {
+    "id": "CHG-7505",
+    "time": "2026-08-01T11:51:00Z",
+    "kind": "config",
+    "target": "ing_crm_contacts",
+    "author": "data-platform",
+    "summary": "config v12: batch_size changed from 5000 to 4000"
+  }
+]

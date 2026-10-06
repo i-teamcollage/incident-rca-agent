@@ -1,0 +1,42 @@
+[
+  {
+    "id": "CHG-5088",
+    "time": "2025-10-21T22:00:00Z",
+    "kind": "deploy",
+    "target": "fct_orders",
+    "author": "analytics-eng",
+    "summary": "deploy fct_orders v2.1.1: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-5089",
+    "time": "2025-10-22T22:04:00Z",
+    "kind": "config",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "config v25: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-5090",
+    "time": "2025-10-23T07:18:00Z",
+    "kind": "deploy",
+    "target": "fct_marketing_spend",
+    "author": "marketing-data",
+    "summary": "deploy fct_marketing_spend v3.1.0: renames an internal macro"
+  },
+  {
+    "id": "CHG-5091",
+    "time": "2025-10-23T08:25:00Z",
+    "kind": "deploy",
+    "target": "stg_customers",
+    "author": "analytics-eng",
+    "summary": "deploy stg_customers v4.5.4: speeds up the merge step"
+  },
+  {
+    "id": "CHG-5092",
+    "time": "2025-10-25T02:50:00Z",
+    "kind": "deploy",
+    "target": "stg_sessions",
+    "author": "marketing-data",
+    "summary": "deploy stg_sessions v4.6.4: adds column vat_rate"
+  }
+]

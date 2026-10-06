@@ -1,0 +1,50 @@
+[
+  {
+    "id": "CHG-7059",
+    "time": "2026-06-24T12:49:00Z",
+    "kind": "deploy",
+    "target": "ing_crm_contacts",
+    "author": "data-platform",
+    "summary": "deploy ing_crm_contacts v1.8.0: adds column coupon_code"
+  },
+  {
+    "id": "CHG-7060",
+    "time": "2026-06-25T17:56:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Campaign spend pacing' published"
+  },
+  {
+    "id": "CHG-7061",
+    "time": "2026-06-26T07:40:00Z",
+    "kind": "deploy",
+    "target": "src_events_stream",
+    "author": "data-platform",
+    "summary": "deploy src_events_stream v1.11.3: speeds up the merge step"
+  },
+  {
+    "id": "CHG-7062",
+    "time": "2026-06-26T14:23:00Z",
+    "kind": "config",
+    "target": "stg_customers",
+    "author": "analytics-eng",
+    "summary": "config v13: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-7063",
+    "time": "2026-06-29T18:26:00Z",
+    "kind": "deploy",
+    "target": "mart_daily_revenue",
+    "author": "finance-data",
+    "summary": "deploy mart_daily_revenue v4.7.6: removes the unused column device_type"
+  },
+  {
+    "id": "CHG-7064",
+    "time": "2026-06-30T10:38:00Z",
+    "kind": "config",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "config v27: batch_size changed from 5000 to 4000"
+  }
+]

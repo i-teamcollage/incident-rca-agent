@@ -1,0 +1,9 @@
+{
+  "id": "ALR-1594",
+  "fired_at": "2026-07-28T13:50:00Z",
+  "pipeline": "mart_customer_ltv",
+  "check": "freshness",
+  "severity": "high",
+  "message": "mart_customer_ltv has not loaded new data since 2026-07-28 09:45 UTC (freshness SLA 4 h)",
+  "window_start": "2026-07-28T07:50:00Z"
+}

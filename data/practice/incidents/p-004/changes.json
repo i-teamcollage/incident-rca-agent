@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-4540",
+    "time": "2026-07-27T19:31:00Z",
+    "kind": "config",
+    "target": "stg_customers",
+    "author": "analytics-eng",
+    "summary": "config v11: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-4541",
+    "time": "2026-07-28T13:42:00Z",
+    "kind": "deploy",
+    "target": "ing_crm_contacts",
+    "author": "data-platform",
+    "summary": "deploy ing_crm_contacts v2.8.7: updates the tests for raw.crm_contacts"
+  },
+  {
+    "id": "CHG-4542",
+    "time": "2026-07-29T02:20:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Weekly cohort retention' published"
+  },
+  {
+    "id": "CHG-4543",
+    "time": "2026-07-31T09:16:00Z",
+    "kind": "deploy",
+    "target": "stg_shipments",
+    "author": "analytics-eng",
+    "summary": "deploy stg_shipments v3.3.4: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-4544",
+    "time": "2026-07-31T11:10:00Z",
+    "kind": "infra",
+    "target": "worker-pool",
+    "author": "sre",
+    "summary": "worker pool scaled from 6 to 8 nodes"
+  },
+  {
+    "id": "CHG-4545",
+    "time": "2026-07-31T15:52:00Z",
+    "kind": "infra",
+    "target": "worker-pool",
+    "author": "sre",
+    "summary": "worker pool scaled from 6 to 8 nodes"
+  },
+  {
+    "id": "CHG-4546",
+    "time": "2026-08-02T13:22:00Z",
+    "kind": "notice",
+    "target": "src_crm_api",
+    "author": "data-platform",
+    "summary": "notice from the api.crm.example provider: hourly quota cut from 6000 to 2400 requests"
+  }
+]

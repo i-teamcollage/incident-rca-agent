@@ -1,0 +1,9 @@
+{
+  "id": "ALR-6052",
+  "fired_at": "2026-03-24T21:57:00Z",
+  "pipeline": "exp_crm_segments",
+  "check": "failed_runs",
+  "severity": "high",
+  "message": "2 consecutive runs of exp_crm_segments failed, the last at 21:55 UTC",
+  "window_start": "2026-03-24T15:57:00Z"
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-7607",
+    "time": "2026-08-25T18:16:00Z",
+    "kind": "config",
+    "target": "src_events_stream",
+    "author": "data-platform",
+    "summary": "config v27: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-7608",
+    "time": "2026-08-26T20:50:00Z",
+    "kind": "deploy",
+    "target": "ing_payments",
+    "author": "data-platform",
+    "summary": "deploy ing_payments v1.6.1: renames an internal macro"
+  },
+  {
+    "id": "CHG-7609",
+    "time": "2026-08-27T00:45:00Z",
+    "kind": "infra",
+    "target": "worker-pool",
+    "author": "sre",
+    "summary": "worker pool scaled from 6 to 8 nodes"
+  },
+  {
+    "id": "CHG-7610",
+    "time": "2026-08-29T00:15:00Z",
+    "kind": "deploy",
+    "target": "stg_ad_spend",
+    "author": "marketing-data",
+    "summary": "deploy stg_ad_spend v1.11.6: renames an internal macro"
+  },
+  {
+    "id": "CHG-7611",
+    "time": "2026-08-29T13:24:00Z",
+    "kind": "config",
+    "target": "stg_customers",
+    "author": "analytics-eng",
+    "summary": "config v28: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-7612",
+    "time": "2026-08-31T09:08:00Z",
+    "kind": "infra",
+    "target": "warehouse.internal",
+    "author": "sre",
+    "summary": "minor version upgrade during the maintenance window"
+  },
+  {
+    "id": "CHG-7613",
+    "time": "2026-09-01T06:01:00Z",
+    "kind": "deploy",
+    "target": "src_partner_sftp",
+    "author": "data-platform",
+    "summary": "deploy src_partner_sftp v3.10.1: speeds up the merge step"
+  }
+]

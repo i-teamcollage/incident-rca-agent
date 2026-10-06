@@ -1,0 +1,50 @@
+[
+  {
+    "id": "CHG-3470",
+    "time": "2026-04-03T13:19:00Z",
+    "kind": "deploy",
+    "target": "ing_crm_contacts",
+    "author": "data-platform",
+    "summary": "deploy ing_crm_contacts v1.12.8: renames an internal macro"
+  },
+  {
+    "id": "CHG-3471",
+    "time": "2026-04-06T13:31:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-3472",
+    "time": "2026-04-07T01:09:00Z",
+    "kind": "infra",
+    "target": "secret-store",
+    "author": "sre",
+    "summary": "audit logging enabled on the secret store"
+  },
+  {
+    "id": "CHG-3473",
+    "time": "2026-04-08T11:39:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-3474",
+    "time": "2026-04-08T19:26:00Z",
+    "kind": "deploy",
+    "target": "mart_customer_ltv",
+    "author": "analytics-eng",
+    "summary": "deploy mart_customer_ltv v3.2.0: updates the tests for marts.customer_ltv"
+  },
+  {
+    "id": "CHG-3475",
+    "time": "2026-04-10T03:29:00Z",
+    "kind": "notice",
+    "target": "ing_events",
+    "author": "data-platform",
+    "summary": "release notes from the web tracking team: field session_id renamed to sid in landing.events, read by ing_events"
+  }
+]

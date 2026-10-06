@@ -1,0 +1,311 @@
+L-0001 2025-10-25T21:51:24Z WARN ing_shipments slow query on raw.shipments: 12.7 s (threshold 10 s)
+L-0002 2025-10-25T21:55:01Z INFO exp_finance_ledger run #5584 started
+L-0003 2025-10-25T21:55:03Z INFO exp_crm_segments run #1483 started
+L-0004 2025-10-25T21:55:14Z INFO exp_finance_ledger delivered 385 rows to sftp.finance.example
+L-0005 2025-10-25T21:55:29Z INFO exp_finance_ledger run #5584 finished in 29 s, 385 rows written to sftp.finance.example:/inbound
+L-0006 2025-10-25T21:55:32Z WARN exp_finance_ledger deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0007 2025-10-25T21:56:08Z INFO exp_crm_segments run #1483 finished in 68 s, 10408 rows written to api.crm.example /v3/segments
+L-0008 2025-10-25T21:56:11Z INFO ing_ad_spend connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0009 2025-10-25T22:03:22Z INFO exp_finance_ledger 524 late-arriving rows older than 48 h merged into marts.daily_revenue
+L-0010 2025-10-25T22:03:55Z INFO fct_sessions 853 late-arriving rows older than 48 h merged into analytics.fct_sessions
+L-0011 2025-10-25T22:05:01Z INFO src_payments_api run #1746 started
+L-0012 2025-10-25T22:05:02Z INFO src_events_stream run #1772 started
+L-0013 2025-10-25T22:05:03Z INFO src_ads_api run #3632 started
+L-0014 2025-10-25T22:05:20Z INFO ing_ad_spend garbage collection took 17.8 s
+L-0015 2025-10-25T22:05:34Z INFO src_payments_api fetched 10690 records from api.payments.example in 21 pages
+L-0016 2025-10-25T22:05:52Z INFO src_ads_api run #3632 finished in 52 s, 2205 rows written to landing.ad_spend
+L-0017 2025-10-25T22:05:55Z INFO src_events_stream consumed 368835 messages from topic web-events
+L-0018 2025-10-25T22:06:08Z INFO src_payments_api run #1746 finished in 68 s, 10690 rows written to landing.payments
+L-0019 2025-10-25T22:06:51Z INFO src_events_stream run #1772 finished in 111 s, 368835 rows written to landing.events
+L-0020 2025-10-25T22:07:45Z WARN exp_crm_segments slow query on marts.customer_ltv: 19.4 s (threshold 10 s)
+L-0021 2025-10-25T22:14:49Z INFO exp_crm_segments schema cache refreshed (240 tables)
+L-0022 2025-10-25T22:15:01Z INFO ing_ad_spend run #2752 started
+L-0023 2025-10-25T22:15:01Z INFO ing_shipments run #2776 started
+L-0024 2025-10-25T22:15:03Z INFO ing_events run #9235 started
+L-0025 2025-10-25T22:15:19Z INFO ing_ad_spend loaded 2330 rows from landing.ad_spend into raw.ad_spend
+L-0026 2025-10-25T22:15:25Z INFO ing_shipments loaded 5403 rows from landing.shipments into raw.shipments
+L-0027 2025-10-25T22:15:38Z INFO ing_ad_spend run #2752 finished in 38 s, 2326 rows written to raw.ad_spend
+L-0028 2025-10-25T22:15:50Z INFO ing_shipments run #2776 finished in 50 s, 5334 rows written to raw.shipments
+L-0029 2025-10-25T22:16:11Z INFO ing_events loaded 353257 rows from landing.events into raw.events
+L-0030 2025-10-25T22:17:23Z INFO ing_events run #9235 finished in 143 s, 352416 rows written to raw.events
+L-0031 2025-10-25T22:17:58Z WARN stg_sessions slow query on staging.sessions: 18.1 s (threshold 10 s)
+L-0032 2025-10-25T22:21:29Z INFO stg_sessions connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0033 2025-10-25T22:22:25Z WARN src_events_stream slow query on landing.events: 15.3 s (threshold 10 s)
+L-0034 2025-10-25T22:23:25Z INFO dim_customers garbage collection took 11.3 s
+L-0035 2025-10-25T22:25:02Z INFO stg_sessions run #7125 started
+L-0036 2025-10-25T22:26:14Z INFO stg_sessions 13 data tests passed on staging.sessions
+L-0037 2025-10-25T22:27:29Z INFO stg_sessions run #7125 finished in 149 s, 46846 rows written to staging.sessions
+L-0038 2025-10-25T22:27:33Z INFO fct_sessions schema cache refreshed (222 tables)
+L-0039 2025-10-25T22:32:03Z INFO dim_customers run #9722 started
+L-0040 2025-10-25T22:32:27Z INFO dim_customers 12 data tests passed on analytics.dim_customers
+L-0041 2025-10-25T22:32:55Z INFO dim_customers run #9722 finished in 55 s, 8089 rows written to analytics.dim_customers
+L-0042 2025-10-25T22:35:01Z INFO fct_sessions run #9009 started
+L-0043 2025-10-25T22:36:30Z INFO fct_sessions 5 data tests passed on analytics.fct_sessions
+L-0044 2025-10-25T22:36:47Z INFO exp_crm_segments heartbeat ok, 5 active workers
+L-0045 2025-10-25T22:37:52Z INFO src_payments_api connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0046 2025-10-25T22:38:01Z INFO fct_sessions run #9009 finished in 181 s, 49265 rows written to analytics.fct_sessions
+L-0047 2025-10-25T22:38:18Z WARN mart_delivery_sla deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0048 2025-10-25T22:38:30Z INFO ing_shipments 618 late-arriving rows older than 48 h merged into raw.shipments
+L-0049 2025-10-25T22:38:32Z INFO mart_delivery_sla heartbeat ok, 6 active workers
+L-0050 2025-10-25T22:40:32Z WARN src_ads_api slow query on landing.ad_spend: 14.5 s (threshold 10 s)
+L-0051 2025-10-25T22:44:34Z INFO dim_customers garbage collection took 19.8 s
+L-0052 2025-10-25T22:45:01Z INFO mart_delivery_sla run #4939 started
+L-0053 2025-10-25T22:45:18Z INFO mart_delivery_sla refreshed marts.delivery_sla (422 rows)
+L-0054 2025-10-25T22:45:36Z INFO mart_delivery_sla run #4939 finished in 36 s, 422 rows written to marts.delivery_sla
+L-0055 2025-10-25T22:46:21Z INFO exp_crm_segments heartbeat ok, 7 active workers
+L-0056 2025-10-25T22:47:08Z INFO mart_delivery_sla garbage collection took 12.6 s
+L-0057 2025-10-25T22:53:53Z INFO ing_events garbage collection took 17.3 s
+L-0058 2025-10-25T22:54:48Z INFO src_payments_api heartbeat ok, 11 active workers
+L-0059 2025-10-25T22:55:01Z INFO exp_finance_ledger run #5585 started
+L-0060 2025-10-25T22:55:01Z INFO exp_crm_segments run #1484 started
+L-0061 2025-10-25T22:55:14Z INFO exp_finance_ledger delivered 309 rows to sftp.finance.example
+L-0062 2025-10-25T22:55:29Z INFO exp_finance_ledger run #5585 finished in 29 s, 309 rows written to sftp.finance.example:/inbound
+L-0063 2025-10-25T22:55:30Z INFO exp_crm_segments delivered 8322 rows to api.crm.example
+L-0064 2025-10-25T22:56:00Z INFO exp_crm_segments run #1484 finished in 60 s, 8322 rows written to api.crm.example /v3/segments
+L-0065 2025-10-25T23:00:44Z WARN src_payments_api statistics for landing.payments are stale; running analyze
+L-0066 2025-10-25T23:05:01Z INFO src_ads_api run #3633 started
+L-0067 2025-10-25T23:05:01Z INFO src_events_stream run #1773 started
+L-0068 2025-10-25T23:05:03Z INFO src_payments_api run #1747 started
+L-0069 2025-10-25T23:05:15Z WARN mart_delivery_sla slow query on marts.delivery_sla: 15.5 s (threshold 10 s)
+L-0070 2025-10-25T23:05:25Z INFO src_ads_api fetched 1683 records from api.ads.example in 3 pages
+L-0071 2025-10-25T23:05:50Z INFO src_ads_api run #3633 finished in 50 s, 1683 rows written to landing.ad_spend
+L-0072 2025-10-25T23:05:57Z INFO src_events_stream consumed 283081 messages from topic web-events
+L-0073 2025-10-25T23:06:04Z INFO ing_ad_spend garbage collection took 13.9 s
+L-0074 2025-10-25T23:06:07Z INFO src_payments_api run #1747 finished in 67 s, 8589 rows written to landing.payments
+L-0075 2025-10-25T23:06:54Z INFO src_events_stream run #1773 finished in 114 s, 283081 rows written to landing.events
+L-0076 2025-10-25T23:07:39Z INFO dim_customers heartbeat ok, 6 active workers
+L-0077 2025-10-25T23:11:25Z WARN src_ads_api slow query on landing.ad_spend: 19.5 s (threshold 10 s)
+L-0078 2025-10-25T23:14:00Z INFO ing_events 695 late-arriving rows older than 48 h merged into raw.events
+L-0079 2025-10-25T23:15:01Z INFO ing_shipments run #2777 started
+L-0080 2025-10-25T23:15:01Z INFO ing_events run #9236 started
+L-0081 2025-10-25T23:15:03Z INFO ing_ad_spend run #2753 started
+L-0082 2025-10-25T23:15:17Z INFO ing_ad_spend loaded 1794 rows from landing.ad_spend into raw.ad_spend
+L-0083 2025-10-25T23:15:22Z INFO ing_shipments loaded 4231 rows from landing.shipments into raw.shipments
+L-0084 2025-10-25T23:15:25Z WARN ing_ad_spend statistics for raw.ad_spend are stale; running analyze
+L-0085 2025-10-25T23:15:34Z INFO ing_ad_spend run #2753 finished in 34 s, 1787 rows written to raw.ad_spend
+L-0086 2025-10-25T23:15:45Z INFO ing_shipments run #2777 finished in 45 s, 4196 rows written to raw.shipments
+L-0087 2025-10-25T23:16:05Z INFO ing_events loaded 271634 rows from landing.events into raw.events
+L-0088 2025-10-25T23:17:11Z INFO ing_events run #9236 finished in 131 s, 269787 rows written to raw.events
+L-0089 2025-10-25T23:17:17Z WARN stg_sessions statistics for staging.sessions are stale; running analyze
+L-0090 2025-10-25T23:24:56Z WARN ing_ad_spend deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0091 2025-10-25T23:25:01Z INFO stg_sessions run #7126 started
+L-0092 2025-10-25T23:26:14Z INFO stg_sessions 15 data tests passed on staging.sessions
+L-0093 2025-10-25T23:27:28Z INFO stg_sessions run #7126 finished in 148 s, 38005 rows written to staging.sessions
+L-0094 2025-10-25T23:28:10Z INFO stg_sessions connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0095 2025-10-25T23:29:38Z WARN dim_customers deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0096 2025-10-25T23:30:50Z INFO exp_finance_ledger heartbeat ok, 6 active workers
+L-0097 2025-10-25T23:32:02Z INFO dim_customers run #9723 started
+L-0098 2025-10-25T23:32:27Z INFO dim_customers 17 data tests passed on analytics.dim_customers
+L-0099 2025-10-25T23:32:55Z INFO dim_customers run #9723 finished in 55 s, 6049 rows written to analytics.dim_customers
+L-0100 2025-10-25T23:35:03Z INFO fct_sessions run #9010 started
+L-0101 2025-10-25T23:35:14Z INFO exp_crm_segments connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0102 2025-10-25T23:36:29Z INFO fct_sessions 16 data tests passed on analytics.fct_sessions
+L-0103 2025-10-25T23:37:58Z INFO fct_sessions run #9010 finished in 178 s, 35835 rows written to analytics.fct_sessions
+L-0104 2025-10-25T23:40:38Z INFO src_events_stream schema cache refreshed (198 tables)
+L-0105 2025-10-25T23:44:25Z INFO fct_sessions schema cache refreshed (235 tables)
+L-0106 2025-10-25T23:44:42Z INFO ing_events connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0107 2025-10-25T23:45:03Z INFO mart_delivery_sla run #4940 started
+L-0108 2025-10-25T23:45:15Z INFO mart_delivery_sla refreshed marts.delivery_sla (303 rows)
+L-0109 2025-10-25T23:45:30Z INFO mart_delivery_sla run #4940 finished in 30 s, 303 rows written to marts.delivery_sla
+L-0110 2025-10-25T23:45:37Z INFO src_ads_api schema cache refreshed (199 tables)
+L-0111 2025-10-25T23:49:12Z INFO dim_customers heartbeat ok, 5 active workers
+L-0112 2025-10-25T23:50:48Z WARN dim_customers deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0113 2025-10-25T23:51:21Z WARN src_payments_api slow query on landing.payments: 14.6 s (threshold 10 s)
+L-0114 2025-10-25T23:54:57Z INFO mart_delivery_sla connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0115 2025-10-25T23:55:03Z INFO exp_finance_ledger run #5586 started
+L-0116 2025-10-25T23:55:03Z INFO exp_crm_segments run #1485 started
+L-0117 2025-10-25T23:55:14Z INFO exp_finance_ledger delivered 215 rows to sftp.finance.example
+L-0118 2025-10-25T23:55:28Z INFO exp_finance_ledger run #5586 finished in 28 s, 215 rows written to sftp.finance.example:/inbound
+L-0119 2025-10-25T23:55:31Z INFO exp_crm_segments delivered 6371 rows to api.crm.example
+L-0120 2025-10-25T23:55:37Z INFO src_ads_api heartbeat ok, 5 active workers
+L-0121 2025-10-25T23:56:02Z INFO exp_crm_segments run #1485 finished in 62 s, 6371 rows written to api.crm.example /v3/segments
+L-0122 2025-10-25T23:58:07Z INFO ing_ad_spend connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0123 2025-10-26T00:01:44Z WARN stg_sessions deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0124 2025-10-26T00:03:56Z INFO src_ads_api heartbeat ok, 10 active workers
+L-0125 2025-10-26T00:05:02Z INFO src_payments_api run #1748 started
+L-0126 2025-10-26T00:05:02Z INFO src_ads_api run #3634 started
+L-0127 2025-10-26T00:05:03Z INFO src_events_stream run #1774 started
+L-0128 2025-10-26T00:05:22Z INFO src_ads_api fetched 1308 records from api.ads.example in 2 pages
+L-0129 2025-10-26T00:05:28Z INFO src_payments_api fetched 6479 records from api.payments.example in 12 pages
+L-0130 2025-10-26T00:05:44Z INFO src_ads_api run #3634 finished in 44 s, 1308 rows written to landing.ad_spend
+L-0131 2025-10-26T00:05:57Z INFO src_payments_api run #1748 finished in 57 s, 6479 rows written to landing.payments
+L-0132 2025-10-26T00:06:42Z INFO src_events_stream run #1774 finished in 102 s, 215426 rows written to landing.events
+L-0133 2025-10-26T00:08:04Z WARN fct_sessions slow query on analytics.fct_sessions: 13.6 s (threshold 10 s)
+L-0134 2025-10-26T00:09:16Z WARN src_ads_api slow query on landing.ad_spend: 17.7 s (threshold 10 s)
+L-0135 2025-10-26T00:11:01Z INFO fct_sessions connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0136 2025-10-26T00:14:26Z WARN ing_events slow query on raw.events: 18.1 s (threshold 10 s)
+L-0137 2025-10-26T00:15:01Z INFO ing_ad_spend run #2754 started
+L-0138 2025-10-26T00:15:01Z INFO ing_events run #9237 started
+L-0139 2025-10-26T00:15:03Z INFO ing_shipments run #2778 started
+L-0140 2025-10-26T00:15:09Z INFO fct_sessions heartbeat ok, 6 active workers
+L-0141 2025-10-26T00:15:17Z INFO ing_ad_spend loaded 1344 rows from landing.ad_spend into raw.ad_spend
+L-0142 2025-10-26T00:15:21Z INFO ing_shipments loaded 3164 rows from landing.shipments into raw.shipments
+L-0143 2025-10-26T00:15:34Z INFO ing_ad_spend run #2754 finished in 34 s, 1344 rows written to raw.ad_spend
+L-0144 2025-10-26T00:15:43Z INFO ing_shipments run #2778 finished in 43 s, 3161 rows written to raw.shipments
+L-0145 2025-10-26T00:16:21Z INFO exp_crm_segments schema cache refreshed (255 tables)
+L-0146 2025-10-26T00:17:09Z INFO exp_crm_segments schema cache refreshed (221 tables)
+L-0147 2025-10-26T00:17:18Z INFO ing_events run #9237 finished in 138 s, 228891 rows written to raw.events
+L-0148 2025-10-26T00:19:15Z INFO ing_ad_spend 580 late-arriving rows older than 48 h merged into raw.ad_spend
+L-0149 2025-10-26T00:25:01Z INFO stg_sessions run #7127 started
+L-0150 2025-10-26T00:26:09Z INFO stg_sessions 17 data tests passed on staging.sessions
+L-0151 2025-10-26T00:27:19Z INFO stg_sessions run #7127 finished in 139 s, 28358 rows written to staging.sessions
+L-0152 2025-10-26T00:32:03Z INFO dim_customers run #9724 started
+L-0153 2025-10-26T00:32:25Z INFO dim_customers 6 data tests passed on analytics.dim_customers
+L-0154 2025-10-26T00:32:50Z INFO dim_customers run #9724 finished in 50 s, 4849 rows written to analytics.dim_customers
+L-0155 2025-10-26T00:35:01Z INFO fct_sessions run #9011 started
+L-0156 2025-10-26T00:36:23Z INFO fct_sessions 7 data tests passed on analytics.fct_sessions
+L-0157 2025-10-26T00:37:19Z INFO src_ads_api connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0158 2025-10-26T00:37:46Z INFO fct_sessions run #9011 finished in 166 s, 28381 rows written to analytics.fct_sessions
+L-0159 2025-10-26T00:41:23Z WARN fct_sessions deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0160 2025-10-26T00:44:02Z INFO mart_delivery_sla connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0161 2025-10-26T00:45:01Z INFO mart_delivery_sla run #4941 started
+L-0162 2025-10-26T00:45:05Z INFO mart_delivery_sla connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0163 2025-10-26T00:45:14Z INFO mart_delivery_sla refreshed marts.delivery_sla (250 rows)
+L-0164 2025-10-26T00:45:29Z INFO mart_delivery_sla run #4941 finished in 29 s, 250 rows written to marts.delivery_sla
+L-0165 2025-10-26T00:46:19Z INFO ing_shipments schema cache refreshed (248 tables)
+L-0166 2025-10-26T00:46:32Z WARN src_events_stream statistics for landing.events are stale; running analyze
+L-0167 2025-10-26T00:53:24Z WARN stg_sessions deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0168 2025-10-26T00:55:03Z INFO exp_finance_ledger run #5587 started
+L-0169 2025-10-26T00:55:03Z INFO exp_crm_segments run #1486 started
+L-0170 2025-10-26T00:55:12Z INFO exp_finance_ledger delivered 178 rows to sftp.finance.example
+L-0171 2025-10-26T00:55:25Z INFO exp_finance_ledger run #5587 finished in 25 s, 178 rows written to sftp.finance.example:/inbound
+L-0172 2025-10-26T00:56:02Z INFO exp_crm_segments run #1486 finished in 62 s, 4966 rows written to api.crm.example /v3/segments
+L-0173 2025-10-26T01:00:03Z INFO dim_customers 17 late-arriving rows older than 48 h merged into analytics.dim_customers
+L-0174 2025-10-26T01:01:22Z INFO fct_sessions garbage collection took 12.1 s
+L-0175 2025-10-26T01:03:08Z INFO dim_customers garbage collection took 17.5 s
+L-0176 2025-10-26T01:05:01Z INFO src_ads_api run #3635 started
+L-0177 2025-10-26T01:05:02Z INFO src_payments_api run #1749 started
+L-0178 2025-10-26T01:05:02Z INFO src_events_stream run #1775 started
+L-0179 2025-10-26T01:05:22Z INFO src_ads_api fetched 1168 records from api.ads.example in 2 pages
+L-0180 2025-10-26T01:05:45Z INFO src_ads_api run #3635 finished in 45 s, 1168 rows written to landing.ad_spend
+L-0181 2025-10-26T01:05:52Z INFO src_events_stream consumed 178165 messages from topic web-events
+L-0182 2025-10-26T01:06:00Z INFO src_payments_api run #1749 finished in 60 s, 5382 rows written to landing.payments
+L-0183 2025-10-26T01:06:45Z INFO src_events_stream run #1775 finished in 105 s, 178165 rows written to landing.events
+L-0184 2025-10-26T01:07:11Z WARN src_ads_api statistics for landing.ad_spend are stale; running analyze
+L-0185 2025-10-26T01:07:38Z WARN mart_delivery_sla deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0186 2025-10-26T01:08:35Z INFO src_events_stream garbage collection took 16.2 s
+L-0187 2025-10-26T01:09:58Z WARN ing_ad_spend statistics for raw.ad_spend are stale; running analyze
+L-0188 2025-10-26T01:12:34Z INFO mart_delivery_sla 652 late-arriving rows older than 48 h merged into marts.delivery_sla
+L-0189 2025-10-26T01:13:34Z WARN exp_crm_segments slow query on marts.customer_ltv: 12.8 s (threshold 10 s)
+L-0190 2025-10-26T01:14:29Z WARN exp_finance_ledger slow query on marts.daily_revenue: 19.7 s (threshold 10 s)
+L-0191 2025-10-26T01:15:01Z INFO ing_ad_spend run #2755 started
+L-0192 2025-10-26T01:15:01Z INFO ing_shipments run #2779 started
+L-0193 2025-10-26T01:15:01Z INFO ing_events run #9238 started
+L-0194 2025-10-26T01:15:02Z WARN ing_events AmbiguousTimeError: 2025-10-26 02:00:00 is ambiguous in Europe/Berlin; both occurrences written to partition 2025-10-26 02
+L-0195 2025-10-26T01:15:18Z INFO ing_ad_spend loaded 1147 rows from landing.ad_spend into raw.ad_spend
+L-0196 2025-10-26T01:15:18Z ERROR ing_events completeness test failed: local hour 02 of 2025-10-26 has 2 partitions, expected 1
+L-0197 2025-10-26T01:15:20Z ERROR ing_events run #9238 failed after 20 s: data test failed
+L-0198 2025-10-26T01:15:21Z INFO ing_shipments loaded 2771 rows from landing.shipments into raw.shipments
+L-0199 2025-10-26T01:15:36Z INFO ing_ad_spend run #2755 finished in 36 s, 1126 rows written to raw.ad_spend
+L-0200 2025-10-26T01:15:43Z INFO ing_shipments run #2779 finished in 43 s, 2751 rows written to raw.shipments
+L-0201 2025-10-26T01:19:50Z WARN mart_delivery_sla statistics for marts.delivery_sla are stale; running analyze
+L-0202 2025-10-26T01:25:01Z WARN stg_sessions upstream ing_events has no new data since 00:15; skipping run #7128
+L-0203 2025-10-26T01:28:46Z INFO ing_shipments heartbeat ok, 4 active workers
+L-0204 2025-10-26T01:32:01Z INFO dim_customers run #9725 started
+L-0205 2025-10-26T01:32:07Z WARN src_events_stream deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0206 2025-10-26T01:32:24Z INFO dim_customers 10 data tests passed on analytics.dim_customers
+L-0207 2025-10-26T01:32:37Z INFO fct_sessions garbage collection took 11.5 s
+L-0208 2025-10-26T01:32:49Z INFO dim_customers run #9725 finished in 49 s, 4087 rows written to analytics.dim_customers
+L-0209 2025-10-26T01:35:01Z WARN fct_sessions upstream stg_sessions has no new data since 00:25; skipping run #9012
+L-0210 2025-10-26T01:37:34Z WARN mart_delivery_sla statistics for marts.delivery_sla are stale; running analyze
+L-0211 2025-10-26T01:38:09Z WARN ing_events slow query on raw.events: 11.3 s (threshold 10 s)
+L-0212 2025-10-26T01:43:38Z WARN exp_finance_ledger slow query on marts.daily_revenue: 19.5 s (threshold 10 s)
+L-0213 2025-10-26T01:45:03Z INFO mart_delivery_sla run #4942 started
+L-0214 2025-10-26T01:45:16Z INFO mart_delivery_sla refreshed marts.delivery_sla (198 rows)
+L-0215 2025-10-26T01:45:33Z INFO mart_delivery_sla run #4942 finished in 33 s, 198 rows written to marts.delivery_sla
+L-0216 2025-10-26T01:45:41Z WARN stg_sessions deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0217 2025-10-26T01:55:01Z INFO exp_finance_ledger run #5588 started
+L-0218 2025-10-26T01:55:01Z INFO exp_crm_segments run #1487 started
+L-0219 2025-10-26T01:55:13Z INFO exp_finance_ledger delivered 141 rows to sftp.finance.example
+L-0220 2025-10-26T01:55:27Z INFO exp_finance_ledger run #5588 finished in 27 s, 141 rows written to sftp.finance.example:/inbound
+L-0221 2025-10-26T01:55:29Z INFO exp_crm_segments delivered 3939 rows to api.crm.example
+L-0222 2025-10-26T01:55:31Z WARN stg_sessions deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0223 2025-10-26T01:55:59Z INFO exp_crm_segments run #1487 finished in 59 s, 3939 rows written to api.crm.example /v3/segments
+L-0224 2025-10-26T01:57:47Z INFO src_ads_api connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0225 2025-10-26T02:00:29Z INFO fct_sessions 853 late-arriving rows older than 48 h merged into analytics.fct_sessions
+L-0226 2025-10-26T02:01:40Z WARN ing_shipments slow query on raw.shipments: 17.7 s (threshold 10 s)
+L-0227 2025-10-26T02:05:01Z INFO src_payments_api run #1750 started
+L-0228 2025-10-26T02:05:01Z INFO src_events_stream run #1776 started
+L-0229 2025-10-26T02:05:02Z INFO src_ads_api run #3636 started
+L-0230 2025-10-26T02:05:31Z INFO src_payments_api fetched 4896 records from api.payments.example in 9 pages
+L-0231 2025-10-26T02:05:40Z INFO src_ads_api run #3636 finished in 40 s, 1034 rows written to landing.ad_spend
+L-0232 2025-10-26T02:05:45Z INFO ing_shipments garbage collection took 14.1 s
+L-0233 2025-10-26T02:05:48Z INFO src_events_stream consumed 166342 messages from topic web-events
+L-0234 2025-10-26T02:06:03Z INFO src_payments_api run #1750 finished in 63 s, 4896 rows written to landing.payments
+L-0235 2025-10-26T02:06:36Z INFO src_events_stream run #1776 finished in 96 s, 166342 rows written to landing.events
+L-0236 2025-10-26T02:11:13Z WARN stg_sessions statistics for staging.sessions are stale; running analyze
+L-0237 2025-10-26T02:11:16Z INFO ing_ad_spend 451 late-arriving rows older than 48 h merged into raw.ad_spend
+L-0238 2025-10-26T02:14:19Z INFO fct_sessions heartbeat ok, 10 active workers
+L-0239 2025-10-26T02:14:24Z INFO ing_shipments schema cache refreshed (244 tables)
+L-0240 2025-10-26T02:15:01Z INFO ing_shipments run #2780 started
+L-0241 2025-10-26T02:15:03Z INFO ing_ad_spend run #2756 started
+L-0242 2025-10-26T02:15:03Z INFO ing_events run #9239 started
+L-0243 2025-10-26T02:15:14Z ERROR ing_events completeness test failed: local hour 02 of 2025-10-26 has 2 partitions, expected 1
+L-0244 2025-10-26T02:15:16Z INFO ing_ad_spend loaded 1009 rows from landing.ad_spend into raw.ad_spend
+L-0245 2025-10-26T02:15:16Z ERROR ing_events run #9239 failed after 16 s: data test failed
+L-0246 2025-10-26T02:15:20Z INFO ing_shipments loaded 2456 rows from landing.shipments into raw.shipments
+L-0247 2025-10-26T02:15:33Z INFO ing_ad_spend run #2756 finished in 33 s, 993 rows written to raw.ad_spend
+L-0248 2025-10-26T02:15:41Z INFO ing_shipments run #2780 finished in 41 s, 2449 rows written to raw.shipments
+L-0249 2025-10-26T02:19:03Z INFO stg_sessions heartbeat ok, 9 active workers
+L-0250 2025-10-26T02:19:37Z INFO src_ads_api 812 late-arriving rows older than 48 h merged into landing.ad_spend
+L-0251 2025-10-26T02:22:22Z WARN exp_finance_ledger deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0252 2025-10-26T02:25:01Z WARN stg_sessions upstream ing_events has no new data since 00:15; skipping run #7129
+L-0253 2025-10-26T02:26:16Z INFO ing_ad_spend 323 late-arriving rows older than 48 h merged into raw.ad_spend
+L-0254 2025-10-26T02:27:20Z INFO mart_delivery_sla garbage collection took 18.9 s
+L-0255 2025-10-26T02:28:49Z INFO dim_customers connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0256 2025-10-26T02:29:07Z INFO mart_delivery_sla garbage collection took 14.8 s
+L-0257 2025-10-26T02:32:01Z INFO dim_customers run #9726 started
+L-0258 2025-10-26T02:32:55Z INFO dim_customers run #9726 finished in 55 s, 3455 rows written to analytics.dim_customers
+L-0259 2025-10-26T02:35:01Z WARN fct_sessions upstream stg_sessions has no new data since 00:25; skipping run #9013
+L-0260 2025-10-26T02:35:20Z INFO dim_customers heartbeat ok, 11 active workers
+L-0261 2025-10-26T02:44:57Z WARN src_events_stream statistics for landing.events are stale; running analyze
+L-0262 2025-10-26T02:45:01Z INFO mart_delivery_sla run #4943 started
+L-0263 2025-10-26T02:45:15Z INFO mart_delivery_sla refreshed marts.delivery_sla (172 rows)
+L-0264 2025-10-26T02:45:30Z INFO mart_delivery_sla run #4943 finished in 30 s, 172 rows written to marts.delivery_sla
+L-0265 2025-10-26T02:49:58Z WARN ing_ad_spend statistics for raw.ad_spend are stale; running analyze
+L-0266 2025-10-26T02:50:49Z WARN src_payments_api deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0267 2025-10-26T02:52:04Z INFO exp_crm_segments connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0268 2025-10-26T02:55:02Z INFO exp_finance_ledger run #5589 started
+L-0269 2025-10-26T02:55:03Z INFO exp_crm_segments run #1488 started
+L-0270 2025-10-26T02:55:12Z INFO exp_finance_ledger delivered 123 rows to sftp.finance.example
+L-0271 2025-10-26T02:55:24Z INFO exp_finance_ledger run #5589 finished in 24 s, 123 rows written to sftp.finance.example:/inbound
+L-0272 2025-10-26T02:55:29Z INFO exp_crm_segments delivered 3540 rows to api.crm.example
+L-0273 2025-10-26T02:55:58Z INFO exp_crm_segments run #1488 finished in 58 s, 3540 rows written to api.crm.example /v3/segments
+L-0274 2025-10-26T02:59:40Z INFO src_events_stream schema cache refreshed (213 tables)
+L-0275 2025-10-26T03:01:31Z INFO ing_ad_spend garbage collection took 14.6 s
+L-0276 2025-10-26T03:01:31Z INFO ing_ad_spend 203 late-arriving rows older than 48 h merged into raw.ad_spend
+L-0277 2025-10-26T03:01:43Z INFO mart_delivery_sla garbage collection took 15.5 s
+L-0278 2025-10-26T03:05:01Z INFO src_payments_api run #1751 started
+L-0279 2025-10-26T03:05:01Z INFO src_events_stream run #1777 started
+L-0280 2025-10-26T03:05:02Z INFO src_ads_api run #3637 started
+L-0281 2025-10-26T03:05:22Z INFO src_ads_api fetched 950 records from api.ads.example in 1 pages
+L-0282 2025-10-26T03:05:28Z INFO src_payments_api fetched 4427 records from api.payments.example in 8 pages
+L-0283 2025-10-26T03:05:45Z INFO src_ads_api run #3637 finished in 45 s, 950 rows written to landing.ad_spend
+L-0284 2025-10-26T03:05:53Z INFO src_events_stream consumed 151024 messages from topic web-events
+L-0285 2025-10-26T03:05:56Z INFO src_payments_api run #1751 finished in 56 s, 4427 rows written to landing.payments
+L-0286 2025-10-26T03:06:47Z INFO src_events_stream run #1777 finished in 107 s, 151024 rows written to landing.events
+L-0287 2025-10-26T03:14:05Z WARN src_payments_api slow query on landing.payments: 13.0 s (threshold 10 s)
+L-0288 2025-10-26T03:15:01Z INFO ing_events run #9240 started
+L-0289 2025-10-26T03:15:03Z INFO ing_ad_spend run #2757 started
+L-0290 2025-10-26T03:15:03Z INFO ing_shipments run #2781 started
+L-0291 2025-10-26T03:15:05Z ERROR ing_events completeness test failed: local hour 02 of 2025-10-26 has 2 partitions, expected 1
+L-0292 2025-10-26T03:15:07Z ERROR ing_events run #9240 failed after 7 s: data test failed
+L-0293 2025-10-26T03:15:17Z INFO ing_ad_spend loaded 1000 rows from landing.ad_spend into raw.ad_spend
+L-0294 2025-10-26T03:15:21Z INFO ing_shipments loaded 2360 rows from landing.shipments into raw.shipments
+L-0295 2025-10-26T03:15:35Z INFO ing_ad_spend run #2757 finished in 35 s, 995 rows written to raw.ad_spend
+L-0296 2025-10-26T03:15:42Z INFO ing_shipments run #2781 finished in 42 s, 2327 rows written to raw.shipments
+L-0297 2025-10-26T03:19:17Z WARN exp_crm_segments slow query on marts.customer_ltv: 18.7 s (threshold 10 s)
+L-0298 2025-10-26T03:24:17Z INFO ing_ad_spend schema cache refreshed (210 tables)
+L-0299 2025-10-26T03:25:01Z WARN stg_sessions upstream ing_events has no new data since 00:15; skipping run #7130
+L-0300 2025-10-26T03:27:12Z WARN fct_sessions statistics for analytics.fct_sessions are stale; running analyze
+L-0301 2025-10-26T03:29:30Z INFO fct_sessions heartbeat ok, 6 active workers
+L-0302 2025-10-26T03:31:46Z WARN ing_shipments deprecated setting 'legacy_timestamps' is still set; it will be removed in v3
+L-0303 2025-10-26T03:32:01Z INFO dim_customers run #9727 started
+L-0304 2025-10-26T03:32:25Z INFO dim_customers 9 data tests passed on analytics.dim_customers
+L-0305 2025-10-26T03:32:51Z INFO dim_customers run #9727 finished in 51 s, 3250 rows written to analytics.dim_customers
+L-0306 2025-10-26T03:35:01Z WARN fct_sessions upstream stg_sessions has no new data since 00:25; skipping run #9014
+L-0307 2025-10-26T03:36:33Z INFO mart_delivery_sla connection to warehouse.internal reset by peer; reconnected on attempt 2
+L-0308 2025-10-26T03:38:41Z INFO fct_sessions garbage collection took 19.0 s
+L-0309 2025-10-26T03:45:02Z INFO mart_delivery_sla run #4944 started
+L-0310 2025-10-26T03:45:15Z INFO mart_delivery_sla refreshed marts.delivery_sla (176 rows)
+L-0311 2025-10-26T03:45:31Z INFO mart_delivery_sla run #4944 finished in 31 s, 176 rows written to marts.delivery_sla

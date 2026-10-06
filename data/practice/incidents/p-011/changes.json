@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-4978",
+    "time": "2026-03-18T12:13:00Z",
+    "kind": "deploy",
+    "target": "ing_payments",
+    "author": "data-platform",
+    "summary": "deploy ing_payments v2.3.6: adds a not-null test on utm_campaign"
+  },
+  {
+    "id": "CHG-4979",
+    "time": "2026-03-19T05:09:00Z",
+    "kind": "deploy",
+    "target": "src_ads_api",
+    "author": "marketing-data",
+    "summary": "deploy src_ads_api v4.6.3: removes the unused column carrier_code"
+  },
+  {
+    "id": "CHG-4980",
+    "time": "2026-03-20T05:15:00Z",
+    "kind": "config",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "config v7: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-4981",
+    "time": "2026-03-20T10:13:00Z",
+    "kind": "config",
+    "target": "src_shop_db",
+    "author": "data-platform",
+    "summary": "config v10: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-4982",
+    "time": "2026-03-20T13:50:00Z",
+    "kind": "deploy",
+    "target": "fct_sessions",
+    "author": "marketing-data",
+    "summary": "deploy fct_sessions v2.11.2: updates the tests for analytics.fct_sessions"
+  },
+  {
+    "id": "CHG-4983",
+    "time": "2026-03-20T21:36:00Z",
+    "kind": "deploy",
+    "target": "fct_sessions",
+    "author": "marketing-data",
+    "summary": "deploy fct_sessions v3.0.7: adds a not-null test on carrier_code"
+  },
+  {
+    "id": "CHG-4984",
+    "time": "2026-03-23T16:50:00Z",
+    "kind": "config",
+    "target": "exp_finance_ledger",
+    "author": "finance-data",
+    "summary": "config v24: incremental_key changed from updated_at to updated"
+  }
+]

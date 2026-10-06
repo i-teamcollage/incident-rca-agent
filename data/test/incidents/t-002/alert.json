@@ -1,0 +1,9 @@
+{
+  "id": "ALR-1669",
+  "fired_at": "2025-10-26T03:50:00Z",
+  "pipeline": "fct_sessions",
+  "check": "freshness",
+  "severity": "medium",
+  "message": "fct_sessions has not loaded new data since 2025-10-26 00:35 UTC (freshness SLA 3 h)",
+  "window_start": "2025-10-25T21:50:00Z"
+}

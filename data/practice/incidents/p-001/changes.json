@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-6373",
+    "time": "2026-05-02T23:07:00Z",
+    "kind": "infra",
+    "target": "scheduler",
+    "author": "sre",
+    "summary": "scheduler upgraded to the next patch release"
+  },
+  {
+    "id": "CHG-6374",
+    "time": "2026-05-03T09:07:00Z",
+    "kind": "deploy",
+    "target": "stg_orders",
+    "author": "analytics-eng",
+    "summary": "deploy stg_orders v2.9.3: speeds up the merge step"
+  },
+  {
+    "id": "CHG-6375",
+    "time": "2026-05-03T16:34:00Z",
+    "kind": "deploy",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "deploy exp_bi_dashboards v3.1.6: updates the tests for marts.daily_revenue"
+  },
+  {
+    "id": "CHG-6376",
+    "time": "2026-05-04T21:04:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Carrier on-time rate' published"
+  },
+  {
+    "id": "CHG-6377",
+    "time": "2026-05-06T17:12:00Z",
+    "kind": "config",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "config v10: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-6378",
+    "time": "2026-05-08T03:00:00Z",
+    "kind": "notice",
+    "target": "src_events_stream",
+    "author": "data-platform",
+    "summary": "stream broker upgrade on 2026-05-08; consumers such as src_events_stream may lag"
+  },
+  {
+    "id": "CHG-6379",
+    "time": "2026-05-08T06:19:00Z",
+    "kind": "deploy",
+    "target": "mart_daily_revenue",
+    "author": "finance-data",
+    "summary": "deploy mart_daily_revenue v4.10.5: speeds up the merge step"
+  }
+]

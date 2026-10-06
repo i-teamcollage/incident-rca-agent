@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CHG-4112",
+    "time": "2026-03-19T10:52:00Z",
+    "kind": "deploy",
+    "target": "src_crm_api",
+    "author": "data-platform",
+    "summary": "deploy src_crm_api v3.10.6: adds a not-null test on carrier_code"
+  },
+  {
+    "id": "CHG-4113",
+    "time": "2026-03-21T00:04:00Z",
+    "kind": "config",
+    "target": "ing_orders",
+    "author": "data-platform",
+    "summary": "config v15: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-4114",
+    "time": "2026-03-21T02:12:00Z",
+    "kind": "deploy",
+    "target": "ing_payments",
+    "author": "data-platform",
+    "summary": "deploy ing_payments v4.6.2: updates the tests for raw.payments"
+  },
+  {
+    "id": "CHG-4115",
+    "time": "2026-03-21T16:28:00Z",
+    "kind": "config",
+    "target": "mart_daily_revenue",
+    "author": "finance-data",
+    "summary": "config v20: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-4116",
+    "time": "2026-03-21T22:07:00Z",
+    "kind": "config",
+    "target": "ing_crm_contacts",
+    "author": "data-platform",
+    "summary": "config v29: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-4117",
+    "time": "2026-03-23T10:34:00Z",
+    "kind": "infra",
+    "target": "worker-pool",
+    "author": "sre",
+    "summary": "worker pool scaled from 6 to 8 nodes"
+  },
+  {
+    "id": "CHG-4118",
+    "time": "2026-03-24T11:31:00Z",
+    "kind": "config",
+    "target": "ing_shipments",
+    "author": "data-platform",
+    "summary": "config v17: alert_channel changed from #data-alerts to #data-oncall"
+  }
+]

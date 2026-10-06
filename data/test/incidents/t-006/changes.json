@@ -1,0 +1,50 @@
+[
+  {
+    "id": "CHG-5918",
+    "time": "2026-06-07T21:32:00Z",
+    "kind": "infra",
+    "target": "secret-store",
+    "author": "sre",
+    "summary": "audit logging enabled on the secret store"
+  },
+  {
+    "id": "CHG-5919",
+    "time": "2026-06-09T07:08:00Z",
+    "kind": "deploy",
+    "target": "src_crm_api",
+    "author": "data-platform",
+    "summary": "deploy src_crm_api v4.7.9: renames an internal macro"
+  },
+  {
+    "id": "CHG-5920",
+    "time": "2026-06-10T08:39:00Z",
+    "kind": "deploy",
+    "target": "ing_payments",
+    "author": "data-platform",
+    "summary": "deploy ing_payments v1.5.8: adds column refund_reason"
+  },
+  {
+    "id": "CHG-5921",
+    "time": "2026-06-11T09:50:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Refunds by reason' published"
+  },
+  {
+    "id": "CHG-5922",
+    "time": "2026-06-11T15:56:00Z",
+    "kind": "config",
+    "target": "fct_marketing_spend",
+    "author": "marketing-data",
+    "summary": "config v17: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-5923",
+    "time": "2026-06-12T04:46:00Z",
+    "kind": "notice",
+    "target": "ing_ad_spend",
+    "author": "data-platform",
+    "summary": "release notes from the ad platform: field cost renamed to cost_micros in landing.ad_spend, read by ing_ad_spend"
+  }
+]

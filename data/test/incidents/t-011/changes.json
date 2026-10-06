@@ -1,0 +1,66 @@
+[
+  {
+    "id": "CHG-4001",
+    "time": "2026-01-12T16:16:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-4002",
+    "time": "2026-01-13T00:18:00Z",
+    "kind": "access",
+    "target": "marts.daily_revenue",
+    "author": "finance-data",
+    "summary": "read access granted to the finance analysts"
+  },
+  {
+    "id": "CHG-4003",
+    "time": "2026-01-13T03:37:00Z",
+    "kind": "config",
+    "target": "fct_shipments",
+    "author": "analytics-eng",
+    "summary": "config v27: alert_channel changed from #data-alerts to #data-oncall"
+  },
+  {
+    "id": "CHG-4004",
+    "time": "2026-01-13T09:01:00Z",
+    "kind": "infra",
+    "target": "scheduler",
+    "author": "sre",
+    "summary": "scheduler upgraded to the next patch release"
+  },
+  {
+    "id": "CHG-4005",
+    "time": "2026-01-14T07:25:00Z",
+    "kind": "infra",
+    "target": "warehouse.internal",
+    "author": "sre",
+    "summary": "minor version upgrade during the maintenance window"
+  },
+  {
+    "id": "CHG-4006",
+    "time": "2026-01-14T21:59:00Z",
+    "kind": "infra",
+    "target": "worker-pool",
+    "author": "sre",
+    "summary": "worker pool scaled from 6 to 8 nodes"
+  },
+  {
+    "id": "CHG-4007",
+    "time": "2026-01-16T00:17:00Z",
+    "kind": "config",
+    "target": "ing_ad_spend",
+    "author": "marketing-data",
+    "summary": "config v23: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-4008",
+    "time": "2026-01-17T17:54:00Z",
+    "kind": "config",
+    "target": "ing_ad_spend",
+    "author": "marketing-data",
+    "summary": "config v15: timeout_seconds changed from 600 to 900"
+  }
+]

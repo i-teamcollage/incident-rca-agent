@@ -1,0 +1,9 @@
+{
+  "id": "ALR-5060",
+  "fired_at": "2026-08-01T21:50:00Z",
+  "pipeline": "exp_bi_dashboards",
+  "check": "freshness",
+  "severity": "high",
+  "message": "exp_bi_dashboards has not loaded new data since 2026-08-01 16:55 UTC (freshness SLA 4 h)",
+  "window_start": "2026-08-01T15:50:00Z"
+}

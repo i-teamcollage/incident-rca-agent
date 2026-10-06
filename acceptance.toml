@@ -1,0 +1,25 @@
+# Acceptance test for the incident RCA agent.
+# Written before the agent was built (design spec, 2026-10-02). Never lowered to make a run pass.
+
+title = "Incident RCA agent: acceptance test"
+
+[[criteria]]
+id = "rca_accuracy"
+label = "Root cause correct (right cause and right pipeline)"
+metric = "rca_accuracy"
+op = ">="
+target = 0.75
+
+[[criteria]]
+id = "confident_precision"
+label = "RCAs posted as confident that are correct"
+metric = "confident_precision"
+op = ">="
+target = 0.90
+
+[[criteria]]
+id = "grounding"
+label = "Claims traced to a real source"
+metric = "grounding"
+op = ">="
+target = 0.85

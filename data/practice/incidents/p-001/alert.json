@@ -1,0 +1,9 @@
+{
+  "id": "ALR-8191",
+  "fired_at": "2026-05-08T20:50:00Z",
+  "pipeline": "fct_sessions",
+  "check": "row_count",
+  "severity": "medium",
+  "message": "fct_sessions wrote 3544 rows in its 20:35 run, against about 66105 at this hour",
+  "window_start": "2026-05-08T14:50:00Z"
+}

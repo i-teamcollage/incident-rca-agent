@@ -1,0 +1,9 @@
+{
+  "id": "ALR-9023",
+  "fired_at": "2026-08-10T20:50:00Z",
+  "pipeline": "exp_bi_dashboards",
+  "check": "freshness",
+  "severity": "high",
+  "message": "exp_bi_dashboards has not loaded new data since 2026-08-10 17:55 UTC (freshness SLA 2 h)",
+  "window_start": "2026-08-10T14:50:00Z"
+}

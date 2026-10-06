@@ -1,0 +1,349 @@
+[
+  {
+    "id": "PM-2024-001",
+    "date": "2024-10-27",
+    "title": "Doubled hour on the autumn clock change",
+    "category": "daylight_saving_bug",
+    "pipelines": [
+      "ing_events",
+      "exp_bi_dashboards"
+    ],
+    "summary": "A unique test failed downstream of ing_events; exp_bi_dashboards was stale for 9 hours.",
+    "root_cause": "On 2024-10-27 local hour 02 happened twice. ing_events raised AmbiguousTimeError warnings and wrote the hour twice, so keys were duplicated.",
+    "resolution": "Removed the doubled hour and reran.",
+    "follow_ups": "Local time only for display."
+  },
+  {
+    "id": "PM-2024-002",
+    "date": "2024-11-27",
+    "title": "Expired credential stopped src_shop_db",
+    "category": "expired_credentials",
+    "pipelines": [
+      "src_shop_db",
+      "mart_customer_ltv"
+    ],
+    "summary": "mart_customer_ltv was stale for 4 hours.",
+    "root_cause": "The credential src_shop_db uses for shopdb-replica.internal expired. Every run failed within seconds with an authentication error (401 Unauthorized).",
+    "resolution": "Rotated the credential and restarted src_shop_db.",
+    "follow_ups": "Expiry dates are tracked and rotated 14 days ahead."
+  },
+  {
+    "id": "PM-2024-003",
+    "date": "2024-12-07",
+    "title": "sftp.finance.example could not be resolved",
+    "category": "dns_failure",
+    "pipelines": [
+      "exp_finance_ledger"
+    ],
+    "summary": "exp_finance_ledger was stale for 2 hours.",
+    "root_cause": "After a DNS change, sftp.finance.example returned NXDOMAIN from the resolver. Every run of exp_finance_ledger failed before connecting.",
+    "resolution": "Restored the DNS record and reran exp_finance_ledger.",
+    "follow_ups": "Monitor name resolution of external hosts."
+  },
+  {
+    "id": "PM-2024-004",
+    "date": "2024-12-13",
+    "title": "Files loaded twice by ing_payments",
+    "category": "duplicate_keys",
+    "pipelines": [
+      "ing_payments",
+      "exp_crm_segments"
+    ],
+    "summary": "exp_crm_segments failed for 7 hours after a unique test failure.",
+    "root_cause": "The same landing file was loaded twice by ing_payments; the test unique payment_id failed downstream.",
+    "resolution": "Deleted the second copy and reran.",
+    "follow_ups": "Checksums of loaded files are recorded."
+  },
+  {
+    "id": "PM-2024-005",
+    "date": "2024-12-20",
+    "title": "Retry storm on src_payments_api",
+    "category": "api_rate_limit",
+    "pipelines": [
+      "src_payments_api",
+      "mart_customer_ltv"
+    ],
+    "summary": "mart_customer_ltv was late for 8 hours.",
+    "root_cause": "A higher retry count made src_payments_api use up the hourly quota of api.payments.example faster; every call then got HTTP 429.",
+    "resolution": "Restored the retry setting and reran src_payments_api.",
+    "follow_ups": "Retries now back off and respect Retry-After."
+  },
+  {
+    "id": "PM-2025-001",
+    "date": "2025-03-08",
+    "title": "Config deploy broke fct_marketing_spend",
+    "category": "bad_config_deploy",
+    "pipelines": [
+      "fct_marketing_spend",
+      "mart_marketing_roi"
+    ],
+    "summary": "mart_marketing_roi failed for 3 hours.",
+    "root_cause": "A config deploy set incremental_key to updated. fct_marketing_spend failed at start-up with a config error on every run after the deploy.",
+    "resolution": "Rolled back to the previous config version and reran.",
+    "follow_ups": "Configs are validated in CI before deploy."
+  },
+  {
+    "id": "PM-2025-002",
+    "date": "2025-03-30",
+    "title": "Clock change broke fct_sessions",
+    "category": "daylight_saving_bug",
+    "pipelines": [
+      "fct_sessions",
+      "exp_bi_dashboards"
+    ],
+    "summary": "exp_bi_dashboards stopped updating on the clock-change night, for 3 hours.",
+    "root_cause": "fct_sessions builds hourly partitions in local time (Europe/Berlin). On 2025-03-30 local hour 02 did not exist and the job failed with NonExistentTimeError.",
+    "resolution": "Rebuilt the day in UTC and reran downstream.",
+    "follow_ups": "Partitions are now built in UTC."
+  },
+  {
+    "id": "PM-2025-003",
+    "date": "2025-04-11",
+    "title": "Name resolution failures on exp_finance_ledger",
+    "category": "dns_failure",
+    "pipelines": [
+      "exp_finance_ledger"
+    ],
+    "summary": "exp_finance_ledger received no data for 9 hours.",
+    "root_cause": "DNS lookups for sftp.finance.example timed out and then failed with Temporary failure in name resolution.",
+    "resolution": "Pointed the workers back to the old resolver and reran.",
+    "follow_ups": "Resolver changes go through change review."
+  },
+  {
+    "id": "PM-2025-004",
+    "date": "2025-04-13",
+    "title": "Exit code 137 on fct_sessions",
+    "category": "out_of_memory",
+    "pipelines": [
+      "fct_sessions",
+      "exp_bi_dashboards"
+    ],
+    "summary": "exp_bi_dashboards was stale for 9 hours.",
+    "root_cause": "A sale doubled the input of fct_sessions. Memory reached the limit and the task failed with exit code 137 after running twice as long as usual.",
+    "resolution": "Processed the input in smaller batches and reran.",
+    "follow_ups": "Limits sized for peak volume."
+  },
+  {
+    "id": "PM-2025-005",
+    "date": "2025-04-28",
+    "title": "Invalid timezone in mart_daily_revenue.yaml",
+    "category": "bad_config_deploy",
+    "pipelines": [
+      "mart_daily_revenue",
+      "exp_bi_dashboards"
+    ],
+    "summary": "exp_bi_dashboards was stale for 9 hours.",
+    "root_cause": "A new config version of mart_daily_revenue had an invalid timezone; runs failed within seconds of loading it.",
+    "resolution": "Rolled back, fixed the value in review and redeployed.",
+    "follow_ups": "Config schema check in CI."
+  },
+  {
+    "id": "PM-2025-006",
+    "date": "2025-05-08",
+    "title": "Memory leak in dim_customers",
+    "category": "out_of_memory",
+    "pipelines": [
+      "dim_customers",
+      "exp_crm_segments"
+    ],
+    "summary": "exp_crm_segments received no data for 6 hours.",
+    "root_cause": "Memory of dim_customers climbed towards the limit run after run until the container was OOMKilled (exit code 137).",
+    "resolution": "Restarted with a higher limit, then fixed the leak.",
+    "follow_ups": "Track peak memory per run."
+  },
+  {
+    "id": "PM-2025-007",
+    "date": "2025-05-25",
+    "title": "Renamed field broke ing_crm_contacts",
+    "category": "upstream_schema_change",
+    "pipelines": [
+      "ing_crm_contacts",
+      "mart_customer_ltv"
+    ],
+    "summary": "mart_customer_ltv was stale for 2 hours and its freshness alert fired.",
+    "root_cause": "The CRM vendor renamed the field email to email_address. ing_crm_contacts failed its data contract on every batch and quarantined it, so nothing reached the warehouse.",
+    "resolution": "Updated the contract and the mapping, released the quarantined batches and reran ing_crm_contacts.",
+    "follow_ups": "Subscribed to the source's change notices."
+  },
+  {
+    "id": "PM-2025-008",
+    "date": "2025-06-06",
+    "title": "Certificate expiry on exp_finance_ledger",
+    "category": "expired_credentials",
+    "pipelines": [
+      "exp_finance_ledger"
+    ],
+    "summary": "exp_finance_ledger did not receive data for 4 hours.",
+    "root_cause": "A client certificate used by exp_finance_ledger expired; the TLS handshake with sftp.finance.example failed on every run.",
+    "resolution": "Issued a new certificate and reran the failed runs.",
+    "follow_ups": "Alert on expiry warnings."
+  },
+  {
+    "id": "PM-2025-009",
+    "date": "2025-06-14",
+    "title": "HTTP 429 from api.payments.example after a quota cut",
+    "category": "api_rate_limit",
+    "pipelines": [
+      "src_payments_api",
+      "mart_daily_revenue"
+    ],
+    "summary": "mart_daily_revenue received partial data for 8 hours.",
+    "root_cause": "The provider lowered the hourly quota. src_payments_api hit HTTP 429 Too Many Requests every hour, and its run time grew with the Retry-After waits.",
+    "resolution": "Asked the provider to restore the quota and spread the requests over the hour.",
+    "follow_ups": "Alert when quota use passes 80%."
+  },
+  {
+    "id": "PM-2025-010",
+    "date": "2025-07-12",
+    "title": "Duplicate event_id values after a consumer restart",
+    "category": "duplicate_keys",
+    "pipelines": [
+      "ing_events",
+      "mart_marketing_roi"
+    ],
+    "summary": "A unique test failed downstream of ing_events; mart_marketing_roi stopped updating for 8 hours.",
+    "root_cause": "A consumer of ing_events restarted from an old offset and replayed messages, so ing_events loaded rows twice. The unique test on event_id failed further down.",
+    "resolution": "Removed the duplicates at ing_events and reran downstream.",
+    "follow_ups": "Loads are now idempotent with a key-based merge."
+  },
+  {
+    "id": "PM-2025-011",
+    "date": "2025-07-21",
+    "title": "api.ads.example quota used up by a backfill",
+    "category": "api_rate_limit",
+    "pipelines": [
+      "src_ads_api",
+      "mart_marketing_roi"
+    ],
+    "summary": "mart_marketing_roi missed its freshness SLA by 5 hours.",
+    "root_cause": "A backfill shared the API key of src_ads_api. The API answered HTTP 429 Too Many Requests and src_ads_api gave up after 5 attempts on each page.",
+    "resolution": "Paused the backfill, waited for the quota to reset and reran src_ads_api.",
+    "follow_ups": "Backfills now use their own API key and run at night."
+  },
+  {
+    "id": "PM-2025-012",
+    "date": "2025-07-24",
+    "title": "Rollback of stg_customers config",
+    "category": "bad_config_deploy",
+    "pipelines": [
+      "stg_customers",
+      "mart_daily_revenue"
+    ],
+    "summary": "mart_daily_revenue failed its freshness check for 8 hours.",
+    "root_cause": "The first run after a config deploy of stg_customers failed with a config error: partition_column = 'order_dt'.",
+    "resolution": "Rolled back the deploy and reran the failed runs.",
+    "follow_ups": "Deploys of production configs need a second reviewer."
+  },
+  {
+    "id": "PM-2025-013",
+    "date": "2025-08-05",
+    "title": "Contract violation on ing_orders after a source release",
+    "category": "upstream_schema_change",
+    "pipelines": [
+      "ing_orders",
+      "exp_bi_dashboards"
+    ],
+    "summary": "Row counts of exp_bi_dashboards dropped to zero for 3 hours.",
+    "root_cause": "A source release replaced total_amount with order_total. The data contract of ing_orders rejected every record: required field missing.",
+    "resolution": "Mapped the new field, reran ing_orders and backfilled the missing hours.",
+    "follow_ups": "Contract tests now run against the source sandbox before each release."
+  },
+  {
+    "id": "PM-2025-014",
+    "date": "2025-08-11",
+    "title": "Report not ready for src_ads_api",
+    "category": "late_upstream_data",
+    "pipelines": [
+      "src_ads_api",
+      "mart_marketing_roi"
+    ],
+    "summary": "mart_marketing_roi freshness alert fired after 3 hours.",
+    "root_cause": "The provider published its report late. src_ads_api logged that the report was not ready and wrote 0 rows.",
+    "resolution": "Reran src_ads_api once the report was published.",
+    "follow_ups": "Retry the report until it is ready, with a clear warning."
+  },
+  {
+    "id": "PM-2025-015",
+    "date": "2025-08-17",
+    "title": "Late files from sftp.logistics-partner.example",
+    "category": "late_upstream_data",
+    "pipelines": [
+      "src_partner_sftp",
+      "exp_bi_dashboards"
+    ],
+    "summary": "exp_bi_dashboards row counts dropped to zero for 4 hours; no pipeline failed.",
+    "root_cause": "The provider delivered the files hours late. src_partner_sftp found no file and finished with 0 rows, so every downstream pipeline ran on stale data.",
+    "resolution": "Waited for the files, reran src_partner_sftp and backfilled the missing hours.",
+    "follow_ups": "Freshness check on the source itself."
+  },
+  {
+    "id": "PM-2025-016",
+    "date": "2025-08-20",
+    "title": "No space left on device on ing_orders",
+    "category": "disk_full",
+    "pipelines": [
+      "ing_orders",
+      "exp_bi_dashboards"
+    ],
+    "summary": "exp_bi_dashboards failed its freshness check for 3 hours.",
+    "root_cause": "Temporary files from a backfill filled /mnt/work/ing_orders. Writes failed with OSError: [Errno 28] No space left on device.",
+    "resolution": "Deleted the temporary files and reran the failed runs.",
+    "follow_ups": "Temporary files are now cleaned at the end of every run; disk alert at 85%."
+  },
+  {
+    "id": "PM-2025-017",
+    "date": "2025-08-23",
+    "title": "Replica lag behind src_shop_db",
+    "category": "late_upstream_data",
+    "pipelines": [
+      "src_shop_db",
+      "exp_finance_ledger"
+    ],
+    "summary": "exp_finance_ledger showed partial data for 5 hours.",
+    "root_cause": "The source lagged by hours. src_shop_db extracted only up to its watermark and wrote few rows; no run failed.",
+    "resolution": "Waited for the source to catch up and backfilled.",
+    "follow_ups": "Lag alert at 30 minutes."
+  },
+  {
+    "id": "PM-2025-018",
+    "date": "2025-08-26",
+    "title": "Work volume of ing_events full",
+    "category": "disk_full",
+    "pipelines": [
+      "ing_events",
+      "mart_marketing_roi"
+    ],
+    "summary": "mart_marketing_roi showed no new data for 8 hours.",
+    "root_cause": "Disk use on /mnt/work/ing_events grew for days and reached 100%; every run then failed with No space left on device.",
+    "resolution": "Extended the volume and reran ing_events.",
+    "follow_ups": "Weekly review of volume growth."
+  },
+  {
+    "id": "PM-2025-019",
+    "date": "2025-09-04",
+    "title": "Merge matched customers twice in stg_customers",
+    "category": "duplicate_keys",
+    "pipelines": [
+      "stg_customers",
+      "exp_finance_ledger"
+    ],
+    "summary": "exp_finance_ledger was stale for 9 hours.",
+    "root_cause": "A merge in stg_customers matched some records twice, so customer_id values were duplicated and a unique test failed downstream.",
+    "resolution": "Fixed the merge condition and rebuilt the table.",
+    "follow_ups": "Duplicate test at the pipeline itself."
+  },
+  {
+    "id": "PM-2025-020",
+    "date": "2025-09-16",
+    "title": "dim_customers OOMKilled after an input surge",
+    "category": "out_of_memory",
+    "pipelines": [
+      "dim_customers",
+      "mart_daily_revenue"
+    ],
+    "summary": "mart_daily_revenue missed its freshness SLA by 5 hours.",
+    "root_cause": "Rows read by dim_customers tripled during a backfill. The container was OOMKilled (exit code 137) on every run.",
+    "resolution": "Raised the memory limit to 32 GiB and split the input into batches.",
+    "follow_ups": "Memory alert at 85% of the limit."
+  }
+]

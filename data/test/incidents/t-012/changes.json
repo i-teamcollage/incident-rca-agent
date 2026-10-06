@@ -1,0 +1,66 @@
+[
+  {
+    "id": "CHG-5131",
+    "time": "2026-01-08T21:06:00Z",
+    "kind": "config",
+    "target": "stg_shipments",
+    "author": "analytics-eng",
+    "summary": "config v14: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-5132",
+    "time": "2026-01-09T08:14:00Z",
+    "kind": "config",
+    "target": "ing_events",
+    "author": "data-platform",
+    "summary": "config v19: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-5133",
+    "time": "2026-01-10T01:37:00Z",
+    "kind": "config",
+    "target": "ing_shipments",
+    "author": "data-platform",
+    "summary": "config v29: threads changed from 4 to 6"
+  },
+  {
+    "id": "CHG-5134",
+    "time": "2026-01-10T03:55:00Z",
+    "kind": "deploy",
+    "target": "src_payments_api",
+    "author": "data-platform",
+    "summary": "deploy src_payments_api v3.5.4: refactors the incremental filter"
+  },
+  {
+    "id": "CHG-5135",
+    "time": "2026-01-11T00:26:00Z",
+    "kind": "config",
+    "target": "fct_sessions",
+    "author": "marketing-data",
+    "summary": "config v19: batch_size changed from 5000 to 4000"
+  },
+  {
+    "id": "CHG-5136",
+    "time": "2026-01-12T12:03:00Z",
+    "kind": "infra",
+    "target": "worker-pool",
+    "author": "sre",
+    "summary": "worker pool scaled from 6 to 8 nodes"
+  },
+  {
+    "id": "CHG-5137",
+    "time": "2026-01-12T23:56:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Refunds by reason' published"
+  },
+  {
+    "id": "CHG-5138",
+    "time": "2026-01-15T08:17:00Z",
+    "kind": "deploy",
+    "target": "stg_customers",
+    "author": "analytics-eng",
+    "summary": "deploy stg_customers v2.4.0: matches CRM contacts and shop customers on email"
+  }
+]

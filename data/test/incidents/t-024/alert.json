@@ -1,0 +1,9 @@
+{
+  "id": "ALR-8350",
+  "fired_at": "2026-04-29T17:50:00Z",
+  "pipeline": "exp_finance_ledger",
+  "check": "freshness",
+  "severity": "high",
+  "message": "exp_finance_ledger has not loaded new data since 2026-04-29 14:55 UTC (freshness SLA 2 h)",
+  "window_start": "2026-04-29T11:50:00Z"
+}

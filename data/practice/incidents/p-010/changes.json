@@ -1,0 +1,50 @@
+[
+  {
+    "id": "CHG-3740",
+    "time": "2026-02-15T07:08:00Z",
+    "kind": "deploy",
+    "target": "ing_payments",
+    "author": "data-platform",
+    "summary": "deploy ing_payments v3.12.0: updates the tests for raw.payments"
+  },
+  {
+    "id": "CHG-3741",
+    "time": "2026-02-17T21:07:00Z",
+    "kind": "deploy",
+    "target": "dim_customers",
+    "author": "analytics-eng",
+    "summary": "deploy dim_customers v2.7.6: adds a not-null test on utm_campaign"
+  },
+  {
+    "id": "CHG-3742",
+    "time": "2026-02-18T16:20:00Z",
+    "kind": "config",
+    "target": "fct_shipments",
+    "author": "analytics-eng",
+    "summary": "config v15: alert_channel changed from #data-alerts to #data-oncall"
+  },
+  {
+    "id": "CHG-3743",
+    "time": "2026-02-18T19:08:00Z",
+    "kind": "infra",
+    "target": "warehouse.internal",
+    "author": "sre",
+    "summary": "minor version upgrade during the maintenance window"
+  },
+  {
+    "id": "CHG-3744",
+    "time": "2026-02-19T08:31:00Z",
+    "kind": "deploy",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "deploy exp_bi_dashboards v4.12.1: documents marts.daily_revenue"
+  },
+  {
+    "id": "CHG-3745",
+    "time": "2026-02-19T14:29:00Z",
+    "kind": "dashboard",
+    "target": "bi.internal",
+    "author": "analytics-eng",
+    "summary": "dashboard 'Carrier on-time rate' published"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "CHG-3383",
+    "time": "2026-03-07T14:41:00Z",
+    "kind": "infra",
+    "target": "scheduler",
+    "author": "sre",
+    "summary": "scheduler upgraded to the next patch release"
+  },
+  {
+    "id": "CHG-3384",
+    "time": "2026-03-08T09:36:00Z",
+    "kind": "config",
+    "target": "exp_finance_ledger",
+    "author": "finance-data",
+    "summary": "config v20: retries changed from 3 to 5"
+  },
+  {
+    "id": "CHG-3385",
+    "time": "2026-03-08T16:47:00Z",
+    "kind": "deploy",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "deploy mart_delivery_sla v3.8.2: adds a not-null test on gift_wrap"
+  },
+  {
+    "id": "CHG-3386",
+    "time": "2026-03-08T22:18:00Z",
+    "kind": "deploy",
+    "target": "mart_delivery_sla",
+    "author": "analytics-eng",
+    "summary": "deploy mart_delivery_sla v4.5.5: renames an internal macro"
+  },
+  {
+    "id": "CHG-3387",
+    "time": "2026-03-09T02:35:00Z",
+    "kind": "deploy",
+    "target": "ing_orders",
+    "author": "data-platform",
+    "summary": "deploy ing_orders v1.3.1: updates the tests for raw.orders"
+  },
+  {
+    "id": "CHG-3388",
+    "time": "2026-03-10T13:19:00Z",
+    "kind": "config",
+    "target": "exp_bi_dashboards",
+    "author": "analytics-eng",
+    "summary": "config v28: timeout_seconds changed from 600 to 900"
+  },
+  {
+    "id": "CHG-3389",
+    "time": "2026-03-10T14:54:00Z",
+    "kind": "deploy",
+    "target": "exp_crm_segments",
+    "author": "marketing-data",
+    "summary": "deploy exp_crm_segments v2.9.0: updates the tests for marts.customer_ltv"
+  },
+  {
+    "id": "CHG-3390",
+    "time": "2026-03-11T10:57:00Z",
+    "kind": "notice",
+    "target": "src_ads_api",
+    "author": "data-platform",
+    "summary": "notice from the api.ads.example provider: hourly quota cut from 6000 to 1800 requests"
+  },
+  {
+    "id": "CHG-3391",
+    "time": "2026-03-11T14:24:00Z",
+    "kind": "config",
+    "target": "fct_marketing_spend",
+    "author": "marketing-data",
+    "summary": "config v16: threads changed from 4 to 6"
+  }
+]
