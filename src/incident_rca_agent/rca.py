@@ -26,8 +26,10 @@ investigation retrieved. Answer with JSON only.
 Fields, in this order:
 - claims: 3 to 6 facts from the evidence that show the cause. Each claim is one short plain sentence, without \
 markdown, with source_ids: the ids in square brackets of every source its names and numbers come from (for \
-example L-0142, M-1, CHG-4410). Claims cite the incident's own evidence: the alert, the lineage, log lines, \
-metric summaries and changes; runbooks and past incidents belong in actions. Copy pipeline names, numbers and \
+example L-0142, M-1, CHG-4410). Base each claim on one or two sources, such as one log line or one line of a \
+metric summary, and cite them all. Do not write source ids in the text: they go in source_ids. Claims cite the \
+incident's own evidence: the alert, the lineage, log lines, metric summaries and changes; runbooks and past \
+incidents belong in actions. Copy pipeline names, numbers and \
 times exactly as they appear in the cited sources, and never compute, round or convert a number (no \
 percentages, durations or "22k" of your own): a claim with a name or number that is not in its sources does not \
 count. State what the sources show, not what did not happen. Include the warning or error line of the \

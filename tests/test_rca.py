@@ -101,6 +101,8 @@ def test_the_prompt_asks_for_short_claims_with_numbers_copied_not_computed():
     assert "runbooks and past incidents belong in actions" in system
     assert "not what did not happen" in system
     assert "every source its names and numbers come from" in system
+    assert "Base each claim on one or two sources" in system
+    assert "Do not write source ids in the text" in system
 
 
 def test_claims_cite_only_the_incidents_own_evidence_while_actions_may_cite_runbooks():
