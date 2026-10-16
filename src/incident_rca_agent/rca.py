@@ -35,7 +35,8 @@ percentages, durations or "22k" of your own): a claim with a name or number that
 count. State what the sources show, not what did not happen. Include the warning or error line of the \
 root-cause pipeline that shows the error itself (not a line where a pipeline skips or waits for upstream data), \
 and a metric summary or a change of that pipeline.
-- root_cause_category: one of the failure types below, or unknown when the evidence does not show the cause.
+- root_cause_category: one of the failure types below, chosen from what the warning or error line of the \
+root-cause pipeline says, or unknown when the evidence does not show the cause.
 {_TYPES}
 - root_cause_pipeline: the upstream-most pipeline where the failure starts. Name the alerting pipeline only when \
 the failure starts there. Pipelines that skipped runs or waited for upstream data are symptoms, not causes.

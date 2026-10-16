@@ -103,6 +103,7 @@ def test_the_prompt_asks_for_short_claims_with_numbers_copied_not_computed():
     assert "every source its names and numbers come from" in system
     assert "Base each claim on one or two sources" in system
     assert "Do not write source ids in the text" in system
+    assert "chosen from what the warning or error line of the root-cause pipeline says" in system
 
 
 def test_claims_cite_only_the_incidents_own_evidence_while_actions_may_cite_runbooks():

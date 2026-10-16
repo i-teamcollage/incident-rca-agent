@@ -51,3 +51,12 @@ def test_routine_warnings_and_symptoms_show_no_failure_type(message):
 
 def test_unknown_shows_nothing():
     assert not shows("unknown", EXAMPLES["dns_failure"])
+
+
+@pytest.mark.parametrize("category", list(CATEGORIES))
+def test_each_description_carries_the_error_wording_of_its_own_type_and_no_other(category):
+    # The model reads these descriptions to name the type. A config error read as a schema change (p-011) because
+    # the description of a bad config deploy did not say what its error looks like.
+    description = CATEGORIES[category][1]
+    assert shows(category, description)
+    assert [other for other in CATEGORIES if other != category and shows(other, description)] == []

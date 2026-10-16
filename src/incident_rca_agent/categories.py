@@ -11,7 +11,8 @@ import re
 CATEGORIES = {
     "upstream_schema_change": (
         "upstream schema change",
-        "a source renamed, dropped or retyped a field, so loads fail their schema or contract checks",
+        "a source renamed, dropped or retyped a field, so loads fail their data contract: a required field is "
+        "missing or has a new type",
     ),
     "api_rate_limit": (
         "API rate limit (HTTP 429)",
@@ -27,7 +28,8 @@ CATEGORIES = {
     ),
     "late_upstream_data": (
         "late upstream data",
-        "upstream data did not arrive on time; runs succeed but bring no or little new data",
+        "upstream data did not arrive on time (a file is not there, a stream consumer lag grows, a report is not "
+        "ready); runs succeed but bring no or little new data",
     ),
     "out_of_memory": (
         "out of memory (exit 137)",
@@ -35,7 +37,8 @@ CATEGORIES = {
     ),
     "bad_config_deploy": (
         "bad config deploy",
-        "a config change deployed shortly before the failure made the pipeline fail at start-up",
+        "a config change deployed shortly before the failure made the pipeline fail at start-up with a config "
+        "error that names the key and the value",
     ),
     "duplicate_keys": (
         "duplicate keys",
@@ -43,11 +46,13 @@ CATEGORIES = {
     ),
     "daylight_saving_bug": (
         "daylight-saving bug",
-        "local-time handling broke on a clock-change day: an hour that does not exist or happens twice",
+        "local-time handling broke on a clock-change day: an hour that does not exist or happens twice "
+        "(NonExistentTimeError, AmbiguousTimeError)",
     ),
     "dns_failure": (
         "DNS failure",
-        "a host name could not be resolved, so connections failed before they started",
+        "a host name could not be resolved (Temporary failure in name resolution, NXDOMAIN), so connections "
+        "failed before they started",
     ),
 }
 UNKNOWN = "unknown"
