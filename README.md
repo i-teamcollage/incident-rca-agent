@@ -44,17 +44,31 @@ flowchart LR
 ## Results
 
 The acceptance test was written before the agent was built. It runs on 25 made-up incidents the agent
-was never tuned on.
+was never tuned on: the prompts were tuned on 15 separate practice incidents, then the test incidents were
+run once.
 
 <!-- results:start -->
-Not measured yet.
+| Criterion | Target | Measured | 95% interval | Result |
+|---|---|---|---|---|
+| Root cause correct (right cause and right pipeline) | ≥ 75% | 84.0% | 65.3–93.6% | PASS |
+| RCAs posted as confident that are correct | ≥ 90% | 100.0% | 79.6–100.0% | PASS |
+| Claims traced to a real source | ≥ 85% | 85.8% | 78.2–91.1% | PASS |
+
+25 made-up test cases, ministral-3:8b on Intel Xeon Processor @ 2.80GHz, 4 cores, 16 GB, recorded 2026-10-16, median 459.6 s per item.
 <!-- results:end -->
+
+In plain words: the agent named the right cause in 21 of the 25 incidents. It posted 15 RCAs as confident,
+and all 15 were right. The 4 it got wrong all went out as "needs an engineer", so no wrong answer was posted
+as confident. Its weakest spot is late upstream data, where nothing fails and the cause shows only as
+missing rows: it got neither of those 2 incidents right.
 
 The red herrings are the point of the test. In nine of the 25 incidents, something else looks guilty:
 
 - a deploy on the alerting pipeline shortly before it went stale;
 - a failure in another pipeline during the same hours;
 - a metric that jumps on a pipeline that has nothing to do with the alert.
+
+The agent got 7 of these 9 right. The 2 it got wrong went out as "needs an engineer".
 
 Full results, per incident and per failure type, are in [reports/acceptance.md](reports/acceptance.md).
 
@@ -97,7 +111,11 @@ You need Python 3.11 or newer, nothing else.
 
 1. Install [Ollama](https://ollama.com), then pull the model: `ollama pull ministral-3:8b`. It is a 6 GB
    download, made by Mistral AI and licensed under Apache 2.0.
-2. `make live` runs the acceptance test against the model. `make record` also stores the run.
+2. `make live` runs the acceptance test against the model. `make record` also stores the run. On a
+   computer with four processor cores and no graphics card, an incident takes about 8 minutes, so the 25
+   test incidents take about 3½ hours. The model needs about 10 GB of free memory; on a 16 GB machine,
+   start Ollama with `LLAMA_ARG_CACHE_RAM=2048 ollama serve` so its prompt cache stays small. If a
+   recording stops half-way, `make resume` carries on where it stopped.
 3. Investigate one incident:
    `PYTHONPATH=src python -m incident_rca_agent run data/test/incidents/t-001`
    An incident is a folder with `alert.json`, `logs.txt`, `metrics.json` and `changes.json`. The RCA, the

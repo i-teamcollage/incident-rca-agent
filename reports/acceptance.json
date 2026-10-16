@@ -1,0 +1,62 @@
+{
+  "title": "Incident RCA agent: acceptance test",
+  "split": "test",
+  "items": 25,
+  "model": "ministral-3:8b",
+  "machine": "Intel Xeon Processor @ 2.80GHz, 4 cores, 16 GB",
+  "recorded_at": "2026-10-16",
+  "ollama_version": "0.40.3",
+  "model_digest": "1922accd5827ebe6829e536369195db25eaf664528dc66206d646ea3bb386b71",
+  "median_seconds_per_item": 459.6,
+  "criteria": [
+    {
+      "id": "rca_accuracy",
+      "label": "Root cause correct (right cause and right pipeline)",
+      "metric": "rca_accuracy",
+      "op": ">=",
+      "target": 0.75,
+      "unit": "rate",
+      "value": 0.84,
+      "hits": 21,
+      "total": 25,
+      "interval": [
+        0.6534598601976183,
+        0.9359665239142201
+      ],
+      "passed": true
+    },
+    {
+      "id": "confident_precision",
+      "label": "RCAs posted as confident that are correct",
+      "metric": "confident_precision",
+      "op": ">=",
+      "target": 0.9,
+      "unit": "rate",
+      "value": 1.0,
+      "hits": 15,
+      "total": 15,
+      "interval": [
+        0.7961107336956521,
+        1.0
+      ],
+      "passed": true
+    },
+    {
+      "id": "grounding",
+      "label": "Claims traced to a real source",
+      "metric": "grounding",
+      "op": ">=",
+      "target": 0.85,
+      "unit": "rate",
+      "value": 0.8584070796460177,
+      "hits": 97,
+      "total": 113,
+      "interval": [
+        0.7823185133569006,
+        0.9109277277079257
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}
