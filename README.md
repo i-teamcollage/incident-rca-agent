@@ -69,7 +69,8 @@ own incidents it measured:
 - 0.80 grounding.
 
 Those figures come from client data and cannot be reproduced here; the timings were measured on server
-hardware. The numbers above are this sample's own, measured on a laptop.
+hardware. The numbers above are this sample's own, measured on an ordinary computer with four processor cores
+and no graphics card.
 
 A client build adds:
 
@@ -107,13 +108,13 @@ You need Python 3.11 or newer, nothing else.
 | File | What it does |
 |---|---|
 | [`tools.py`](src/incident_rca_agent/tools.py) | The seven tools: the alert, the lineage, log search, metric summaries, the change log, runbooks and past incidents. Every piece of evidence carries an id (`L-0142` for a log line, `M-1` for a metric summary, `CHG-4410` for a change), and the same call always returns the same text. |
-| [`investigate.py`](src/incident_rca_agent/investigate.py) | The tool loop. The code reads the alert, then the model asks for up to seven more tool calls. |
-| [`rca.py`](src/incident_rca_agent/rca.py) | One more model call writes the RCA from everything the tools returned. Its JSON schema only allows the ten failure types, real pipelines, and ids the investigation saw. An invalid answer gets one retry. |
+| [`investigate.py`](src/incident_rca_agent/investigate.py) | The tool loop. The code reads the alert, then the model asks for up to seven more tool calls. If the model is about to stop without the logs or the metrics of the pipeline it suspects, the code reminds it once. |
+| [`rca.py`](src/incident_rca_agent/rca.py) | One more model call writes the RCA from everything the tools returned. Its JSON schema only allows the ten failure types, real pipelines, and ids the investigation saw; a claim may cite only the incident's own evidence, not a runbook. An invalid answer gets one retry. |
 | [`grounding.py`](src/incident_rca_agent/grounding.py) | The grounding check. A claim counts only when every id it cites was retrieved, and its pipeline names, numbers and times are in those sources. |
 | [`confidence.py`](src/incident_rca_agent/confidence.py) | The confidence line: confident, or "needs an engineer" with the reasons. |
 | [`slack.py`](src/incident_rca_agent/slack.py) | The Slack message (Block Kit JSON) and a Markdown preview. Nothing is sent. |
 | [`tool_messages.py`](src/incident_rca_agent/tool_messages.py) | The only file that knows how tool calls are written for Ollama. |
-| [`llm.py`](src/incident_rca_agent/llm.py) | Talks to Ollama with the standard library. Every call is fingerprinted, so a stored run replays exactly or stops with a clear message. |
+| [`llm.py`](src/incident_rca_agent/llm.py) | Talks to Ollama with the standard library. Every call is fingerprinted, so a stored run replays exactly or stops with a clear message, and a recording that stopped half-way can carry on where it stopped. |
 | [`acceptance.py`](src/incident_rca_agent/acceptance.py) | Reads the thresholds in [`acceptance.toml`](acceptance.toml), prints PASS/FAIL with 95% intervals, and writes the reports and the table above. |
 
 Design choices:
