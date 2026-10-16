@@ -50,15 +50,27 @@ step sees only the tool results."""
 
 
 KNOWLEDGE_TOOLS = ("search_runbooks", "search_past_incidents")  # about other days, not this incident
-EVIDENCE_TOOLS = ("search_logs", "get_metric_summary")  # what the confidence line needs to see
+# What the confidence line needs to see, how to ask for it, and what it gives the RCA.
+EVIDENCE_TOOLS = {
+    "search_logs": ("search_logs with level WARN", "its warning or error line"),
+    "get_metric_summary": ("get_metric_summary with metric all", "its metric summary"),
+}
+LOW_ON_CALLS = 2
 
 
-def reminder(calls_left: int) -> str:
-    """Sent once when the model stops before it has searched the logs and read a metric summary."""
+def missing_evidence(investigation: Investigation) -> list[str]:
+    used = {use.name for use in investigation.uses}
+    return [name for name in EVIDENCE_TOOLS if name not in used]
+
+
+def reminder(calls_left: int, missing: list[str]) -> str:
+    """Sent once, when the model stops or is down to its last calls before it has used the tools in missing."""
+    calls = f"{calls_left} tool call{'' if calls_left == 1 else 's'}"
+    use = " and ".join(EVIDENCE_TOOLS[name][0] for name in missing)
+    needs = " and ".join(EVIDENCE_TOOLS[name][1] for name in missing)
     return (
-        f"You have {calls_left} tool calls left. Before DONE, use search_logs with level WARN and "
-        "get_metric_summary with metric all on the pipeline where the failure starts: the RCA needs its warning or "
-        "error line and its metric summary."
+        f"You have {calls} left. Before DONE, use {use} on the pipeline where the failure starts: "
+        f"the RCA needs {needs}."
     )
 
 
@@ -99,15 +111,18 @@ def investigate(llm: LLM, session: Session, label: str) -> Investigation:
     messages: list[dict[str, Any]] = [{"role": "system", "content": SYSTEM}, {"role": "user", "content": opening}]
     reminded = False
     while len(found.uses) < MAX_TOOL_CALLS:
+        calls_left, missing = MAX_TOOL_CALLS - len(found.uses), missing_evidence(found)
+        if missing and not reminded and calls_left <= LOW_ON_CALLS:
+            reminded = True
+            messages.append({"role": "user", "content": reminder(calls_left, missing)})
         reply = llm.chat(messages, tools=TOOLS, label=f"{label} step {found.model_calls + 1}")
         found.model_calls += 1
         found.seconds += reply.seconds
         if not reply.tool_calls:
-            missing = [name for name in EVIDENCE_TOOLS if name not in {use.name for use in found.uses}]
             if missing and not reminded:
                 reminded = True
                 messages.append({"role": "assistant", "content": reply.text})
-                messages.append({"role": "user", "content": reminder(MAX_TOOL_CALLS - len(found.uses))})
+                messages.append({"role": "user", "content": reminder(calls_left, missing)})
                 continue
             found.stopped = "the model had enough evidence"
             break

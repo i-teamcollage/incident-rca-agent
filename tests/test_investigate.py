@@ -145,3 +145,17 @@ def test_a_model_with_logs_and_metrics_is_not_reminded(tmp_path):
     investigation, model, _ = run(tmp_path, [LINEAGE_CALL, LOGS_CALL, METRICS_CALL], [])
     assert len(model.requests) == 2
     assert all(message["role"] != "user" for message in model.requests[-1]["messages"][2:])
+
+
+def test_a_model_low_on_calls_without_a_metric_summary_is_reminded_of_what_is_missing(tmp_path):
+    # It read the logs of every pipeline on the way up and never asked for the failing pipeline's metrics.
+    logs = [[("search_logs", {"pipeline": "src_payments_api", "query": f"error {n}"})] for n in range(4)]
+    investigation, model, _ = run(tmp_path, [LINEAGE_CALL], *logs, [METRICS_CALL], [])
+    reminder = model.requests[5]["messages"][-1]
+    assert reminder["role"] == "user"
+    assert reminder["content"].startswith("You have 2 tool calls left.")
+    assert "get_metric_summary" in reminder["content"] and "search_logs" not in reminder["content"]
+    assert all(message["role"] != "user" for message in model.requests[4]["messages"][2:])
+    assert [use.name for use in investigation.uses][-1] == "get_metric_summary"
+    assert investigation.model_calls == 7
+    assert investigation.stopped == "the model had enough evidence"
