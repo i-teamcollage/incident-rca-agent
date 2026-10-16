@@ -29,12 +29,12 @@ markdown, with source_ids: the ids in square brackets of every source its names 
 example L-0142, M-1, CHG-4410). Base each claim on one or two sources, such as one log line or one line of a \
 metric summary, and cite them all. Do not write source ids in the text: they go in source_ids. Claims cite the \
 incident's own evidence: the alert, the lineage, log lines, metric summaries and changes; runbooks and past \
-incidents belong in actions. Copy pipeline names, numbers and \
-times exactly as they appear in the cited sources, and never compute, round or convert a number (no \
-percentages, durations or "22k" of your own): a claim with a name or number that is not in its sources does not \
-count. State what the sources show, not what did not happen. Include the warning or error line of the \
-root-cause pipeline that shows the error itself (not a line where a pipeline skips or waits for upstream data), \
-and a metric summary or a change of that pipeline.
+incidents belong in actions. Copy pipeline names, numbers and times exactly as they appear in the cited \
+sources, and never compute, round or convert a number (no percentages, durations, counts of runs or lines, or \
+"22k" of your own): a claim with a name or number that is not in its sources does not count. State what the \
+sources show, not what did not happen. Include the warning or error line of the root-cause pipeline that shows \
+the error itself (not a line where a pipeline skips or waits for upstream data), and a metric summary or a \
+change of that pipeline.
 - root_cause_category: one of the failure types below, chosen from what the warning or error line of the \
 root-cause pipeline says, or unknown when the evidence does not show the cause.
 {_TYPES}

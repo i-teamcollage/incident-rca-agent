@@ -98,6 +98,7 @@ def test_the_prompt_asks_for_short_claims_with_numbers_copied_not_computed():
     system = build_messages(investigation())[0]["content"]
     assert "one short plain sentence, without markdown" in system
     assert "never compute, round or convert a number" in system
+    assert "counts of runs or lines" in system
     assert "runbooks and past incidents belong in actions" in system
     assert "not what did not happen" in system
     assert "every source its names and numbers come from" in system
