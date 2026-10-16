@@ -2,8 +2,9 @@
 
 It is a separate call from the tool loop: a JSON schema and no tools. The schema only allows the ten
 failure types (or unknown), pipelines from the lineage graph, and source ids the investigation was
-actually shown. The evidence is given as one transcript of every tool call and its result, so the
-answer depends on the evidence, not on how a chat template renders tool messages.
+actually shown; a claim may cite only the incident's own evidence, not a runbook or a past incident. The
+evidence is given as one transcript of every tool call and its result, so the answer depends on the
+evidence, not on how a chat template renders tool messages.
 """
 
 from __future__ import annotations
@@ -24,12 +25,14 @@ investigation retrieved. Answer with JSON only.
 
 Fields, in this order:
 - claims: 3 to 6 facts from the evidence that show the cause. Each claim is one short plain sentence, without \
-markdown, with source_ids: the ids in square brackets of the sources it comes from (for example L-0142, M-1, \
-CHG-4410). Copy pipeline names, numbers and times exactly as they appear in the cited sources, and never \
-compute, round or convert a number (no percentages or durations of your own): a claim with a name or number \
-that is not in its sources does not count. Include the warning or error line of the root-cause pipeline that \
-shows the error itself (not a line where a pipeline skips or waits for upstream data), and a metric summary or \
-a change of that pipeline.
+markdown, with source_ids: the ids in square brackets of every source its names and numbers come from (for \
+example L-0142, M-1, CHG-4410). Claims cite the incident's own evidence: the alert, the lineage, log lines, \
+metric summaries and changes; runbooks and past incidents belong in actions. Copy pipeline names, numbers and \
+times exactly as they appear in the cited sources, and never compute, round or convert a number (no \
+percentages, durations or "22k" of your own): a claim with a name or number that is not in its sources does not \
+count. State what the sources show, not what did not happen. Include the warning or error line of the \
+root-cause pipeline that shows the error itself (not a line where a pipeline skips or waits for upstream data), \
+and a metric summary or a change of that pipeline.
 - root_cause_category: one of the failure types below, or unknown when the evidence does not show the cause.
 {_TYPES}
 - root_cause_pipeline: the upstream-most pipeline where the failure starts. Name the alerting pipeline only when \
@@ -42,18 +45,22 @@ alerting pipeline.
 the runbook section or past incident it follows when there is one."""
 
 
-def rca_schema(pipelines: list[str], source_ids: list[str]) -> dict[str, Any]:
+def _cited(source_ids: list[str]) -> dict[str, Any]:
     citations: dict[str, Any] = {"type": "string", "enum": list(source_ids)} if source_ids else {"type": "string"}
-    item = {
+    return {
         "type": "object",
         "properties": {"text": {"type": "string"}, "source_ids": {"type": "array", "items": citations}},
         "required": ["text", "source_ids"],
         "additionalProperties": False,
     }
+
+
+def rca_schema(pipelines: list[str], source_ids: list[str], claim_ids: list[str] | None = None) -> dict[str, Any]:
+    """Claims may cite claim_ids (the incident's own evidence), actions any source the investigation saw."""
     return {
         "type": "object",
         "properties": {
-            "claims": {"type": "array", "items": item, "maxItems": 6},
+            "claims": {"type": "array", "items": _cited(source_ids if claim_ids is None else claim_ids), "maxItems": 6},
             "root_cause_category": {"type": "string", "enum": list(CATEGORY_IDS)},
             "root_cause_pipeline": {"type": "string", "enum": [*pipelines, UNKNOWN]},
             "summary": {"type": "string"},
@@ -62,7 +69,7 @@ def rca_schema(pipelines: list[str], source_ids: list[str]) -> dict[str, Any]:
                 "items": {"type": "string", "enum": list(pipelines)},
                 "maxItems": 12,
             },
-            "actions": {"type": "array", "items": item, "maxItems": 4},
+            "actions": {"type": "array", "items": _cited(source_ids), "maxItems": 4},
         },
         "required": [
             "claims",
@@ -106,7 +113,7 @@ def build_messages(investigation: Investigation) -> list[dict[str, str]]:
 
 
 def write_rca(llm: LLM, investigation: Investigation, pipelines: list[str], label: str) -> Reply:
-    schema = rca_schema(pipelines, investigation.source_ids())
+    schema = rca_schema(pipelines, investigation.source_ids(), investigation.evidence_ids())
     return llm.structured(
         build_messages(investigation),
         schema=schema,

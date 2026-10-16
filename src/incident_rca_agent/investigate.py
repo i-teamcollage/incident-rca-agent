@@ -29,14 +29,36 @@ wait for data are symptoms.
 - the failure type, one of:
 {_TYPES}
 
-You can make at most {MAX_TOOL_CALLS - 1} more tool calls. A good order: get_lineage upstream of the alerting \
-pipeline; search_logs on the suspect pipeline with level WARN; get_metric_summary on the suspect pipeline; \
-list_changes; then search_runbooks and search_past_incidents with the error message you found. Look at the \
-pipeline where the trouble starts, not only where it shows. When you know the cause, stop calling tools and \
-reply with the single word DONE: the RCA is written in the next step, from the evidence the tools returned.
+How to investigate, with at most {MAX_TOOL_CALLS - 1} more tool calls:
+1. get_lineage upstream of the alerting pipeline. It shows how each pipeline's runs went. A pipeline skips its \
+runs when an input failed or sent no data, so follow the skipped runs upstream: the suspect is the pipeline at \
+the top of that chain, the one whose runs failed (it can be the alerting pipeline itself). When two chains are \
+possible, follow the one with as many bad runs as the alerting pipeline. When no run failed or was skipped, \
+start from the top of the lineage.
+2. search_logs on the suspect with level WARN: it shows warnings and errors, and many failures start as a warning.
+3. get_metric_summary on the suspect with metric all.
+4. When the suspect's warnings only say that it waits for, skips because of, or got bad data from another \
+pipeline, that pipeline is the new suspect: do steps 2 and 3 for it.
+5. list_changes, then search_runbooks with the error message you found.
+Go to the suspect directly instead of looking at every pipeline in between. When you have the warning or error \
+line and the metric summary of the pipeline where the failure starts, stop calling tools and reply with the \
+single word DONE: the RCA is written in the next step, from the evidence the tools returned.
 
 Answer with tool calls only. Do not write a plan, an explanation or a summary: nobody reads it, and the RCA \
 step sees only the tool results."""
+
+
+KNOWLEDGE_TOOLS = ("search_runbooks", "search_past_incidents")  # about other days, not this incident
+EVIDENCE_TOOLS = ("search_logs", "get_metric_summary")  # what the confidence line needs to see
+
+
+def reminder(calls_left: int) -> str:
+    """Sent once when the model stops before it has searched the logs and read a metric summary."""
+    return (
+        f"You have {calls_left} tool calls left. Before DONE, use search_logs with level WARN and "
+        "get_metric_summary with metric all on the pipeline where the failure starts: the RCA needs its warning or "
+        "error line and its metric summary."
+    )
 
 
 @dataclass
@@ -60,6 +82,11 @@ class Investigation:
         """Every source id the investigation was shown, in order, each once."""
         return list(dict.fromkeys(source_id for use in self.uses for source_id in use.source_ids))
 
+    def evidence_ids(self) -> list[str]:
+        """The ids of the incident's own evidence: everything but runbook sections and past incidents."""
+        uses = [use for use in self.uses if use.name not in KNOWLEDGE_TOOLS]
+        return list(dict.fromkeys(source_id for use in uses for source_id in use.source_ids))
+
 
 def investigate(llm: LLM, session: Session, label: str) -> Investigation:
     alert = session.run("get_alert", {})
@@ -69,11 +96,18 @@ def investigate(llm: LLM, session: Session, label: str) -> Investigation:
         f"Find the root cause with the tools. You have {MAX_TOOL_CALLS - 1} tool calls."
     )
     messages: list[dict[str, Any]] = [{"role": "system", "content": SYSTEM}, {"role": "user", "content": opening}]
+    reminded = False
     while len(found.uses) < MAX_TOOL_CALLS:
         reply = llm.chat(messages, tools=TOOLS, label=f"{label} step {found.model_calls + 1}")
         found.model_calls += 1
         found.seconds += reply.seconds
         if not reply.tool_calls:
+            missing = [name for name in EVIDENCE_TOOLS if name not in {use.name for use in found.uses}]
+            if missing and not reminded:
+                reminded = True
+                messages.append({"role": "assistant", "content": reply.text})
+                messages.append({"role": "user", "content": reminder(MAX_TOOL_CALLS - len(found.uses))})
+                continue
             found.stopped = "the model had enough evidence"
             break
         messages.append(assistant_message(reply))

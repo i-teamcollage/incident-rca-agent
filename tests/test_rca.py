@@ -88,9 +88,9 @@ def test_write_rca_is_one_structured_call_without_tools(tmp_path):
     assert reply.data == ANSWER
     assert len(requests) == 1
     assert "tools" not in requests[0]
-    assert requests[0]["format"]["properties"]["claims"]["items"]["properties"]["source_ids"]["items"]["enum"] == (
-        found.source_ids()
-    )
+    properties = requests[0]["format"]["properties"]
+    assert properties["claims"]["items"]["properties"]["source_ids"]["items"]["enum"] == found.evidence_ids()
+    assert properties["actions"]["items"]["properties"]["source_ids"]["items"]["enum"] == found.source_ids()
 
 
 def test_the_prompt_asks_for_short_claims_with_numbers_copied_not_computed():
@@ -98,3 +98,19 @@ def test_the_prompt_asks_for_short_claims_with_numbers_copied_not_computed():
     system = build_messages(investigation())[0]["content"]
     assert "one short plain sentence, without markdown" in system
     assert "never compute, round or convert a number" in system
+    assert "runbooks and past incidents belong in actions" in system
+    assert "not what did not happen" in system
+    assert "every source its names and numbers come from" in system
+
+
+def test_claims_cite_only_the_incidents_own_evidence_while_actions_may_cite_runbooks():
+    # A runbook or a past incident is about other days: an incident's numbers and times are never in it.
+    found = investigation()
+    schema = rca_schema(PIPELINES, found.source_ids(), found.evidence_ids())
+    claim_ids = schema["properties"]["claims"]["items"]["properties"]["source_ids"]["items"]["enum"]
+    action_ids = schema["properties"]["actions"]["items"]["properties"]["source_ids"]["items"]["enum"]
+    assert "RB-04.2" in action_ids
+    assert claim_ids == [source_id for source_id in found.source_ids() if not source_id.startswith("RB-")]
+    with pytest.raises(ValueError, match=r"claims\[0\]\.source_ids\[0\]"):
+        validate({**ANSWER, "claims": [{"text": "Pause the backfill", "source_ids": ["RB-04.2"]}]}, schema)
+    assert validate(ANSWER, schema) is ANSWER

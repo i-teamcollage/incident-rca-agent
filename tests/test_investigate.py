@@ -1,8 +1,14 @@
+import copy
+
 import sample
 
 from incident_rca_agent.investigate import MAX_TOOL_CALLS, investigate
 from incident_rca_agent.llm import LLM
 from incident_rca_agent.tools import TOOLS, Session
+
+LINEAGE_CALL = ("get_lineage", {"pipeline": "mart_daily_revenue", "direction": "upstream"})
+LOGS_CALL = ("search_logs", {"pipeline": "src_payments_api", "level": "WARN"})
+METRICS_CALL = ("get_metric_summary", {"pipeline": "src_payments_api", "metric": "all"})
 
 
 class ScriptedModel:
@@ -13,7 +19,7 @@ class ScriptedModel:
         self.requests = []
 
     def __call__(self, request):
-        self.requests.append(request)
+        self.requests.append(copy.deepcopy(request))  # the loop keeps appending to the same message list
         calls = self.replies.pop(0) if self.replies else []
         return {
             "content": "" if calls else "I have what I need.",
@@ -62,7 +68,7 @@ def test_several_calls_in_one_reply_get_one_result_each_in_order(tmp_path):
 
 
 def test_the_loop_ends_when_the_model_stops_asking(tmp_path):
-    investigation, model, _ = run(tmp_path, [("list_changes", {})])
+    investigation, model, _ = run(tmp_path, [LOGS_CALL, METRICS_CALL])
     assert len(model.requests) == 2
     assert investigation.stopped == "the model had enough evidence"
     assert investigation.model_calls == 2
@@ -89,7 +95,7 @@ def test_calls_beyond_the_limit_are_not_run(tmp_path):
 
 def test_time_and_model_calls_are_added_up(tmp_path):
     investigation, _, _ = run(tmp_path, [("list_changes", {})], [("search_runbooks", {"query": "429"})])
-    assert investigation.model_calls == 3
+    assert investigation.model_calls == 4  # the third reply stops without logs or metrics and gets the reminder
     assert investigation.seconds >= 0
     assert investigation.source_ids()[:2] == ["ALERT", "CHG-4402"]
 
@@ -101,3 +107,40 @@ def test_the_model_is_asked_for_tool_calls_without_text(tmp_path):
     system = model.requests[0]["messages"][0]["content"]
     assert "Answer with tool calls only" in system
     assert "reply with the single word DONE" in system
+
+
+def test_the_model_is_told_to_follow_the_skipped_runs_to_the_failing_pipeline(tmp_path):
+    # Walking down the lineage one pipeline at a time used up the calls before the root pipeline's metrics.
+    _, model, _ = run(tmp_path)
+    system = model.requests[0]["messages"][0]["content"]
+    assert "follow the skipped runs upstream" in system
+    assert "Go to the suspect directly" in system
+    assert "level WARN" in system
+
+
+
+def test_a_model_that_stops_without_logs_or_metrics_is_reminded_once(tmp_path):
+    # The confidence line needs a log line and a metric summary or a change; a model that stops after the lineage
+    # gets one reminder, then the loop goes on as before.
+    investigation, model, _ = run(tmp_path, [LINEAGE_CALL], [], [LOGS_CALL, METRICS_CALL], [])
+    reminder = model.requests[2]["messages"][-1]
+    assert reminder["role"] == "user"
+    assert "6 tool calls left" in reminder["content"]
+    assert "search_logs" in reminder["content"] and "get_metric_summary" in reminder["content"]
+    assert model.requests[2]["messages"][-2] == {"role": "assistant", "content": "I have what I need."}
+    assert [use.name for use in investigation.uses] == ["get_alert", "get_lineage", "search_logs", "get_metric_summary"]
+    assert investigation.stopped == "the model had enough evidence"
+    assert investigation.model_calls == 4
+
+
+def test_the_reminder_comes_only_once(tmp_path):
+    investigation, model, _ = run(tmp_path, [LINEAGE_CALL], [], [])
+    assert len(model.requests) == 3
+    assert [use.name for use in investigation.uses] == ["get_alert", "get_lineage"]
+    assert investigation.stopped == "the model had enough evidence"
+
+
+def test_a_model_with_logs_and_metrics_is_not_reminded(tmp_path):
+    investigation, model, _ = run(tmp_path, [LINEAGE_CALL, LOGS_CALL, METRICS_CALL], [])
+    assert len(model.requests) == 2
+    assert all(message["role"] != "user" for message in model.requests[-1]["messages"][2:])
