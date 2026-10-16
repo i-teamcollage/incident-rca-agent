@@ -1,7 +1,7 @@
 PYTHON ?= $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 export PYTHONPATH := src
 
-.PHONY: setup data data-check demo accept live record practice test lint readme check
+.PHONY: setup data data-check demo accept live record resume practice test lint readme check
 
 setup:       ## create .venv with the test tools (the agent itself needs no packages)
 	python3 -m venv .venv && .venv/bin/pip install -q -e ".[dev]"
@@ -23,6 +23,9 @@ live:        ## the acceptance test live on Ollama, without storing the run
 
 record:      ## run live on Ollama and store the run
 	$(PYTHON) -m incident_rca_agent accept --record
+
+resume:      ## carry on with a recording that stopped half-way, reusing the answers it stored
+	$(PYTHON) -m incident_rca_agent accept --resume
 
 practice:    ## live run on the practice split, for tuning
 	$(PYTHON) -m incident_rca_agent accept --split practice --live

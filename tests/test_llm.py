@@ -150,3 +150,51 @@ def test_retry_is_recorded_and_replayed_too(tmp_path):
     recorder.structured(MESSAGES, schema=SCHEMA, validate=check_iban)
     reply = make(tmp_path, "replay").structured(MESSAGES, schema=SCHEMA, validate=check_iban)
     assert reply.data == "DE89370400440532013000"
+
+
+NEW = [{"role": "user", "content": "Extract the BIC."}]
+OLD = [{"role": "user", "content": "A question the code no longer asks."}]
+
+
+def stored_contents(tmp_path):
+    lines = (tmp_path / "ministral-3-8b" / "calls.jsonl").read_text(encoding="utf-8").splitlines()
+    return [json.loads(line)["response"]["content"] for line in lines]
+
+
+def test_resume_reuses_stored_answers_and_asks_the_model_only_for_new_questions(tmp_path):
+    # A recording that stopped half-way (a restart, a crash) carries on without asking again what it already has.
+    first = make(tmp_path, "record", FakeOllama("stored"))
+    first.start_recording()
+    stored = first.chat(MESSAGES, label="doc-001")
+    fake = FakeOllama("fresh")
+    resumed = make(tmp_path, "resume", fake)
+    resumed.start_recording()
+    again = resumed.chat(MESSAGES, label="doc-001")
+    assert (again.text, again.seconds) == ("stored", stored.seconds)
+    assert resumed.chat(NEW, label="doc-002").text == "fresh"
+    assert len(fake.requests) == 1
+    assert stored_contents(tmp_path) == ["stored", "fresh"]  # a new answer is kept at once, in case of another stop
+    resumed.finish_recording()
+    replay = make(tmp_path, "replay")
+    assert (replay.chat(MESSAGES).text, replay.chat(NEW).text) == ("stored", "fresh")
+
+
+def test_a_finished_resume_keeps_only_the_answers_this_run_used_in_order(tmp_path):
+    first = make(tmp_path, "record", FakeOllama("a", "b"))
+    first.start_recording()
+    first.chat(OLD)
+    first.chat(MESSAGES)
+    resumed = make(tmp_path, "resume", FakeOllama("c"))
+    resumed.start_recording()
+    resumed.chat(MESSAGES)
+    resumed.chat(NEW)
+    resumed.finish_recording()
+    assert stored_contents(tmp_path) == ["b", "c"]
+
+
+def test_resume_without_a_stored_run_records_from_the_start(tmp_path):
+    resumed = make(tmp_path, "resume", FakeOllama("x"))
+    resumed.start_recording()
+    resumed.chat(MESSAGES)
+    resumed.finish_recording()
+    assert stored_contents(tmp_path) == ["x"]

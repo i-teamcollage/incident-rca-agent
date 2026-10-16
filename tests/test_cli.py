@@ -110,3 +110,20 @@ def test_an_investigation_that_stops_at_the_alerting_pipeline_is_never_posted_as
             assert record["status"] == "needs an engineer", label["id"]
         if record["status"] == "confident":
             assert right, label["id"]
+
+
+def test_a_recording_cut_short_resumes_where_it_stopped_and_ends_as_a_full_run(tmp_path):
+    root = workspace(tmp_path)
+    main(["accept", "--record"], root=root, transport=StandInModel(root / "data", "test"))
+    full = read(root / "reports" / "acceptance.json")
+    calls = root / "runs" / "ministral-3-8b" / "calls.jsonl"
+    lines = calls.read_text(encoding="utf-8").splitlines(keepends=True)
+    calls.write_text("".join(lines[: len(lines) // 2]), encoding="utf-8")  # the run stopped half-way
+
+    model = StandInModel(root / "data", "test")
+    main(["accept", "--resume"], root=root, transport=model)
+    assert model.calls == len(lines) - len(lines) // 2
+    fingerprints = [json.loads(line)["fingerprint"] for line in calls.read_text(encoding="utf-8").splitlines()]
+    assert fingerprints == [json.loads(line)["fingerprint"] for line in lines]
+    assert read(root / "reports" / "acceptance.json")["criteria"] == full["criteria"]
+    assert main(["accept"], root=root) == (0 if full["passed"] else 1)

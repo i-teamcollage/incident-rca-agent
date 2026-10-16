@@ -1,10 +1,12 @@
 """Model connector: talks to a local Ollama server, and records or replays every call.
 
-Three modes:
+Four modes:
 
 - replay (default): answers come from runs/<model-tag>/calls.jsonl, so no model is needed.
 - live: every call goes to the model.
 - record: like live, and every call is appended to calls.jsonl.
+- resume: like record, but a request already stored in calls.jsonl is answered from there, so a recording that
+  stopped half-way carries on where it stopped. When it finishes, calls.jsonl keeps only what this run used.
 
 A call is identified by a fingerprint of exactly what was sent (model, messages, schema, tools,
 options). If the code or the data changes what is asked, the fingerprint changes and replay
@@ -27,7 +29,7 @@ from typing import Any
 
 DEFAULT_MODEL = "ministral-3:8b"
 DEFAULT_HOST = "http://127.0.0.1:11434"
-MODES = ("replay", "live", "record")
+MODES = ("replay", "live", "record", "resume")
 
 Transport = Callable[[dict[str, Any]], dict[str, Any]]
 UNKNOWN_TOOL = re.compile(r"tool '[^']*' not found")
@@ -194,11 +196,22 @@ class LLM:
         self.calls_path = self.run_dir / "calls.jsonl"
         self._transport = transport
         self._stored: dict[str, dict[str, Any]] | None = None
+        self._used: dict[str, dict[str, Any]] = {}  # resume: the stored and new answers this run used, in order
 
     def start_recording(self) -> None:
-        """Begin a fresh run: the previous calls.jsonl is replaced."""
+        """Begin a run. record replaces the previous calls.jsonl; resume keeps it to answer from."""
         self.run_dir.mkdir(parents=True, exist_ok=True)
+        if self.mode == "resume":
+            self._load(missing_ok=True)
+            return
         self.calls_path.write_text("", encoding="utf-8")
+
+    def finish_recording(self) -> None:
+        """After a resume, keep only the answers this run used, in the order it used them."""
+        if self.mode != "resume":
+            return
+        lines = [json.dumps(entry, ensure_ascii=False, sort_keys=True) + "\n" for entry in self._used.values()]
+        self.calls_path.write_text("".join(lines), encoding="utf-8")
 
     def chat(
         self,
@@ -218,12 +231,18 @@ class LLM:
         if self.mode == "replay":
             stored = self._lookup(key, label)
             response, seconds = stored["response"], stored["seconds"]
+        elif self.mode == "resume" and key in self._load(missing_ok=True):
+            stored = self._used[key] = self._load(missing_ok=True)[key]
+            response, seconds = stored["response"], stored["seconds"]
         else:
             started = time.perf_counter()
             response = self._send(request)
             seconds = round(time.perf_counter() - started, 3)
-            if self.mode == "record":
-                self._append({"fingerprint": key, "label": label, "seconds": seconds, "response": response})
+            if self.mode in ("record", "resume"):
+                entry = {"fingerprint": key, "label": label, "seconds": seconds, "response": response}
+                self._append(entry)
+                if self.mode == "resume":
+                    self._used[key] = self._load(missing_ok=True)[key] = entry
 
         return Reply(
             text=response.get("content", ""),
@@ -275,9 +294,12 @@ class LLM:
         with self.calls_path.open("a", encoding="utf-8") as handle:
             handle.write(json.dumps(entry, ensure_ascii=False, sort_keys=True) + "\n")
 
-    def _lookup(self, key: str, label: str) -> dict[str, Any]:
+    def _load(self, missing_ok: bool = False) -> dict[str, dict[str, Any]]:
         if self._stored is None:
             if not self.calls_path.exists():
+                if missing_ok:
+                    self._stored = {}
+                    return self._stored
                 raise ReplayMiss(
                     f"No stored run at {self.calls_path}. Record one with `make record` (needs Ollama), "
                     "or run live with `make live`."
@@ -287,6 +309,10 @@ class LLM:
                 if line.strip():
                     entry = json.loads(line)
                     self._stored[entry["fingerprint"]] = entry
+        return self._stored
+
+    def _lookup(self, key: str, label: str) -> dict[str, Any]:
+        self._load()
         if key not in self._stored:
             raise ReplayMiss(
                 f"No stored answer for {label or 'this request'} ({key[:12]}) in {self.calls_path}. "

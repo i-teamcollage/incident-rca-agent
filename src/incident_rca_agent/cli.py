@@ -3,6 +3,7 @@
 python -m incident_rca_agent demo                three incidents from the stored run
 python -m incident_rca_agent accept              the acceptance test on the test split
 python -m incident_rca_agent accept --record     run it live on Ollama and store the run
+python -m incident_rca_agent accept --resume     carry on with a stored run that stopped half-way
 python -m incident_rca_agent run INCIDENT_DIR    investigate one incident live
 python -m incident_rca_agent readme              refresh the results table in README.md
 """
@@ -67,6 +68,8 @@ class Workspace:
 
 
 def _mode(args: argparse.Namespace) -> str:
+    if getattr(args, "resume", False):
+        return "resume"
     if getattr(args, "record", False):
         return "record"
     if getattr(args, "live", False):
@@ -125,7 +128,7 @@ def _write_run_info(ws: Workspace, split: str, llm: LLM, results: dict[str, Inci
 def cmd_accept(args: argparse.Namespace, ws: Workspace, transport=None) -> int:
     mode = _mode(args)
     llm = LLM(model=args.model, mode=mode, runs_root=ws.runs_root(args.split), num_ctx=NUM_CTX, transport=transport)
-    if mode == "record":
+    if mode in ("record", "resume"):
         llm.start_recording()
     print(f"Acceptance test, {args.split} split, model {args.model}, mode {mode}")
     try:
@@ -134,7 +137,8 @@ def cmd_accept(args: argparse.Namespace, ws: Workspace, transport=None) -> int:
         print(f"\n{error}", file=sys.stderr)
         return 2
     _write_outputs(ws, args.split, results)
-    if mode == "record":
+    if mode in ("record", "resume"):
+        llm.finish_recording()
         _write_run_info(ws, args.split, llm, results, local_model=transport is None)
     info_path = _run_info_path(ws, args.split, args.model)
     info = json.loads(info_path.read_text(encoding="utf-8")) if mode != "live" and info_path.exists() else {}
@@ -235,6 +239,9 @@ def main(argv: list[str] | None = None, *, root: Path = ROOT, transport=None) ->
         command.add_argument("--record", action="store_true", help="ask the model and store the run")
         command.add_argument("--model", default=model)
         if name == "accept":
+            command.add_argument(
+                "--resume", action="store_true", help="like --record, reusing the answers a run that stopped stored"
+            )
             command.add_argument("--split", default="test", choices=["test", "practice"])
     run = commands.add_parser("run")
     run.add_argument("incident_dir", help="a folder with alert.json, logs.txt, metrics.json and changes.json")
