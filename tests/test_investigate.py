@@ -92,3 +92,12 @@ def test_time_and_model_calls_are_added_up(tmp_path):
     assert investigation.model_calls == 3
     assert investigation.seconds >= 0
     assert investigation.source_ids()[:2] == ["ALERT", "CHG-4402"]
+
+
+def test_the_model_is_asked_for_tool_calls_without_text(tmp_path):
+    # On a CPU without a graphics card the model writes about three tokens a second, and a plan before every call
+    # tripled the time of an investigation. Nothing reads that text: the RCA is written from the tool results alone.
+    _, model, _ = run(tmp_path)
+    system = model.requests[0]["messages"][0]["content"]
+    assert "Answer with tool calls only" in system
+    assert "reply with the single word DONE" in system

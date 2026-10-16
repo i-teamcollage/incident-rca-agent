@@ -91,3 +91,10 @@ def test_write_rca_is_one_structured_call_without_tools(tmp_path):
     assert requests[0]["format"]["properties"]["claims"]["items"]["properties"]["source_ids"]["items"]["enum"] == (
         found.source_ids()
     )
+
+
+def test_the_prompt_asks_for_short_claims_with_numbers_copied_not_computed():
+    # A claim with a percentage or a duration the model worked out itself fails the grounding check.
+    system = build_messages(investigation())[0]["content"]
+    assert "one short plain sentence, without markdown" in system
+    assert "never compute, round or convert a number" in system

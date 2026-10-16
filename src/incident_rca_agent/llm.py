@@ -16,6 +16,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import time
 import urllib.error
 import urllib.request
@@ -128,19 +129,36 @@ def ollama_info(model: str, host: str | None = None) -> dict[str, str]:
     return {"ollama_version": version, "model_digest": digest}
 
 
-def machine_description() -> str:
-    """For example "Apple M4, 16 GB". Falls back to the platform name."""
+def _linux_machine(proc: Path) -> str | None:
+    """For example "Intel Xeon Processor @ 2.80GHz, 4 cores, 16 GB", from /proc. None when it cannot be read."""
+    try:
+        cpuinfo = (proc / "cpuinfo").read_text(encoding="utf-8")
+        meminfo = (proc / "meminfo").read_text(encoding="utf-8")
+    except OSError:
+        return None
+    chips = re.findall(r"^model name\s*:\s*(.+)$", cpuinfo, re.MULTILINE)
+    memory = re.search(r"^MemTotal:\s*(\d+) kB", meminfo, re.MULTILINE)
+    if not chips or not memory:
+        return None
+    chip = re.sub(r"\s+", " ", re.sub(r"\((?:R|TM)\)", "", chips[0])).strip()
+    return f"{chip}, {len(chips)} cores, {round(int(memory.group(1)) / 2**20)} GB"
+
+
+def machine_description(proc: str | Path = "/proc", use_sysctl: bool = True) -> str:
+    """For example "Apple M4, 16 GB", or the processor, cores and memory on Linux. Falls back to the platform."""
     import platform
     import subprocess
 
-    try:
-        chip = subprocess.run(
-            ["sysctl", "-n", "machdep.cpu.brand_string"], capture_output=True, text=True, check=True
-        ).stdout.strip()
-        memory = int(subprocess.run(["sysctl", "-n", "hw.memsize"], capture_output=True, text=True, check=True).stdout)
-        return f"{chip}, {round(memory / 2**30)} GB"
-    except (OSError, subprocess.CalledProcessError, ValueError):
-        return f"{platform.system()} {platform.machine()}".strip() or "unknown machine"
+    if use_sysctl:
+        try:
+            chip = subprocess.run(
+                ["sysctl", "-n", "machdep.cpu.brand_string"], capture_output=True, text=True, check=True
+            ).stdout.strip()
+            memory = subprocess.run(["sysctl", "-n", "hw.memsize"], capture_output=True, text=True, check=True).stdout
+            return f"{chip}, {round(int(memory) / 2**30)} GB"
+        except (OSError, subprocess.CalledProcessError, ValueError):
+            pass
+    return _linux_machine(Path(proc)) or f"{platform.system()} {platform.machine()}".strip() or "unknown machine"
 
 
 class LLM:

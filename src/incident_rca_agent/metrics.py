@@ -71,7 +71,8 @@ def score(labels: list[dict], results: dict[str, IncidentResult]) -> tuple[dict[
         f"- Tool calls per incident: median {_number(statistics.median(calls))}, mean "
         f"{_number(statistics.mean(calls))}, max {max(calls)} (the first call, get_alert, is made by the code)",
         f"- Minutes per incident: median {_number(statistics.median(minutes))}, max {_number(max(minutes))}, from the "
-        "recorded run on a laptop (the client build's 30 to 60 seconds were measured on server hardware)",
+        "recorded run on the machine named above, without a graphics card (the client build's 30 to 60 seconds were "
+        "measured on server hardware)",
         f"- Claims grounded: {grounded} of {claims}",
         f"- RCAs that could not be read, even after a retry: {unreadable}",
         "",

@@ -32,8 +32,11 @@ wait for data are symptoms.
 You can make at most {MAX_TOOL_CALLS - 1} more tool calls. A good order: get_lineage upstream of the alerting \
 pipeline; search_logs on the suspect pipeline with level WARN; get_metric_summary on the suspect pipeline; \
 list_changes; then search_runbooks and search_past_incidents with the error message you found. Look at the \
-pipeline where the trouble starts, not only where it shows. Stop calling tools when you know the cause: the \
-RCA is written in the next step, from the evidence the tools returned."""
+pipeline where the trouble starts, not only where it shows. When you know the cause, stop calling tools and \
+reply with the single word DONE: the RCA is written in the next step, from the evidence the tools returned.
+
+Answer with tool calls only. Do not write a plan, an explanation or a summary: nobody reads it, and the RCA \
+step sees only the tool results."""
 
 
 @dataclass

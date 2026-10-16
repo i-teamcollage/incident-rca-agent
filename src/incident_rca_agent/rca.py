@@ -23,20 +23,23 @@ SYSTEM = f"""You write the root-cause analysis (RCA) of a data-platform alert, f
 investigation retrieved. Answer with JSON only.
 
 Fields, in this order:
-- claims: 3 to 6 facts from the evidence that show the cause. Each claim has text and source_ids: the ids in \
-square brackets of the sources it comes from (for example L-0142, M-1, CHG-4410). Copy pipeline names, numbers \
-and times exactly as they appear in the cited sources: a claim with a name or number that is not in its sources \
-does not count. Include the warning or error line of the root-cause pipeline that shows the error itself (not a \
-line where a pipeline skips or waits for upstream data), and a metric summary or a change of that pipeline.
+- claims: 3 to 6 facts from the evidence that show the cause. Each claim is one short plain sentence, without \
+markdown, with source_ids: the ids in square brackets of the sources it comes from (for example L-0142, M-1, \
+CHG-4410). Copy pipeline names, numbers and times exactly as they appear in the cited sources, and never \
+compute, round or convert a number (no percentages or durations of your own): a claim with a name or number \
+that is not in its sources does not count. Include the warning or error line of the root-cause pipeline that \
+shows the error itself (not a line where a pipeline skips or waits for upstream data), and a metric summary or \
+a change of that pipeline.
 - root_cause_category: one of the failure types below, or unknown when the evidence does not show the cause.
 {_TYPES}
 - root_cause_pipeline: the upstream-most pipeline where the failure starts. Name the alerting pipeline only when \
 the failure starts there. Pipelines that skipped runs or waited for upstream data are symptoms, not causes.
-- summary: two or three plain sentences for the on-call channel: what broke, where, and what it caused.
+- summary: two or three plain sentences for the on-call channel, without markdown: what broke, where, and what \
+it caused.
 - affected_pipelines: the root-cause pipeline and the pipelines downstream of it that were hurt, up to the \
 alerting pipeline.
-- actions: 2 to 4 next steps for the engineer. Each has text and source_ids, citing the runbook section or \
-past incident it follows when there is one."""
+- actions: 2 to 4 next steps for the engineer, one short sentence each. Each has text and source_ids, citing \
+the runbook section or past incident it follows when there is one."""
 
 
 def rca_schema(pipelines: list[str], source_ids: list[str]) -> dict[str, Any]:
