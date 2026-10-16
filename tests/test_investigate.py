@@ -159,3 +159,21 @@ def test_a_model_low_on_calls_without_a_metric_summary_is_reminded_of_what_is_mi
     assert [use.name for use in investigation.uses][-1] == "get_metric_summary"
     assert investigation.model_calls == 7
     assert investigation.stopped == "the model had enough evidence"
+
+
+def test_metrics_of_one_pipeline_and_logs_of_another_get_a_reminder_for_the_last_one(tmp_path):
+    # It read the warnings of the pipelines on the way up, then only the metrics of the failing one, and stopped.
+    logs_below = ("search_logs", {"pipeline": "stg_payments", "level": "WARN"})
+    investigation, model, _ = run(tmp_path, [LINEAGE_CALL], [logs_below], [METRICS_CALL], [], [LOGS_CALL], [])
+    reminder = model.requests[4]["messages"][-1]
+    assert reminder["role"] == "user"
+    assert "use search_logs with level WARN on src_payments_api" in reminder["content"]
+    assert "get_metric_summary" not in reminder["content"]
+    assert [use.name for use in investigation.uses][-1] == "search_logs"
+    assert investigation.uses[-1].arguments["pipeline"] == "src_payments_api"
+
+
+def test_the_reminder_names_the_pipeline_the_model_looked_at_last(tmp_path):
+    logs = [[("search_logs", {"pipeline": "src_payments_api", "query": f"error {n}"})] for n in range(4)]
+    _, model, _ = run(tmp_path, [LINEAGE_CALL], *logs, [METRICS_CALL], [])
+    assert "get_metric_summary with metric all on src_payments_api" in model.requests[5]["messages"][-1]["content"]

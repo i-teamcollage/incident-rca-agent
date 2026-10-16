@@ -58,20 +58,38 @@ EVIDENCE_TOOLS = {
 LOW_ON_CALLS = 2
 
 
-def missing_evidence(investigation: Investigation) -> list[str]:
-    used = {use.name for use in investigation.uses}
-    return [name for name in EVIDENCE_TOOLS if name not in used]
+def _pipeline_of(arguments: Any) -> str:
+    value = arguments.get("pipeline", "") if isinstance(arguments, dict) else ""
+    return str(value or "").strip().strip("`'\"").lower()
 
 
-def reminder(calls_left: int, missing: list[str]) -> str:
+def missing_evidence(investigation: Investigation) -> tuple[str, list[str]]:
+    """The pipeline the model looked at last, and the evidence tools it has not used on that pipeline yet.
+
+    The confidence line needs a log line and a metric summary (or a change) of one pipeline, the root cause.
+    The code does not know which pipeline that is; the last one the model looked into is its own best lead.
+    """
+    looked = [
+        (use.name, _pipeline_of(use.arguments))
+        for use in investigation.uses
+        if use.name in EVIDENCE_TOOLS and _pipeline_of(use.arguments)
+    ]
+    if not looked:
+        return "", list(EVIDENCE_TOOLS)
+    last = looked[-1][1]
+    used = {name for name, pipeline in looked if pipeline == last}
+    return last, [name for name in EVIDENCE_TOOLS if name not in used]
+
+
+def reminder(calls_left: int, pipeline: str, missing: list[str]) -> str:
     """Sent once, when the model stops or is down to its last calls before it has used the tools in missing."""
     calls = f"{calls_left} tool call{'' if calls_left == 1 else 's'}"
     use = " and ".join(EVIDENCE_TOOLS[name][0] for name in missing)
     needs = " and ".join(EVIDENCE_TOOLS[name][1] for name in missing)
-    return (
-        f"You have {calls} left. Before DONE, use {use} on the pipeline where the failure starts: "
-        f"the RCA needs {needs}."
-    )
+    where = "on the pipeline where the failure starts"
+    if pipeline:
+        where = f"on {pipeline}, if that is where the failure starts"
+    return f"You have {calls} left. Before DONE, use {use} {where}: the RCA needs {needs}."
 
 
 @dataclass
@@ -111,10 +129,10 @@ def investigate(llm: LLM, session: Session, label: str) -> Investigation:
     messages: list[dict[str, Any]] = [{"role": "system", "content": SYSTEM}, {"role": "user", "content": opening}]
     reminded = False
     while len(found.uses) < MAX_TOOL_CALLS:
-        calls_left, missing = MAX_TOOL_CALLS - len(found.uses), missing_evidence(found)
+        calls_left, (pipeline, missing) = MAX_TOOL_CALLS - len(found.uses), missing_evidence(found)
         if missing and not reminded and calls_left <= LOW_ON_CALLS:
             reminded = True
-            messages.append({"role": "user", "content": reminder(calls_left, missing)})
+            messages.append({"role": "user", "content": reminder(calls_left, pipeline, missing)})
         reply = llm.chat(messages, tools=TOOLS, label=f"{label} step {found.model_calls + 1}")
         found.model_calls += 1
         found.seconds += reply.seconds
@@ -122,7 +140,7 @@ def investigate(llm: LLM, session: Session, label: str) -> Investigation:
             if missing and not reminded:
                 reminded = True
                 messages.append({"role": "assistant", "content": reply.text})
-                messages.append({"role": "user", "content": reminder(calls_left, missing)})
+                messages.append({"role": "user", "content": reminder(calls_left, pipeline, missing)})
                 continue
             found.stopped = "the model had enough evidence"
             break
