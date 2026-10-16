@@ -30,6 +30,7 @@ DEFAULT_HOST = "http://127.0.0.1:11434"
 MODES = ("replay", "live", "record")
 
 Transport = Callable[[dict[str, Any]], dict[str, Any]]
+UNKNOWN_TOOL = re.compile(r"tool '[^']*' not found")
 
 
 class ReplayMiss(RuntimeError):
@@ -92,7 +93,19 @@ def ollama_transport(host: str | None = None) -> Transport:
             with urllib.request.urlopen(http_request, timeout=900) as response:
                 data = json.load(response)
         except urllib.error.HTTPError as error:
-            raise ModelUnavailable(f"Ollama at {base} answered {error.code}: {error.read().decode()[:300]}") from error
+            detail = error.read().decode()[:300]
+            unknown_tool = UNKNOWN_TOOL.search(detail)
+            if error.code == 500 and unknown_tool:
+                # The model named a tool it was not offered. That is its answer, so it counts as one without
+                # tool calls; the reason is kept in the stored run.
+                return {
+                    "content": "",
+                    "tool_calls": [],
+                    "prompt_tokens": 0,
+                    "output_tokens": 0,
+                    "done_reason": f"unknown tool: {unknown_tool.group(0)}",
+                }
+            raise ModelUnavailable(f"Ollama at {base} answered {error.code}: {detail}") from error
         except (urllib.error.URLError, ConnectionError) as error:
             raise ModelUnavailable(
                 f"Ollama is not reachable at {base} ({error}). Start Ollama, or use the stored run (replay mode)."

@@ -42,7 +42,8 @@ pipeline, that pipeline is the new suspect: do steps 2 and 3 for it.
 5. list_changes, then search_runbooks with the error message you found.
 Go to the suspect directly instead of looking at every pipeline in between. When you have the warning or error \
 line and the metric summary of the pipeline where the failure starts, stop calling tools and reply with the \
-single word DONE: the RCA is written in the next step, from the evidence the tools returned.
+single word DONE (DONE is plain text, not a tool): the RCA is written in the next step, from the evidence the \
+tools returned.
 
 Answer with tool calls only. Do not write a plan, an explanation or a summary: nobody reads it, and the RCA \
 step sees only the tool results."""

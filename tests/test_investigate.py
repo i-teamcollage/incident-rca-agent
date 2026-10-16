@@ -107,6 +107,7 @@ def test_the_model_is_asked_for_tool_calls_without_text(tmp_path):
     system = model.requests[0]["messages"][0]["content"]
     assert "Answer with tool calls only" in system
     assert "reply with the single word DONE" in system
+    assert "DONE is plain text, not a tool" in system
 
 
 def test_the_model_is_told_to_follow_the_skipped_runs_to_the_failing_pipeline(tmp_path):
