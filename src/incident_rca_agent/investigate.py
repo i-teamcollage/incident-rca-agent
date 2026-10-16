@@ -82,7 +82,7 @@ def missing_evidence(investigation: Investigation) -> tuple[str, list[str]]:
 
 
 def reminder(calls_left: int, pipeline: str, missing: list[str]) -> str:
-    """Sent once, when the model stops or is down to its last calls before it has used the tools in missing."""
+    """Sent once per pipeline, when the model stops or is down to its last calls without the tools in missing."""
     calls = f"{calls_left} tool call{'' if calls_left == 1 else 's'}"
     use = " and ".join(EVIDENCE_TOOLS[name][0] for name in missing)
     needs = " and ".join(EVIDENCE_TOOLS[name][1] for name in missing)
@@ -127,18 +127,18 @@ def investigate(llm: LLM, session: Session, label: str) -> Investigation:
         f"Find the root cause with the tools. You have {MAX_TOOL_CALLS - 1} tool calls."
     )
     messages: list[dict[str, Any]] = [{"role": "system", "content": SYSTEM}, {"role": "user", "content": opening}]
-    reminded = False
+    reminded: set[str] = set()  # one reminder per pipeline ("" before the model has looked at any)
     while len(found.uses) < MAX_TOOL_CALLS:
         calls_left, (pipeline, missing) = MAX_TOOL_CALLS - len(found.uses), missing_evidence(found)
-        if missing and not reminded and calls_left <= LOW_ON_CALLS:
-            reminded = True
+        if missing and pipeline not in reminded and calls_left <= LOW_ON_CALLS:
+            reminded.add(pipeline)
             messages.append({"role": "user", "content": reminder(calls_left, pipeline, missing)})
         reply = llm.chat(messages, tools=TOOLS, label=f"{label} step {found.model_calls + 1}")
         found.model_calls += 1
         found.seconds += reply.seconds
         if not reply.tool_calls:
-            if missing and not reminded:
-                reminded = True
+            if missing and pipeline not in reminded:
+                reminded.add(pipeline)
                 messages.append({"role": "assistant", "content": reply.text})
                 messages.append({"role": "user", "content": reminder(calls_left, pipeline, missing)})
                 continue

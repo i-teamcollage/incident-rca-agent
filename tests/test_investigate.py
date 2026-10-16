@@ -177,3 +177,20 @@ def test_the_reminder_names_the_pipeline_the_model_looked_at_last(tmp_path):
     logs = [[("search_logs", {"pipeline": "src_payments_api", "query": f"error {n}"})] for n in range(4)]
     _, model, _ = run(tmp_path, [LINEAGE_CALL], *logs, [METRICS_CALL], [])
     assert "get_metric_summary with metric all on src_payments_api" in model.requests[5]["messages"][-1]["content"]
+
+
+def test_each_pipeline_gets_its_own_reminder(tmp_path):
+    # It read the logs of each pipeline on the way up; the first reminder named the last of them, the model then
+    # asked for the metrics of the failing pipeline but had not read its logs.
+    walk = [
+        [("search_logs", {"pipeline": name, "level": "WARN"})]
+        for name in ("stg_payments", "ing_payments", "stg_orders", "ing_orders")
+    ]
+    investigation, model, _ = run(tmp_path, [LINEAGE_CALL], *walk, [METRICS_CALL], [LOGS_CALL])
+    first, second = model.requests[5]["messages"][-1], model.requests[6]["messages"][-1]
+    assert "get_metric_summary with metric all on ing_orders" in first["content"]
+    assert second["content"].startswith("You have 1 tool call left.")
+    assert "search_logs with level WARN on src_payments_api" in second["content"]
+    last = investigation.uses[-1]
+    assert (last.name, last.arguments["pipeline"]) == ("search_logs", "src_payments_api")
+    assert investigation.stopped == "the limit of 8 tool calls was reached"
